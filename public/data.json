@@ -1,0 +1,122 @@
+{
+  "events": [
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "year": -202,
+      "yearDisplay": "前202年",
+      "era": "楚漢戦争",
+      "region": "china",
+      "title": "垓下の戦い",
+      "description": "項羽と劉邦の最終決戦。劉邦軍が勝利し、項羽は自刎。漢王朝の成立へとつながる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E5%9E%93%E4%B8%8B%E3%81%AE%E6%88%A6%E3%81%84"],
+      "media": [
+        {
+          "title": "項羽と劉邦",
+          "type": "manga",
+          "remark": "横山光輝作"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440002",
+      "year": -221,
+      "yearDisplay": "前221年",
+      "era": "秦",
+      "region": "china",
+      "title": "秦の中国統一",
+      "description": "始皇帝が六国を滅ぼし、中国史上初の統一王朝を樹立。度量衡・文字の統一を行う。",
+      "links": ["https://ja.wikipedia.org/wiki/%E5%A7%8B%E7%9A%87%E5%B8%9D"],
+      "media": [
+        {
+          "title": "キングダム",
+          "type": "manga",
+          "remark": "原泰久作。秦の始皇帝の中国統一を描く"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "year": 184,
+      "yearDisplay": "184年",
+      "era": "後漢末期",
+      "region": "china",
+      "title": "黄巾の乱",
+      "description": "太平道を信仰する黄巾党による反乱。後漢王朝の衰退を決定的にし、三国時代の幕開けとなる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E9%BB%84%E5%B7%BE%E3%81%AE%E4%B9%B1"],
+      "media": [
+        {
+          "title": "三国志",
+          "type": "manga",
+          "remark": "横山光輝作"
+        },
+        {
+          "title": "蒼天航路",
+          "type": "manga",
+          "remark": "王欣太作"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "year": 1560,
+      "yearDisplay": "1560年",
+      "era": "戦国時代",
+      "region": "japan",
+      "title": "桶狭間の戦い",
+      "description": "織田信長が今川義元を討ち取った戦い。信長の天下布武への第一歩となる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%A1%B6%E7%8B%AD%E9%96%93%E3%81%AE%E6%88%A6%E3%81%84"],
+      "media": [
+        {
+          "title": "センゴク",
+          "type": "manga",
+          "remark": "宮下英樹作"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440005",
+      "year": 1192,
+      "yearDisplay": "1192年",
+      "era": "鎌倉時代",
+      "region": "japan",
+      "title": "鎌倉幕府成立",
+      "description": "源頼朝が征夷大将軍に任命され、鎌倉幕府が成立。日本初の武家政権。",
+      "links": ["https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E5%B9%95%E5%BA%9C"],
+      "media": [
+        {
+          "title": "鎌倉殿の13人",
+          "type": "anime",
+          "remark": "NHK大河ドラマ"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "year": -44,
+      "yearDisplay": "前44年",
+      "era": "共和政ローマ",
+      "region": "europe",
+      "title": "カエサル暗殺",
+      "description": "ガイウス・ユリウス・カエサルが元老院議員らによって暗殺される。ローマ内戦の引き金となる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%82%A6%E3%82%B9%E3%83%BB%E3%83%A6%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%AB%E3%82%A8%E3%82%B5%E3%83%AB"],
+      "media": [
+        {
+          "title": "テルマエ・ロマエ",
+          "type": "manga",
+          "remark": "ヤマザキマリ作"
+        }
+      ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "year": 622,
+      "yearDisplay": "622年",
+      "era": "イスラーム初期",
+      "region": "middle_east",
+      "title": "ヒジュラ（聖遷）",
+      "description": "ムハンマドがメッカからメディナへ移住。イスラーム暦の起点となる重要な出来事。",
+      "links": ["https://ja.wikipedia.org/wiki/%E3%83%92%E3%82%B8%E3%83%A5%E3%83%A9"],
+      "media": []
+    }
+  ]
+}
