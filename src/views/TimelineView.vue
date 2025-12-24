@@ -1,17 +1,34 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
-import { Clock } from 'lucide-vue-next'
+import { onMounted, computed, ref } from 'vue'
+import { Clock, LayoutGrid, GitBranch } from 'lucide-vue-next'
 import { useEvents } from '@/composables/useEvents'
 import { useFilters } from '@/composables/useFilters'
 import EventCard from '@/components/EventCard.vue'
 import FilterBar from '@/components/FilterBar.vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
 import ErrorMessage from '@/components/ErrorMessage.vue'
+import { TimelineCanvas } from '@/components/timeline'
+import type { ExtendedHistoryEvent } from '@/types/timeline'
 
 const { sortedEvents, isLoading, fetchEvents } = useEvents()
 const { filteredEvents } = useFilters()
 
+// 表示モード: 'card' または 'timeline'
+const viewMode = ref<'card' | 'timeline'>('card')
+
 const displayEvents = computed(() => filteredEvents(sortedEvents.value))
+
+// ExtendedHistoryEventに変換（後方互換性のため既存データをそのまま使用）
+const extendedEvents = computed<ExtendedHistoryEvent[]>(() => {
+  return displayEvents.value.map((event) => ({
+    ...event,
+    media: event.media.map((m) => ({
+      ...m,
+      // 既存データにはcoverageStartYear等がないので、そのまま
+    })),
+    // personsは既存データにはないのでundefined
+  }))
+})
 
 onMounted(() => {
   fetchEvents()
@@ -20,10 +37,32 @@ onMounted(() => {
 
 <template>
   <div class="min-h-screen bg-gray-50 py-4 sm:py-8">
-    <div class="mx-auto max-w-4xl px-4">
-      <div class="mb-4 flex items-center gap-2 sm:mb-8 sm:gap-3">
-        <Clock class="h-6 w-6 text-gray-700 sm:h-8 sm:w-8" />
-        <h1 class="text-xl font-bold text-gray-900 sm:text-2xl">タイムライン</h1>
+    <div class="mx-auto px-4" :class="viewMode === 'timeline' ? 'max-w-7xl' : 'max-w-4xl'">
+      <div class="mb-4 flex items-center justify-between sm:mb-8">
+        <div class="flex items-center gap-2 sm:gap-3">
+          <Clock class="h-6 w-6 text-gray-700 sm:h-8 sm:w-8" />
+          <h1 class="text-xl font-bold text-gray-900 sm:text-2xl">タイムライン</h1>
+        </div>
+
+        <!-- 表示モード切り替え -->
+        <div class="flex rounded-lg border border-gray-300 bg-white">
+          <button
+            class="flex items-center gap-1 rounded-l-lg px-3 py-1.5 text-sm transition-colors"
+            :class="viewMode === 'card' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'"
+            @click="viewMode = 'card'"
+          >
+            <LayoutGrid class="h-4 w-4" />
+            <span class="hidden sm:inline">カード</span>
+          </button>
+          <button
+            class="flex items-center gap-1 rounded-r-lg px-3 py-1.5 text-sm transition-colors"
+            :class="viewMode === 'timeline' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-50'"
+            @click="viewMode = 'timeline'"
+          >
+            <GitBranch class="h-4 w-4" />
+            <span class="hidden sm:inline">年表</span>
+          </button>
+        </div>
       </div>
 
       <ErrorMessage :on-retry="fetchEvents" />
@@ -37,8 +76,14 @@ onMounted(() => {
           <p class="text-sm text-gray-600 sm:text-base">表示するイベントがありません</p>
         </div>
 
-        <div v-else class="space-y-3 sm:space-y-4">
+        <!-- カード表示 -->
+        <div v-else-if="viewMode === 'card'" class="space-y-3 sm:space-y-4">
           <EventCard v-for="event in displayEvents" :key="event.id" :event="event" />
+        </div>
+
+        <!-- タイムライン表示 -->
+        <div v-else class="rounded-lg bg-white p-4 shadow sm:p-6">
+          <TimelineCanvas :events="extendedEvents" />
         </div>
       </template>
     </div>
