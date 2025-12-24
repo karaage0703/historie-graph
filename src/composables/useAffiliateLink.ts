@@ -1,37 +1,25 @@
 import { ref } from 'vue'
 
-const STORAGE_KEY = 'historie-graph-affiliate-tag'
-
 // シングルトンとして状態を保持
 const affiliateTag = ref('')
+const isLoaded = ref(false)
 
 export function useAffiliateLink() {
-  const loadAffiliateTag = (): void => {
+  const loadAffiliateTag = async (): Promise<void> => {
+    if (isLoaded.value) return
+
     try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        affiliateTag.value = stored
+      const response = await fetch('/config.json')
+      if (response.ok) {
+        const config = await response.json()
+        if (config.affiliateTag) {
+          affiliateTag.value = config.affiliateTag
+        }
       }
+      isLoaded.value = true
     } catch (e) {
-      console.error('Failed to load affiliate tag:', e)
-    }
-  }
-
-  const saveAffiliateTag = (tag: string): void => {
-    affiliateTag.value = tag
-    try {
-      localStorage.setItem(STORAGE_KEY, tag)
-    } catch (e) {
-      console.error('Failed to save affiliate tag:', e)
-    }
-  }
-
-  const clearAffiliateTag = (): void => {
-    affiliateTag.value = ''
-    try {
-      localStorage.removeItem(STORAGE_KEY)
-    } catch (e) {
-      console.error('Failed to clear affiliate tag:', e)
+      console.error('Failed to load affiliate config:', e)
+      isLoaded.value = true
     }
   }
 
@@ -41,6 +29,7 @@ export function useAffiliateLink() {
 
     try {
       const url = new URL(baseUrl)
+      // 既存のtagパラメータを上書き
       url.searchParams.set('tag', affiliateTag.value)
       return url.toString()
     } catch {
@@ -51,9 +40,8 @@ export function useAffiliateLink() {
 
   return {
     affiliateTag,
+    isLoaded,
     loadAffiliateTag,
-    saveAffiliateTag,
-    clearAffiliateTag,
     generateAffiliateUrl,
   }
 }

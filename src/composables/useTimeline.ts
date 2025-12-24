@@ -2,11 +2,21 @@ import { computed, type Ref } from 'vue'
 import type {
   ExtendedHistoryEvent,
   EraLaneData,
+  RegionEraGroup,
   PersonLaneData,
   MediaLaneData,
   EventMarkerData,
   TimeRange,
 } from '@/types/timeline'
+
+// 地域の表示順序と日本語ラベル
+const REGION_ORDER: Record<string, { order: number; label: string }> = {
+  china: { order: 0, label: '中国' },
+  japan: { order: 1, label: '日本' },
+  europe: { order: 2, label: 'ヨーロッパ' },
+  middle_east: { order: 3, label: '中東' },
+  other: { order: 4, label: 'その他' },
+}
 
 // タイムラインの1年あたりのピクセル数（基本値）
 const PIXELS_PER_YEAR = 2
@@ -44,28 +54,33 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
   }
 
   /**
-   * 時代レーンデータを生成
+   * 時代レーンデータを生成（国別）
    */
   const eraLanes = computed<EraLaneData[]>(() => {
-    // 時代ごとにイベントをグループ化
-    const eraMap = new Map<string, ExtendedHistoryEvent[]>()
+    // 地域+時代ごとにイベントをグループ化
+    const regionEraMap = new Map<string, ExtendedHistoryEvent[]>()
 
     events.value.forEach((event) => {
-      const existing = eraMap.get(event.era) || []
+      const key = `${event.region}::${event.era}`
+      const existing = regionEraMap.get(key) || []
       existing.push(event)
-      eraMap.set(event.era, existing)
+      regionEraMap.set(key, existing)
     })
 
-    // 時代ごとにレーンデータを生成
+    // レーンデータを生成
     const lanes: EraLaneData[] = []
 
-    eraMap.forEach((eraEvents, era) => {
+    regionEraMap.forEach((eraEvents, key) => {
+      const parts = key.split('::')
+      const region = parts[0] ?? ''
+      const era = parts[1] ?? ''
       const years = eraEvents.map((e) => e.year)
       const startYear = Math.min(...years)
       const endYear = Math.max(...years)
 
       lanes.push({
         era,
+        region,
         startYear,
         endYear,
         duration: Math.abs(endYear - startYear),
@@ -74,13 +89,49 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
       })
     })
 
-    // 開始年でソート
-    lanes.sort((a, b) => a.startYear - b.startYear)
+    // 地域順、開始年順でソート
+    lanes.sort((a, b) => {
+      const orderA = REGION_ORDER[a.region]?.order ?? 99
+      const orderB = REGION_ORDER[b.region]?.order ?? 99
+      if (orderA !== orderB) return orderA - orderB
+      return a.startYear - b.startYear
+    })
 
-    // 重複する時代を異なるレーンに配置
-    assignLaneIndices(lanes)
+    // 地域ごとに重複する時代を異なるレーンに配置
+    assignLaneIndicesByRegion(lanes)
 
     return lanes
+  })
+
+  /**
+   * 国別に時代レーンをグループ化
+   */
+  const regionEraGroups = computed<RegionEraGroup[]>(() => {
+    const groups = new Map<string, EraLaneData[]>()
+
+    eraLanes.value.forEach((lane) => {
+      const existing = groups.get(lane.region) || []
+      existing.push(lane)
+      groups.set(lane.region, existing)
+    })
+
+    const result: RegionEraGroup[] = []
+    groups.forEach((lanes, region) => {
+      result.push({
+        region,
+        regionLabel: REGION_ORDER[region]?.label ?? region,
+        lanes,
+      })
+    })
+
+    // 地域順でソート
+    result.sort((a, b) => {
+      const orderA = REGION_ORDER[a.region]?.order ?? 99
+      const orderB = REGION_ORDER[b.region]?.order ?? 99
+      return orderA - orderB
+    })
+
+    return result
   })
 
   /**
@@ -148,6 +199,7 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
   return {
     timeRange,
     eraLanes,
+    regionEraGroups,
     personLanes,
     mediaLanes,
     eventMarkers,
@@ -157,32 +209,42 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
 }
 
 /**
- * 時代の重複を検出し、レーンインデックスを割り当てる
+ * 地域ごとに時代の重複を検出し、レーンインデックスを割り当てる
  */
-function assignLaneIndices(lanes: EraLaneData[]): void {
-  // 各レーンの終了年を追跡
-  const laneEndYears: number[] = []
-
+function assignLaneIndicesByRegion(lanes: EraLaneData[]): void {
+  // 地域ごとにグループ化
+  const regionLanes = new Map<string, EraLaneData[]>()
   lanes.forEach((lane) => {
-    // 重複しないレーンを探す
-    let assignedLane = -1
-    for (let i = 0; i < laneEndYears.length; i++) {
-      const endYear = laneEndYears[i]
-      if (endYear !== undefined && lane.startYear >= endYear) {
-        assignedLane = i
-        break
+    const existing = regionLanes.get(lane.region) || []
+    existing.push(lane)
+    regionLanes.set(lane.region, existing)
+  })
+
+  // 地域ごとにレーンインデックスを割り当て
+  regionLanes.forEach((regionGroupLanes) => {
+    const laneEndYears: number[] = []
+
+    regionGroupLanes.forEach((lane) => {
+      // 重複しないレーンを探す
+      let assignedLane = -1
+      for (let i = 0; i < laneEndYears.length; i++) {
+        const endYear = laneEndYears[i]
+        if (endYear !== undefined && lane.startYear >= endYear) {
+          assignedLane = i
+          break
+        }
       }
-    }
 
-    if (assignedLane === -1) {
-      // 新しいレーンを作成
-      assignedLane = laneEndYears.length
-      laneEndYears.push(lane.endYear)
-    } else {
-      // 既存レーンを更新
-      laneEndYears[assignedLane] = lane.endYear
-    }
+      if (assignedLane === -1) {
+        // 新しいレーンを作成
+        assignedLane = laneEndYears.length
+        laneEndYears.push(lane.endYear)
+      } else {
+        // 既存レーンを更新
+        laneEndYears[assignedLane] = lane.endYear
+      }
 
-    lane.laneIndex = assignedLane
+      lane.laneIndex = assignedLane
+    })
   })
 }

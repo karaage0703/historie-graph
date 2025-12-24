@@ -7,21 +7,18 @@ import { Settings, Trash2, Save, Eye, EyeOff, Loader2, Tag } from 'lucide-vue-ne
 
 const { token, owner, repo, isConfigured, saveSettings, clearToken } = useSettings()
 const { validateToken, lastError, clearSha } = useGithubApi()
-const { affiliateTag, loadAffiliateTag, saveAffiliateTag, clearAffiliateTag } = useAffiliateLink()
+const { affiliateTag, loadAffiliateTag } = useAffiliateLink()
 
 const formToken = ref(token.value)
 const formOwner = ref(owner.value)
 const formRepo = ref(repo.value)
-const formAffiliateTag = ref('')
 const showToken = ref(false)
 const error = ref('')
 const success = ref('')
-const affiliateSuccess = ref('')
 const isValidating = ref(false)
 
 onMounted(() => {
   loadAffiliateTag()
-  formAffiliateTag.value = affiliateTag.value
 })
 
 async function handleSave() {
@@ -73,27 +70,6 @@ function handleClear() {
   success.value = '設定を削除しました'
   setTimeout(() => {
     success.value = ''
-  }, 3000)
-}
-
-function handleSaveAffiliate() {
-  if (formAffiliateTag.value.trim()) {
-    saveAffiliateTag(formAffiliateTag.value.trim())
-  } else {
-    clearAffiliateTag()
-  }
-  affiliateSuccess.value = 'アフィリエイト設定を保存しました'
-  setTimeout(() => {
-    affiliateSuccess.value = ''
-  }, 3000)
-}
-
-function handleClearAffiliate() {
-  clearAffiliateTag()
-  formAffiliateTag.value = ''
-  affiliateSuccess.value = 'アフィリエイト設定を削除しました'
-  setTimeout(() => {
-    affiliateSuccess.value = ''
   }, 3000)
 }
 </script>
@@ -203,49 +179,16 @@ function handleClearAffiliate() {
           Amazonアソシエイト設定
         </h2>
 
-        <div v-if="affiliateTag" class="mb-4 rounded-md bg-green-50 p-3 text-sm text-green-800">
-          アフィリエイトタグが設定されています: {{ affiliateTag }}
+        <div v-if="affiliateTag" class="rounded-md bg-green-50 p-3 text-sm text-green-800">
+          アフィリエイトタグ: <span class="font-mono font-semibold">{{ affiliateTag }}</span>
+        </div>
+        <div v-else class="rounded-md bg-gray-50 p-3 text-sm text-gray-600">
+          アフィリエイトタグが設定されていません
         </div>
 
-        <form class="space-y-4" @submit.prevent="handleSaveAffiliate">
-          <div>
-            <label for="affiliateTag" class="mb-1 block text-sm font-medium text-gray-700">
-              アソシエイトタグ（トラッキングID）
-            </label>
-            <input
-              id="affiliateTag"
-              v-model="formAffiliateTag"
-              type="text"
-              class="w-full rounded-md border border-gray-300 px-3 py-2.5 text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:py-2 sm:text-sm"
-              placeholder="example-22"
-            />
-            <p class="mt-1 text-xs text-gray-500">
-              Amazonアソシエイトのタグを入力すると、Kindleリンクに自動付与されます
-            </p>
-          </div>
-
-          <div v-if="affiliateSuccess" class="rounded-md bg-green-50 p-3 text-sm text-green-800">
-            {{ affiliateSuccess }}
-          </div>
-
-          <div class="flex flex-col gap-3 pt-4 sm:flex-row">
-            <button
-              type="submit"
-              class="flex items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:py-2"
-            >
-              <Save class="h-4 w-4" />
-              保存
-            </button>
-            <button
-              type="button"
-              class="flex items-center justify-center gap-2 rounded-md bg-red-600 px-4 py-2.5 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:py-2"
-              @click="handleClearAffiliate"
-            >
-              <Trash2 class="h-4 w-4" />
-              削除
-            </button>
-          </div>
-        </form>
+        <p class="mt-3 text-xs text-gray-500">
+          アフィリエイトタグは <code class="rounded bg-gray-100 px-1 py-0.5">public/config.json</code> で設定できます
+        </p>
       </div>
     </div>
   </div>

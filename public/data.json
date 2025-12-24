@@ -1,19 +1,44 @@
 {
   "events": [
     {
-      "id": "550e8400-e29b-41d4-a716-446655440001",
-      "year": -202,
-      "yearDisplay": "前202年",
-      "era": "楚漢戦争",
+      "id": "550e8400-e29b-41d4-a716-446655440010",
+      "year": -770,
+      "yearDisplay": "前770年",
+      "era": "春秋時代",
       "region": "china",
-      "title": "垓下の戦い",
-      "description": "項羽と劉邦の最終決戦。劉邦軍が勝利し、項羽は自刎。漢王朝の成立へとつながる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%9E%93%E4%B8%8B%E3%81%AE%E6%88%A6%E3%81%84"],
+      "title": "春秋時代の開始",
+      "description": "周の平王が洛邑（洛陽）へ遷都。東周の始まりとともに春秋時代が開始。諸侯国が覇を競う時代。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%98%A5%E7%A7%8B%E6%99%82%E4%BB%A3"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440020",
+      "year": -403,
+      "yearDisplay": "前403年",
+      "era": "春秋時代",
+      "region": "china",
+      "title": "春秋時代の終了・戦国時代の開始",
+      "description": "晋が韓・魏・趙の三国に分裂し、周王から正式に諸侯として認められる。春秋時代が終わり戦国時代が始まる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440011",
+      "year": -403,
+      "yearDisplay": "前403年",
+      "era": "戦国時代",
+      "region": "china",
+      "title": "戦国時代の開始",
+      "description": "晋が韓・魏・趙に三分され、戦国七雄が並び立つ戦国時代が始まる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
       "media": [
         {
-          "title": "項羽と劉邦",
+          "title": "キングダム",
           "type": "manga",
-          "remark": "横山光輝作"
+          "remark": "原泰久作。秦の始皇帝の中国統一を描く",
+          "coverageStartYear": -259,
+          "coverageEndYear": -221,
+          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%AD%E3%83%B3%E3%82%B0%E3%83%80%E3%83%A0+%E5%8E%9F%E6%B3%B0%E4%B9%85+Kindle"
         }
       ]
     },
@@ -21,57 +46,212 @@
       "id": "550e8400-e29b-41d4-a716-446655440002",
       "year": -221,
       "yearDisplay": "前221年",
+      "era": "戦国時代",
+      "region": "china",
+      "title": "戦国時代の終了",
+      "description": "秦が斉を滅ぼし、戦国七雄を統一。戦国時代が終わる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440021",
+      "year": -221,
+      "yearDisplay": "前221年",
       "era": "秦",
       "region": "china",
       "title": "秦の中国統一",
       "description": "始皇帝が六国を滅ぼし、中国史上初の統一王朝を樹立。度量衡・文字の統一を行う。",
       "links": ["https://ja.wikipedia.org/wiki/%E5%A7%8B%E7%9A%87%E5%B8%9D"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440022",
+      "year": -206,
+      "yearDisplay": "前206年",
+      "era": "秦",
+      "region": "china",
+      "title": "秦の滅亡",
+      "description": "秦は建国からわずか15年で滅亡。項羽・劉邦らの反乱軍により滅ぼされる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E7%A7%A6"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440023",
+      "year": -206,
+      "yearDisplay": "前206年",
+      "era": "楚漢戦争",
+      "region": "china",
+      "title": "楚漢戦争の開始",
+      "description": "秦滅亡後、西楚の覇王・項羽と漢王・劉邦による天下をめぐる戦争が始まる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%A5%9A%E6%BC%A2%E6%88%A6%E4%BA%89"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440001",
+      "year": -202,
+      "yearDisplay": "前202年",
+      "era": "楚漢戦争",
+      "region": "china",
+      "title": "垓下の戦い・楚漢戦争の終結",
+      "description": "項羽と劉邦の最終決戦。劉邦軍が勝利し、項羽は自刎。漢王朝の成立へとつながる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E5%9E%93%E4%B8%8B%E3%81%AE%E6%88%A6%E3%81%84"],
       "media": [
         {
-          "title": "キングダム",
+          "title": "項羽と劉邦",
           "type": "manga",
-          "remark": "原泰久作。秦の始皇帝の中国統一を描く"
+          "remark": "横山光輝作",
+          "coverageStartYear": -232,
+          "coverageEndYear": -195,
+          "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%A0%85%E7%BE%BD%E3%81%A8%E5%8A%89%E9%82%A6+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle"
         }
       ]
     },
     {
-      "id": "550e8400-e29b-41d4-a716-446655440003",
+      "id": "550e8400-e29b-41d4-a716-446655440024",
       "year": 184,
       "yearDisplay": "184年",
       "era": "後漢末期",
       "region": "china",
       "title": "黄巾の乱",
-      "description": "太平道を信仰する黄巾党による反乱。後漢王朝の衰退を決定的にし、三国時代の幕開けとなる。",
+      "description": "太平道を信仰する黄巾党による反乱。後漢王朝の衰退を決定的にし、後漢末期の群雄割拠時代が始まる。",
       "links": ["https://ja.wikipedia.org/wiki/%E9%BB%84%E5%B7%BE%E3%81%AE%E4%B9%B1"],
       "media": [
         {
           "title": "三国志",
           "type": "manga",
-          "remark": "横山光輝作"
+          "remark": "横山光輝作",
+          "coverageStartYear": 184,
+          "coverageEndYear": 280,
+          "kindleUrl": "https://www.amazon.co.jp/s?k=%E4%B8%89%E5%9B%BD%E5%BF%97+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle"
         },
         {
           "title": "蒼天航路",
           "type": "manga",
-          "remark": "王欣太作"
+          "remark": "王欣太作",
+          "coverageStartYear": 155,
+          "coverageEndYear": 220,
+          "kindleUrl": "https://www.amazon.co.jp/s?k=%E8%92%BC%E5%A4%A9%E8%88%AA%E8%B7%AF+Kindle"
         }
       ]
     },
     {
-      "id": "550e8400-e29b-41d4-a716-446655440004",
-      "year": 1560,
-      "yearDisplay": "1560年",
-      "era": "戦国時代",
-      "region": "japan",
-      "title": "桶狭間の戦い",
-      "description": "織田信長が今川義元を討ち取った戦い。信長の天下布武への第一歩となる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%A1%B6%E7%8B%AD%E9%96%93%E3%81%AE%E6%88%A6%E3%81%84"],
+      "id": "550e8400-e29b-41d4-a716-446655440025",
+      "year": 220,
+      "yearDisplay": "220年",
+      "era": "後漢末期",
+      "region": "china",
+      "title": "後漢の滅亡",
+      "description": "献帝が曹丕に禅譲。後漢が滅亡し、三国時代が始まる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E5%BE%8C%E6%BC%A2"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440030",
+      "year": -509,
+      "yearDisplay": "前509年",
+      "era": "共和政ローマ",
+      "region": "europe",
+      "title": "共和政ローマの成立",
+      "description": "ローマ王タルクィニウス・スペルブスを追放し、貴族による共和政が始まる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E5%85%B1%E5%92%8C%E6%94%BF%E3%83%AD%E3%83%BC%E3%83%9E"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440006",
+      "year": -44,
+      "yearDisplay": "前44年",
+      "era": "共和政ローマ",
+      "region": "europe",
+      "title": "カエサル暗殺",
+      "description": "ガイウス・ユリウス・カエサルが元老院議員らによって暗殺される。ローマ内戦の引き金となる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%82%A6%E3%82%B9%E3%83%BB%E3%83%A6%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%AB%E3%82%A8%E3%82%B5%E3%83%AB"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440031",
+      "year": -27,
+      "yearDisplay": "前27年",
+      "era": "共和政ローマ",
+      "region": "europe",
+      "title": "共和政ローマの終焉",
+      "description": "オクタウィアヌスがアウグストゥスの称号を得て、共和政ローマが終わる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E5%85%B1%E5%92%8C%E6%94%BF%E3%83%AD%E3%83%BC%E3%83%9E"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440032",
+      "year": -27,
+      "yearDisplay": "前27年",
+      "era": "帝政ローマ",
+      "region": "europe",
+      "title": "帝政ローマの開始",
+      "description": "オクタウィアヌスがアウグストゥスの称号を受け、ローマ帝国（帝政ローマ）が始まる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440012",
+      "year": 117,
+      "yearDisplay": "117年",
+      "era": "帝政ローマ",
+      "region": "europe",
+      "title": "ハドリアヌス帝即位",
+      "description": "ローマ帝国第14代皇帝ハドリアヌスが即位。帝国領土の安定と文化的発展に貢献。",
+      "links": ["https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%89%E3%83%AA%E3%82%A2%E3%83%8C%E3%82%B9"],
       "media": [
         {
-          "title": "センゴク",
+          "title": "テルマエ・ロマエ",
           "type": "manga",
-          "remark": "宮下英樹作"
+          "remark": "ヤマザキマリ作。ハドリアヌス帝時代を描く",
+          "coverageStartYear": 117,
+          "coverageEndYear": 138,
+          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%86%E3%83%AB%E3%83%9E%E3%82%A8%E3%83%BB%E3%83%AD%E3%83%9E%E3%82%A8+Kindle"
         }
       ]
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440033",
+      "year": 476,
+      "yearDisplay": "476年",
+      "era": "帝政ローマ",
+      "region": "europe",
+      "title": "西ローマ帝国の滅亡",
+      "description": "ゲルマン人傭兵隊長オドアケルにより最後の西ローマ皇帝ロムルス・アウグストゥルスが廃位。西ローマ帝国が滅亡。",
+      "links": ["https://ja.wikipedia.org/wiki/%E8%A5%BF%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440007",
+      "year": 622,
+      "yearDisplay": "622年",
+      "era": "イスラーム初期",
+      "region": "middle_east",
+      "title": "ヒジュラ（聖遷）",
+      "description": "ムハンマドがメッカからメディナへ移住。イスラーム暦の起点となる重要な出来事。",
+      "links": ["https://ja.wikipedia.org/wiki/%E3%83%92%E3%82%B8%E3%83%A5%E3%83%A9"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440034",
+      "year": 661,
+      "yearDisplay": "661年",
+      "era": "イスラーム初期",
+      "region": "middle_east",
+      "title": "正統カリフ時代の終了",
+      "description": "第4代カリフ・アリーの暗殺により正統カリフ時代が終了。ウマイヤ朝が成立。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%AD%A3%E7%B5%B1%E3%82%AB%E3%83%AA%E3%83%95"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440040",
+      "year": 1185,
+      "yearDisplay": "1185年",
+      "era": "鎌倉時代",
+      "region": "japan",
+      "title": "鎌倉時代の開始",
+      "description": "壇ノ浦の戦いで平氏が滅亡。源頼朝が守護・地頭の設置権を獲得し、実質的な武家政権が成立。",
+      "links": ["https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E6%99%82%E4%BB%A3"],
+      "media": []
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440005",
@@ -86,36 +266,63 @@
         {
           "title": "鎌倉殿の13人",
           "type": "anime",
-          "remark": "NHK大河ドラマ"
+          "remark": "NHK大河ドラマ",
+          "coverageStartYear": 1160,
+          "coverageEndYear": 1224
         }
       ]
     },
     {
-      "id": "550e8400-e29b-41d4-a716-446655440006",
-      "year": -44,
-      "yearDisplay": "前44年",
-      "era": "共和政ローマ",
-      "region": "europe",
-      "title": "カエサル暗殺",
-      "description": "ガイウス・ユリウス・カエサルが元老院議員らによって暗殺される。ローマ内戦の引き金となる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%82%A6%E3%82%B9%E3%83%BB%E3%83%A6%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%AB%E3%82%A8%E3%82%B5%E3%83%AB"],
+      "id": "550e8400-e29b-41d4-a716-446655440041",
+      "year": 1333,
+      "yearDisplay": "1333年",
+      "era": "鎌倉時代",
+      "region": "japan",
+      "title": "鎌倉幕府の滅亡",
+      "description": "後醍醐天皇による倒幕運動により、新田義貞が鎌倉を攻略。北条高時が自害し鎌倉幕府が滅亡。",
+      "links": ["https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E5%B9%95%E5%BA%9C"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440042",
+      "year": 1467,
+      "yearDisplay": "1467年",
+      "era": "戦国時代",
+      "region": "japan",
+      "title": "応仁の乱・戦国時代の開始",
+      "description": "応仁の乱が勃発。室町幕府の権威が失墜し、各地で戦国大名が台頭する戦国時代が始まる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E6%97%A5%E6%9C%AC)"],
+      "media": []
+    },
+    {
+      "id": "550e8400-e29b-41d4-a716-446655440004",
+      "year": 1560,
+      "yearDisplay": "1560年",
+      "era": "戦国時代",
+      "region": "japan",
+      "title": "桶狭間の戦い",
+      "description": "織田信長が今川義元を討ち取った戦い。信長の天下布武への第一歩となる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E6%A1%B6%E7%8B%AD%E9%96%93%E3%81%AE%E6%88%A6%E3%81%84"],
       "media": [
         {
-          "title": "テルマエ・ロマエ",
+          "title": "センゴク",
           "type": "manga",
-          "remark": "ヤマザキマリ作"
+          "remark": "宮下英樹作",
+          "coverageStartYear": 1560,
+          "coverageEndYear": 1600,
+          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%BB%E3%83%B3%E3%82%B4%E3%82%AF+%E5%AE%AE%E4%B8%8B%E8%8B%B1%E6%A8%B9+Kindle"
         }
       ]
     },
     {
-      "id": "550e8400-e29b-41d4-a716-446655440007",
-      "year": 622,
-      "yearDisplay": "622年",
-      "era": "イスラーム初期",
-      "region": "middle_east",
-      "title": "ヒジュラ（聖遷）",
-      "description": "ムハンマドがメッカからメディナへ移住。イスラーム暦の起点となる重要な出来事。",
-      "links": ["https://ja.wikipedia.org/wiki/%E3%83%92%E3%82%B8%E3%83%A5%E3%83%A9"],
+      "id": "550e8400-e29b-41d4-a716-446655440043",
+      "year": 1615,
+      "yearDisplay": "1615年",
+      "era": "戦国時代",
+      "region": "japan",
+      "title": "大坂夏の陣・戦国時代の終焉",
+      "description": "大坂夏の陣で豊臣氏が滅亡。徳川幕府による天下統一が完成し、戦国時代が終わる。",
+      "links": ["https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%9D%82%E3%81%AE%E9%99%A3"],
       "media": []
     }
   ]

@@ -25,7 +25,7 @@ const containerWidth = ref(1000)
 const eventsRef = computed(() => props.events)
 const {
   timeRange,
-  eraLanes,
+  regionEraGroups,
   personLanes,
   mediaLanes,
   eventMarkers,
@@ -59,12 +59,41 @@ const popoverData = ref<{
 // SVGの高さ計算
 const LANE_HEIGHT = 40
 const LANE_GAP = 8
+const REGION_HEADER_HEIGHT = 24
+
+// 国ごとの時代レーン高さを計算
+const regionHeights = computed(() => {
+  const heights: Record<string, { startY: number; height: number; maxLaneIndex: number }> = {}
+  let currentY = 40 // 年ラベルの下から開始
+
+  regionEraGroups.value.forEach((group) => {
+    const maxLaneIndex = Math.max(...group.lanes.map((l) => l.laneIndex), 0)
+    const height = (maxLaneIndex + 1) * LANE_HEIGHT
+    heights[group.region] = {
+      startY: currentY,
+      height,
+      maxLaneIndex,
+    }
+    currentY += REGION_HEADER_HEIGHT + height + LANE_GAP
+  })
+
+  return heights
+})
+
+// イベントマーカーの開始Y座標
+const markerStartY = computed(() => {
+  const allHeights = Object.values(regionHeights.value)
+  if (allHeights.length === 0) return 40
+  const lastRegion = allHeights[allHeights.length - 1]
+  if (!lastRegion) return 40
+  return lastRegion.startY + REGION_HEADER_HEIGHT + lastRegion.height + LANE_GAP
+})
+
 const svgHeight = computed(() => {
-  const eraHeight = (Math.max(...eraLanes.value.map((l) => l.laneIndex), 0) + 1) * LANE_HEIGHT
   const personHeight = personLanes.value.length * LANE_HEIGHT
   const mediaHeight = mediaLanes.value.length * LANE_HEIGHT
   const markerHeight = LANE_HEIGHT
-  return eraHeight + personHeight + mediaHeight + markerHeight + LANE_GAP * 4 + 100
+  return markerStartY.value + markerHeight + LANE_GAP + personHeight + LANE_GAP + mediaHeight + LANE_GAP + 60
 })
 
 // タイムラインの幅（将来の仮想化で使用予定）
@@ -161,26 +190,23 @@ const yearLabels = computed(() => {
 })
 
 // レーンのY座標計算
-const getEraLaneY = (laneIndex: number) => {
-  return 40 + laneIndex * LANE_HEIGHT
-}
-
-const getPersonLaneY = (index: number) => {
-  const eraCount = Math.max(...eraLanes.value.map((l) => l.laneIndex), 0) + 1
-  return 40 + eraCount * LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
-}
-
-const getMediaLaneY = (index: number) => {
-  const eraCount = Math.max(...eraLanes.value.map((l) => l.laneIndex), 0) + 1
-  const personCount = personLanes.value.length
-  return 40 + eraCount * LANE_HEIGHT + LANE_GAP + personCount * LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
+const getEraLaneY = (region: string, laneIndex: number) => {
+  const regionData = regionHeights.value[region]
+  if (!regionData) return 40
+  return regionData.startY + REGION_HEADER_HEIGHT + laneIndex * LANE_HEIGHT
 }
 
 const getMarkerLaneY = () => {
-  const eraCount = Math.max(...eraLanes.value.map((l) => l.laneIndex), 0) + 1
+  return markerStartY.value
+}
+
+const getPersonLaneY = (index: number) => {
+  return markerStartY.value + LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
+}
+
+const getMediaLaneY = (index: number) => {
   const personCount = personLanes.value.length
-  const mediaCount = mediaLanes.value.length
-  return 40 + eraCount * LANE_HEIGHT + LANE_GAP + personCount * LANE_HEIGHT + LANE_GAP + mediaCount * LANE_HEIGHT + LANE_GAP
+  return markerStartY.value + LANE_HEIGHT + LANE_GAP + personCount * LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
 }
 </script>
 
@@ -254,47 +280,85 @@ const getMarkerLaneY = () => {
             </template>
           </g>
 
-          <!-- 時代レーン -->
-          <EraLane
-            v-for="lane in eraLanes"
-            :key="lane.era"
-            :lane="lane"
-            :y="getEraLaneY(lane.laneIndex)"
-            :height="LANE_HEIGHT - 4"
-            :year-to-position="yearToPosition"
-            @click="(e) => handleItemClick(e, 'era', lane)"
-          />
+          <!-- 国別時代レーン -->
+          <g v-for="group in regionEraGroups" :key="group.region">
+            <!-- 国名ラベル -->
+            <text
+              :x="10"
+              :y="(regionHeights[group.region]?.startY ?? 24) + 16"
+              class="fill-gray-600 text-xs font-bold"
+            >
+              {{ group.regionLabel }}
+            </text>
+            <!-- 時代レーン -->
+            <EraLane
+              v-for="lane in group.lanes"
+              :key="`${lane.region}-${lane.era}`"
+              :lane="lane"
+              :y="getEraLaneY(lane.region, lane.laneIndex)"
+              :height="LANE_HEIGHT - 4"
+              :year-to-position="yearToPosition"
+              @click="(e) => handleItemClick(e, 'era', lane)"
+            />
+          </g>
+
+          <!-- イベントマーカー（時代の次に表示） -->
+          <g>
+            <text
+              :x="10"
+              :y="getMarkerLaneY() - 8"
+              class="fill-gray-600 text-xs font-bold"
+            >
+              イベント
+            </text>
+            <EventMarker
+              v-for="marker in eventMarkers"
+              :key="marker.event.id"
+              :marker="marker"
+              :y="getMarkerLaneY()"
+              @click="(e) => handleItemClick(e, 'event', marker.event)"
+            />
+          </g>
 
           <!-- 人物レーン -->
-          <PersonLane
-            v-for="(lane, index) in personLanes"
-            :key="lane.person.name"
-            :lane="lane"
-            :y="getPersonLaneY(index)"
-            :height="LANE_HEIGHT - 4"
-            :year-to-position="yearToPosition"
-            @click="(e) => handleItemClick(e, 'person', lane)"
-          />
+          <g v-if="personLanes.length > 0">
+            <text
+              :x="10"
+              :y="getPersonLaneY(0) - 8"
+              class="fill-gray-600 text-xs font-bold"
+            >
+              人物
+            </text>
+            <PersonLane
+              v-for="(lane, index) in personLanes"
+              :key="lane.person.name"
+              :lane="lane"
+              :y="getPersonLaneY(index)"
+              :height="LANE_HEIGHT - 4"
+              :year-to-position="yearToPosition"
+              @click="(e) => handleItemClick(e, 'person', lane)"
+            />
+          </g>
 
           <!-- 作品レーン -->
-          <MediaLane
-            v-for="(lane, index) in mediaLanes"
-            :key="`${lane.parentEventId}-${lane.media.title}`"
-            :lane="lane"
-            :y="getMediaLaneY(index)"
-            :height="LANE_HEIGHT - 4"
-            :year-to-position="yearToPosition"
-            @click="(e) => handleItemClick(e, 'media', lane)"
-          />
-
-          <!-- イベントマーカー -->
-          <EventMarker
-            v-for="marker in eventMarkers"
-            :key="marker.event.id"
-            :marker="marker"
-            :y="getMarkerLaneY()"
-            @click="(e) => handleItemClick(e, 'event', marker.event)"
-          />
+          <g v-if="mediaLanes.length > 0">
+            <text
+              :x="10"
+              :y="getMediaLaneY(0) - 8"
+              class="fill-gray-600 text-xs font-bold"
+            >
+              関連作品
+            </text>
+            <MediaLane
+              v-for="(lane, index) in mediaLanes"
+              :key="`${lane.parentEventId}-${lane.media.title}`"
+              :lane="lane"
+              :y="getMediaLaneY(index)"
+              :height="LANE_HEIGHT - 4"
+              :year-to-position="yearToPosition"
+              @click="(e) => handleItemClick(e, 'media', lane)"
+            />
+          </g>
         </g>
       </svg>
     </div>

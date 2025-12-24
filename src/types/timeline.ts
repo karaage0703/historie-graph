@@ -52,11 +52,21 @@ export interface AppSettings {
  */
 export interface EraLaneData {
   era: string
+  region: string
   startYear: number
   endYear: number
   duration: number
   events: ExtendedHistoryEvent[]
   laneIndex: number
+}
+
+/**
+ * 国ごとの時代レーンデータグループ
+ */
+export interface RegionEraGroup {
+  region: string
+  regionLabel: string
+  lanes: EraLaneData[]
 }
 
 /**

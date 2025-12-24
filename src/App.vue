@@ -3,10 +3,12 @@ import { ref, onMounted } from 'vue'
 import { RouterView, RouterLink, useRoute } from 'vue-router'
 import { Clock, Pencil, Settings, Menu, X } from 'lucide-vue-next'
 import { useSettings } from '@/composables/useSettings'
+import { useAffiliateLink } from '@/composables/useAffiliateLink'
 
 const isMenuOpen = ref(false)
 const route = useRoute()
 const { loadSettings } = useSettings()
+const { loadAffiliateTag } = useAffiliateLink()
 
 function closeMenu() {
   isMenuOpen.value = false
@@ -14,6 +16,7 @@ function closeMenu() {
 
 onMounted(() => {
   loadSettings()
+  loadAffiliateTag()
 })
 </script>
 

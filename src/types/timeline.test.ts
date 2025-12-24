@@ -189,9 +189,10 @@ describe('Timeline Types', () => {
   })
 
   describe('EraLaneData型', () => {
-    it('時代の名前、開始年、終了年、継続年数を持つ', () => {
+    it('時代の名前、地域、開始年、終了年、継続年数を持つ', () => {
       const eraLane: EraLaneData = {
         era: '秦',
+        region: 'china',
         startYear: -221,
         endYear: -206,
         duration: 15,
@@ -199,6 +200,7 @@ describe('Timeline Types', () => {
         laneIndex: 0,
       }
       expect(eraLane.era).toBe('秦')
+      expect(eraLane.region).toBe('china')
       expect(eraLane.startYear).toBe(-221)
       expect(eraLane.endYear).toBe(-206)
       expect(eraLane.duration).toBe(15)
@@ -207,6 +209,7 @@ describe('Timeline Types', () => {
     it('重複時代用のレーンインデックスを持つ', () => {
       const eraLane: EraLaneData = {
         era: '楚漢戦争',
+        region: 'china',
         startYear: -206,
         endYear: -202,
         duration: 4,
