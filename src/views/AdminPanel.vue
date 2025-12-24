@@ -1,18 +1,211 @@
 <script setup lang="ts">
-import { Pencil } from 'lucide-vue-next'
+import { ref, onMounted } from 'vue'
+import { Pencil, Plus, Edit2, Trash2, AlertCircle } from 'lucide-vue-next'
+import { useEvents } from '@/composables/useEvents'
+import { useSettings } from '@/composables/useSettings'
+import EventForm from '@/components/EventForm.vue'
+import ConfirmDialog from '@/components/ConfirmDialog.vue'
+import LoadingSpinner from '@/components/LoadingSpinner.vue'
+import type { HistoryEvent } from '@/types'
+
+const { events, sortedEvents, isLoading, isSaving, fetchEvents, addEvent, updateEvent, deleteEvent } =
+  useEvents()
+const { isConfigured } = useSettings()
+
+const showForm = ref(false)
+const editingEvent = ref<HistoryEvent | null>(null)
+const deletingEventId = ref<string | null>(null)
+const error = ref('')
+
+onMounted(() => {
+  if (events.value.length === 0) {
+    fetchEvents()
+  }
+})
+
+function handleAddNew() {
+  editingEvent.value = null
+  showForm.value = true
+}
+
+function handleEdit(event: HistoryEvent) {
+  editingEvent.value = event
+  showForm.value = true
+}
+
+function handleDeleteClick(eventId: string) {
+  deletingEventId.value = eventId
+}
+
+async function handleSubmit(data: Omit<HistoryEvent, 'id'> | Partial<HistoryEvent>) {
+  error.value = ''
+  try {
+    if (editingEvent.value) {
+      await updateEvent(editingEvent.value.id, data)
+    } else {
+      await addEvent(data as Omit<HistoryEvent, 'id'>)
+    }
+    showForm.value = false
+    editingEvent.value = null
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '保存に失敗しました'
+  }
+}
+
+async function handleConfirmDelete() {
+  if (!deletingEventId.value) return
+  error.value = ''
+  try {
+    await deleteEvent(deletingEventId.value)
+    deletingEventId.value = null
+  } catch (e) {
+    error.value = e instanceof Error ? e.message : '削除に失敗しました'
+    deletingEventId.value = null
+  }
+}
+
+function handleCancelForm() {
+  showForm.value = false
+  editingEvent.value = null
+}
+
+function handleCancelDelete() {
+  deletingEventId.value = null
+}
+
+const regionLabels: Record<string, string> = {
+  china: '中国',
+  japan: '日本',
+  europe: 'ヨーロッパ',
+  middle_east: '中東',
+  other: 'その他',
+}
 </script>
 
 <template>
   <div class="min-h-screen bg-gray-50 py-8">
     <div class="mx-auto max-w-4xl px-4">
-      <div class="mb-8 flex items-center gap-3">
-        <Pencil class="h-8 w-8 text-gray-700" />
-        <h1 class="text-2xl font-bold text-gray-900">管理</h1>
+      <div class="mb-8 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <Pencil class="h-8 w-8 text-gray-700" />
+          <h1 class="text-2xl font-bold text-gray-900">管理</h1>
+        </div>
+        <button
+          v-if="isConfigured && !showForm"
+          type="button"
+          class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          @click="handleAddNew"
+        >
+          <Plus class="h-5 w-5" />
+          新規追加
+        </button>
       </div>
 
-      <div class="rounded-lg bg-white p-6 shadow">
-        <p class="text-gray-600">管理機能は後続のタスクで実装されます</p>
+      <div v-if="!isConfigured" class="rounded-lg border border-yellow-200 bg-yellow-50 p-6">
+        <div class="flex items-start gap-3">
+          <AlertCircle class="h-6 w-6 flex-shrink-0 text-yellow-600" />
+          <div>
+            <h2 class="font-semibold text-yellow-800">GitHub 連携が必要です</h2>
+            <p class="mt-1 text-yellow-700">
+              イベントを追加・編集・削除するには、設定画面で GitHub 連携を設定してください。
+            </p>
+            <router-link
+              to="/settings"
+              class="mt-3 inline-block rounded-md bg-yellow-600 px-4 py-2 text-white hover:bg-yellow-700"
+            >
+              設定画面へ
+            </router-link>
+          </div>
+        </div>
       </div>
+
+      <div v-else-if="showForm" class="rounded-lg bg-white p-6 shadow">
+        <h2 class="mb-4 text-lg font-semibold">
+          {{ editingEvent ? 'イベントを編集' : '新規イベント' }}
+        </h2>
+        <div v-if="error" class="mb-4 rounded-md bg-red-50 p-3 text-red-800">
+          {{ error }}
+        </div>
+        <EventForm
+          :event="editingEvent || undefined"
+          :is-submitting="isSaving"
+          @submit="handleSubmit"
+          @cancel="handleCancelForm"
+        />
+      </div>
+
+      <template v-else>
+        <LoadingSpinner v-if="isLoading" message="データを読み込み中..." />
+
+        <div v-else-if="sortedEvents.length === 0" class="rounded-lg bg-white p-8 text-center shadow">
+          <p class="text-gray-600">イベントがありません</p>
+          <button
+            type="button"
+            class="mt-4 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+            @click="handleAddNew"
+          >
+            最初のイベントを追加
+          </button>
+        </div>
+
+        <div v-else class="space-y-3">
+          <div v-if="error" class="rounded-md bg-red-50 p-3 text-red-800">
+            {{ error }}
+          </div>
+
+          <div
+            v-for="event in sortedEvents"
+            :key="event.id"
+            class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm"
+          >
+            <div class="flex-1">
+              <div class="mb-1 flex flex-wrap items-center gap-2">
+                <span class="rounded bg-blue-100 px-2 py-0.5 text-sm font-medium text-blue-800">
+                  {{ event.yearDisplay }}
+                </span>
+                <span class="rounded bg-gray-100 px-2 py-0.5 text-sm text-gray-700">
+                  {{ event.era }}
+                </span>
+                <span class="rounded bg-green-100 px-2 py-0.5 text-sm text-green-800">
+                  {{ regionLabels[event.region] || event.region }}
+                </span>
+              </div>
+              <h3 class="font-medium text-gray-900">{{ event.title }}</h3>
+              <p v-if="event.media.length > 0" class="mt-1 text-sm text-gray-500">
+                {{ event.media.length }}件のメディア
+              </p>
+            </div>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="rounded-md p-2 text-gray-600 hover:bg-gray-100"
+                title="編集"
+                @click="handleEdit(event)"
+              >
+                <Edit2 class="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                class="rounded-md p-2 text-red-600 hover:bg-red-50"
+                title="削除"
+                @click="handleDeleteClick(event.id)"
+              >
+                <Trash2 class="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
+
+  <ConfirmDialog
+    v-if="deletingEventId"
+    title="イベントを削除"
+    message="このイベントを削除してもよろしいですか？この操作は取り消せません。"
+    confirm-text="削除"
+    :is-destructive="true"
+    @confirm="handleConfirmDelete"
+    @cancel="handleCancelDelete"
+  />
 </template>

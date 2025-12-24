@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useSettings } from '@/composables/useSettings'
-import { Settings, Trash2, Save, Eye, EyeOff } from 'lucide-vue-next'
+import { useGithubApi } from '@/composables/useGithubApi'
+import { Settings, Trash2, Save, Eye, EyeOff, Loader2 } from 'lucide-vue-next'
 
 const { token, owner, repo, isConfigured, saveSettings, clearToken } = useSettings()
+const { validateToken, lastError, clearSha } = useGithubApi()
 
 const formToken = ref(token.value)
 const formOwner = ref(owner.value)
@@ -11,8 +13,9 @@ const formRepo = ref(repo.value)
 const showToken = ref(false)
 const error = ref('')
 const success = ref('')
+const isValidating = ref(false)
 
-function handleSave() {
+async function handleSave() {
   error.value = ''
   success.value = ''
 
@@ -29,13 +32,24 @@ function handleSave() {
     return
   }
 
+  isValidating.value = true
+
   saveSettings({
     token: formToken.value.trim(),
     owner: formOwner.value.trim(),
     repo: formRepo.value.trim(),
   })
 
-  success.value = '設定を保存しました'
+  const isValid = await validateToken()
+  isValidating.value = false
+
+  if (!isValid) {
+    error.value = lastError.value?.message || 'トークンの検証に失敗しました'
+    clearToken()
+    return
+  }
+
+  success.value = '設定を保存しました（トークン検証済み）'
   setTimeout(() => {
     success.value = ''
   }, 3000)
@@ -43,6 +57,7 @@ function handleSave() {
 
 function handleClear() {
   clearToken()
+  clearSha()
   formToken.value = ''
   formOwner.value = ''
   formRepo.value = ''
@@ -132,10 +147,12 @@ function handleClear() {
           <div class="flex gap-3 pt-4">
             <button
               type="submit"
-              class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              :disabled="isValidating"
+              class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <Save class="h-4 w-4" />
-              保存
+              <Loader2 v-if="isValidating" class="h-4 w-4 animate-spin" />
+              <Save v-else class="h-4 w-4" />
+              {{ isValidating ? '検証中...' : '保存' }}
             </button>
             <button
               type="button"
