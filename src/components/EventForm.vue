@@ -113,8 +113,8 @@ function removeMedia(index: number) {
 </script>
 
 <template>
-  <form class="space-y-6" @submit.prevent="handleSubmit">
-    <div class="grid gap-4 md:grid-cols-2">
+  <form class="space-y-4 sm:space-y-6" @submit.prevent="handleSubmit">
+    <div class="grid gap-3 sm:gap-4 sm:grid-cols-2">
       <div>
         <label for="title" class="mb-1 block text-sm font-medium text-gray-700">
           タイトル <span class="text-red-500">*</span>
@@ -123,7 +123,7 @@ function removeMedia(index: number) {
           id="title"
           v-model="formData.title"
           type="text"
-          class="w-full rounded-md border px-3 py-2"
+          class="w-full rounded-md border px-3 py-2.5 text-base sm:py-2 sm:text-sm"
           :class="errors.title ? 'border-red-500' : 'border-gray-300'"
         />
         <p v-if="errors.title" class="mt-1 text-sm text-red-500">{{ errors.title }}</p>
@@ -137,7 +137,7 @@ function removeMedia(index: number) {
           id="era"
           v-model="formData.era"
           type="text"
-          class="w-full rounded-md border px-3 py-2"
+          class="w-full rounded-md border px-3 py-2.5 text-base sm:py-2 sm:text-sm"
           :class="errors.era ? 'border-red-500' : 'border-gray-300'"
           placeholder="例: 戦国時代"
         />
@@ -145,7 +145,7 @@ function removeMedia(index: number) {
       </div>
     </div>
 
-    <div class="grid gap-4 md:grid-cols-3">
+    <div class="grid gap-3 sm:gap-4 sm:grid-cols-3">
       <div>
         <label for="year" class="mb-1 block text-sm font-medium text-gray-700">
           年（数値）
@@ -154,7 +154,7 @@ function removeMedia(index: number) {
           id="year"
           v-model.number="formData.year"
           type="number"
-          class="w-full rounded-md border border-gray-300 px-3 py-2"
+          class="w-full rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
           placeholder="紀元前は負数"
         />
       </div>
@@ -167,7 +167,7 @@ function removeMedia(index: number) {
           id="yearDisplay"
           v-model="formData.yearDisplay"
           type="text"
-          class="w-full rounded-md border px-3 py-2"
+          class="w-full rounded-md border px-3 py-2.5 text-base sm:py-2 sm:text-sm"
           :class="errors.yearDisplay ? 'border-red-500' : 'border-gray-300'"
           placeholder="例: 1560年, 前202年"
         />
@@ -183,7 +183,7 @@ function removeMedia(index: number) {
         <select
           id="region"
           v-model="formData.region"
-          class="w-full rounded-md border border-gray-300 px-3 py-2"
+          class="w-full rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
         >
           <option v-for="opt in regionOptions" :key="opt.value" :value="opt.value">
             {{ opt.label }}
@@ -200,7 +200,7 @@ function removeMedia(index: number) {
         id="description"
         v-model="formData.description"
         rows="4"
-        class="w-full rounded-md border border-gray-300 px-3 py-2"
+        class="w-full rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
       />
     </div>
 
@@ -210,13 +210,13 @@ function removeMedia(index: number) {
         <input
           v-model="newLink"
           type="url"
-          class="flex-1 rounded-md border border-gray-300 px-3 py-2"
+          class="min-w-0 flex-1 rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
           placeholder="https://..."
           @keydown.enter.prevent="addLink"
         />
         <button
           type="button"
-          class="rounded-md bg-gray-100 px-3 py-2 hover:bg-gray-200"
+          class="flex-shrink-0 rounded-md bg-gray-100 px-3 py-2 hover:bg-gray-200"
           @click="addLink"
         >
           <Plus class="h-5 w-5" />
@@ -228,10 +228,10 @@ function removeMedia(index: number) {
           :key="index"
           class="flex items-center gap-2"
         >
-          <span class="flex-1 truncate text-sm text-gray-600">{{ link }}</span>
+          <span class="min-w-0 flex-1 truncate text-sm text-gray-600">{{ link }}</span>
           <button
             type="button"
-            class="text-red-500 hover:text-red-700"
+            class="flex-shrink-0 p-1 text-red-500 hover:text-red-700"
             @click="removeLink(index)"
           >
             <Trash2 class="h-4 w-4" />
@@ -242,16 +242,16 @@ function removeMedia(index: number) {
 
     <div>
       <label class="mb-2 block text-sm font-medium text-gray-700">関連メディア</label>
-      <div class="mb-2 grid gap-2 md:grid-cols-4">
+      <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-4">
         <input
           v-model="newMedia.title"
           type="text"
-          class="rounded-md border border-gray-300 px-3 py-2"
+          class="rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
           placeholder="タイトル"
         />
         <select
           v-model="newMedia.type"
-          class="rounded-md border border-gray-300 px-3 py-2"
+          class="rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
         >
           <option v-for="opt in mediaTypeOptions" :key="opt.value" :value="opt.value">
             {{ opt.label }}
@@ -260,30 +260,31 @@ function removeMedia(index: number) {
         <input
           v-model="newMedia.remark"
           type="text"
-          class="rounded-md border border-gray-300 px-3 py-2"
+          class="rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
           placeholder="備考"
         />
         <button
           type="button"
-          class="rounded-md bg-gray-100 px-3 py-2 hover:bg-gray-200"
+          class="flex items-center justify-center gap-2 rounded-md bg-gray-100 px-3 py-2.5 hover:bg-gray-200 sm:py-2"
           @click="addMedia"
         >
           <Plus class="h-5 w-5" />
+          <span class="sm:hidden">追加</span>
         </button>
       </div>
-      <ul class="space-y-1">
+      <ul class="space-y-2">
         <li
           v-for="(media, index) in formData.media"
           :key="index"
           class="flex items-center gap-2 rounded-md bg-gray-50 p-2"
         >
-          <span class="flex-1 text-sm">
+          <span class="min-w-0 flex-1 text-sm">
             {{ media.title }} ({{ mediaTypeOptions.find((o) => o.value === media.type)?.label }})
             <span v-if="media.remark" class="text-gray-500">- {{ media.remark }}</span>
           </span>
           <button
             type="button"
-            class="text-red-500 hover:text-red-700"
+            class="flex-shrink-0 p-1 text-red-500 hover:text-red-700"
             @click="removeMedia(index)"
           >
             <Trash2 class="h-4 w-4" />
@@ -292,10 +293,10 @@ function removeMedia(index: number) {
       </ul>
     </div>
 
-    <div class="flex justify-end gap-3 border-t pt-4">
+    <div class="flex flex-col-reverse gap-3 border-t pt-4 sm:flex-row sm:justify-end">
       <button
         type="button"
-        class="flex items-center gap-2 rounded-md border border-gray-300 px-4 py-2 hover:bg-gray-50"
+        class="flex items-center justify-center gap-2 rounded-md border border-gray-300 px-4 py-2.5 hover:bg-gray-50 sm:py-2"
         @click="emit('cancel')"
       >
         <X class="h-4 w-4" />
@@ -304,7 +305,7 @@ function removeMedia(index: number) {
       <button
         type="submit"
         :disabled="isSubmitting"
-        class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
+        class="flex items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-white hover:bg-blue-700 disabled:opacity-50 sm:py-2"
       >
         <Save class="h-4 w-4" />
         {{ isSubmitting ? '保存中...' : '保存' }}

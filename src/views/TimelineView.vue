@@ -19,11 +19,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-gray-50 py-4 sm:py-8">
     <div class="mx-auto max-w-4xl px-4">
-      <div class="mb-8 flex items-center gap-3">
-        <Clock class="h-8 w-8 text-gray-700" />
-        <h1 class="text-2xl font-bold text-gray-900">タイムライン</h1>
+      <div class="mb-4 flex items-center gap-2 sm:mb-8 sm:gap-3">
+        <Clock class="h-6 w-6 text-gray-700 sm:h-8 sm:w-8" />
+        <h1 class="text-xl font-bold text-gray-900 sm:text-2xl">タイムライン</h1>
       </div>
 
       <ErrorMessage :on-retry="fetchEvents" />
@@ -31,13 +31,13 @@ onMounted(() => {
       <LoadingSpinner v-if="isLoading" message="データを読み込み中..." />
 
       <template v-else>
-        <FilterBar :events="sortedEvents" class="mb-6" />
+        <FilterBar :events="sortedEvents" class="mb-4 sm:mb-6" />
 
-        <div v-if="displayEvents.length === 0" class="rounded-lg bg-white p-8 text-center shadow">
-          <p class="text-gray-600">表示するイベントがありません</p>
+        <div v-if="displayEvents.length === 0" class="rounded-lg bg-white p-6 text-center shadow sm:p-8">
+          <p class="text-sm text-gray-600 sm:text-base">表示するイベントがありません</p>
         </div>
 
-        <div v-else class="space-y-4">
+        <div v-else class="space-y-3 sm:space-y-4">
           <EventCard v-for="event in displayEvents" :key="event.id" :event="event" />
         </div>
       </template>

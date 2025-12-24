@@ -69,17 +69,17 @@ function handleClear() {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50 py-8">
+  <div class="min-h-screen bg-gray-50 py-4 sm:py-8">
     <div class="mx-auto max-w-2xl px-4">
-      <div class="mb-8 flex items-center gap-3">
-        <Settings class="h-8 w-8 text-gray-700" />
-        <h1 class="text-2xl font-bold text-gray-900">設定</h1>
+      <div class="mb-4 flex items-center gap-2 sm:mb-8 sm:gap-3">
+        <Settings class="h-6 w-6 text-gray-700 sm:h-8 sm:w-8" />
+        <h1 class="text-xl font-bold text-gray-900 sm:text-2xl">設定</h1>
       </div>
 
-      <div class="rounded-lg bg-white p-6 shadow">
-        <h2 class="mb-4 text-lg font-semibold text-gray-800">GitHub 連携設定</h2>
+      <div class="rounded-lg bg-white p-4 shadow sm:p-6">
+        <h2 class="mb-4 text-base font-semibold text-gray-800 sm:text-lg">GitHub 連携設定</h2>
 
-        <div v-if="isConfigured" class="mb-4 rounded-md bg-green-50 p-3 text-green-800">
+        <div v-if="isConfigured" class="mb-4 rounded-md bg-green-50 p-3 text-sm text-green-800">
           GitHub 連携が設定されています
         </div>
 
@@ -93,12 +93,12 @@ function handleClear() {
                 id="token"
                 v-model="formToken"
                 :type="showToken ? 'text' : 'password'"
-                class="w-full rounded-md border border-gray-300 px-3 py-2 pr-10 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                class="w-full rounded-md border border-gray-300 px-3 py-2.5 pr-10 text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:py-2 sm:text-sm"
                 placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
               />
               <button
                 type="button"
-                class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                class="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-500 hover:text-gray-700"
                 @click="showToken = !showToken"
               >
                 <Eye v-if="!showToken" class="h-5 w-5" />
@@ -118,7 +118,7 @@ function handleClear() {
               id="owner"
               v-model="formOwner"
               type="text"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              class="w-full rounded-md border border-gray-300 px-3 py-2.5 text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:py-2 sm:text-sm"
               placeholder="username または organization"
             />
           </div>
@@ -131,24 +131,24 @@ function handleClear() {
               id="repo"
               v-model="formRepo"
               type="text"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              class="w-full rounded-md border border-gray-300 px-3 py-2.5 text-base focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:py-2 sm:text-sm"
               placeholder="repository-name"
             />
           </div>
 
-          <div v-if="error" class="rounded-md bg-red-50 p-3 text-red-800">
+          <div v-if="error" class="rounded-md bg-red-50 p-3 text-sm text-red-800">
             {{ error }}
           </div>
 
-          <div v-if="success" class="rounded-md bg-green-50 p-3 text-green-800">
+          <div v-if="success" class="rounded-md bg-green-50 p-3 text-sm text-green-800">
             {{ success }}
           </div>
 
-          <div class="flex gap-3 pt-4">
+          <div class="flex flex-col gap-3 pt-4 sm:flex-row">
             <button
               type="submit"
               :disabled="isValidating"
-              class="flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              class="flex items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:py-2"
             >
               <Loader2 v-if="isValidating" class="h-4 w-4 animate-spin" />
               <Save v-else class="h-4 w-4" />
@@ -156,7 +156,7 @@ function handleClear() {
             </button>
             <button
               type="button"
-              class="flex items-center gap-2 rounded-md bg-red-600 px-4 py-2 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+              class="flex items-center justify-center gap-2 rounded-md bg-red-600 px-4 py-2.5 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:py-2"
               @click="handleClear"
             >
               <Trash2 class="h-4 w-4" />

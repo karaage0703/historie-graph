@@ -1,4 +1,4 @@
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import type { GithubSettings } from '@/types'
 
 const STORAGE_KEY = 'historie-graph-settings'
@@ -47,10 +47,6 @@ export function useSettings() {
       console.error('Failed to clear settings:', e)
     }
   }
-
-  onMounted(() => {
-    loadSettings()
-  })
 
   return {
     token,
