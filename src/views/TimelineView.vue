@@ -14,7 +14,7 @@ const { sortedEvents, isLoading, fetchEvents } = useEvents()
 const { filteredEvents } = useFilters()
 
 // 表示モード: 'card' または 'timeline'
-const viewMode = ref<'card' | 'timeline'>('card')
+const viewMode = ref<'card' | 'timeline'>('timeline')
 
 const displayEvents = computed(() => filteredEvents(sortedEvents.value))
 

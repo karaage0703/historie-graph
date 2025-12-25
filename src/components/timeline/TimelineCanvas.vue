@@ -2,16 +2,34 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useTimeline } from '@/composables/useTimeline'
 import { useTimelineZoom } from '@/composables/useTimelineZoom'
+import { useCotenRadio } from '@/composables/useCotenRadio'
+import { useFilters } from '@/composables/useFilters'
 import type { ExtendedHistoryEvent } from '@/types/timeline'
 import EraLane from './EraLane.vue'
 import PersonLane from './PersonLane.vue'
 import MediaLane from './MediaLane.vue'
+import PodcastLane from './PodcastLane.vue'
 import EventMarker from './EventMarker.vue'
 import TimelinePopover from './TimelinePopover.vue'
 
 const props = defineProps<{
   events: ExtendedHistoryEvent[]
 }>()
+
+// 共通フィルター
+const {
+  selectedRegions,
+  showEvents,
+  showCotenRadio,
+  showMedia,
+} = useFilters()
+
+// COTEN RADIO（共通フィルターを渡す）
+const {
+  loadCotenRadio,
+  podcastLanes,
+  maxLaneIndex: podcastMaxLaneIndex,
+} = useCotenRadio(selectedRegions)
 
 const emit = defineEmits<{
   (e: 'select', item: { type: string; data: unknown }): void
@@ -29,12 +47,13 @@ const {
   personLanes,
   mediaLanes,
   eventMarkers,
+  eventMaxLaneIndex,
   yearToPosition,
 } = useTimeline(eventsRef)
 
-// ズーム/パン
+// ズーム/パン（Refを渡す）
 const { scale, offsetX, transform, visibleYearRange, zoomIn, zoomOut, panTo, reset } =
-  useTimelineZoom(timeRange.value, containerWidth.value)
+  useTimelineZoom(timeRange, containerWidth)
 
 // ドラッグ状態
 const isDragging = ref(false)
@@ -46,7 +65,7 @@ const popoverData = ref<{
   show: boolean
   x: number
   y: number
-  type: 'era' | 'person' | 'media' | 'event'
+  type: 'era' | 'person' | 'media' | 'event' | 'podcast'
   data: unknown
 }>({
   show: false,
@@ -89,11 +108,27 @@ const markerStartY = computed(() => {
   return lastRegion.startY + REGION_HEADER_HEIGHT + lastRegion.height + LANE_GAP
 })
 
+// COTEN RADIOレーンの高さ
+const podcastSectionHeight = computed(() => {
+  if (!showCotenRadio.value || podcastLanes.value.length === 0) return 0
+  return (podcastMaxLaneIndex.value + 1) * LANE_HEIGHT + LANE_GAP
+})
+
+// イベントマーカーの高さ（重複を避けるため複数レーン対応）
+const eventSectionHeight = computed(() => {
+  if (!showEvents.value || eventMarkers.value.length === 0) return 0
+  return (eventMaxLaneIndex.value + 1) * LANE_HEIGHT + LANE_GAP
+})
+
+// 作品レーンの高さ
+const mediaSectionHeight = computed(() => {
+  if (!showMedia.value || mediaLanes.value.length === 0) return 0
+  return mediaLanes.value.length * LANE_HEIGHT + LANE_GAP
+})
+
 const svgHeight = computed(() => {
   const personHeight = personLanes.value.length * LANE_HEIGHT
-  const mediaHeight = mediaLanes.value.length * LANE_HEIGHT
-  const markerHeight = LANE_HEIGHT
-  return markerStartY.value + markerHeight + LANE_GAP + personHeight + LANE_GAP + mediaHeight + LANE_GAP + 60
+  return markerStartY.value + eventSectionHeight.value + podcastSectionHeight.value + personHeight + LANE_GAP + mediaSectionHeight.value + 60
 })
 
 // タイムラインの幅（将来の仮想化で使用予定）
@@ -135,7 +170,7 @@ const handleMouseUp = () => {
 // クリックハンドラ
 const handleItemClick = (
   e: MouseEvent,
-  type: 'era' | 'person' | 'media' | 'event',
+  type: 'era' | 'person' | 'media' | 'event' | 'podcast',
   data: unknown
 ) => {
   popoverData.value = {
@@ -161,6 +196,7 @@ const updateContainerWidth = () => {
 
 onMounted(() => {
   updateContainerWidth()
+  loadCotenRadio()
   window.addEventListener('resize', updateContainerWidth)
   window.addEventListener('mouseup', handleMouseUp)
   window.addEventListener('mousemove', handleMouseMove)
@@ -196,24 +232,33 @@ const getEraLaneY = (region: string, laneIndex: number) => {
   return regionData.startY + REGION_HEADER_HEIGHT + laneIndex * LANE_HEIGHT
 }
 
-const getMarkerLaneY = () => {
-  return markerStartY.value
+const getMarkerLaneY = (laneIndex: number) => {
+  return markerStartY.value + laneIndex * LANE_HEIGHT
+}
+
+// COTEN RADIOレーンの開始Y座標
+const getPodcastSectionY = () => {
+  return markerStartY.value + eventSectionHeight.value
+}
+
+const getPodcastLaneY = (laneIndex: number) => {
+  return getPodcastSectionY() + laneIndex * LANE_HEIGHT
 }
 
 const getPersonLaneY = (index: number) => {
-  return markerStartY.value + LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
+  return getPodcastSectionY() + podcastSectionHeight.value + index * LANE_HEIGHT
 }
 
 const getMediaLaneY = (index: number) => {
   const personCount = personLanes.value.length
-  return markerStartY.value + LANE_HEIGHT + LANE_GAP + personCount * LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
+  return getPodcastSectionY() + podcastSectionHeight.value + personCount * LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
 }
 </script>
 
 <template>
   <div class="relative flex flex-col">
     <!-- ツールバー -->
-    <div class="mb-2 flex items-center gap-2 text-sm">
+    <div class="mb-2 flex flex-wrap items-center gap-2 text-sm">
       <button
         class="rounded border border-gray-300 px-2 py-1 hover:bg-gray-50"
         @click="zoomIn"
@@ -241,6 +286,35 @@ const getMediaLaneY = (index: number) => {
       <span class="text-gray-400">
         ({{ Math.round(scale * 100) }}%)
       </span>
+    </div>
+
+    <!-- 表示切り替え -->
+    <div class="mb-2 flex flex-wrap items-center gap-4 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm">
+      <span class="font-medium text-gray-700">表示:</span>
+      <label class="flex items-center gap-1.5 text-gray-600">
+        <input
+          v-model="showEvents"
+          type="checkbox"
+          class="rounded"
+        />
+        イベント
+      </label>
+      <label class="flex items-center gap-1.5 text-gray-600">
+        <input
+          v-model="showCotenRadio"
+          type="checkbox"
+          class="rounded"
+        />
+        COTEN RADIO
+      </label>
+      <label class="flex items-center gap-1.5 text-gray-600">
+        <input
+          v-model="showMedia"
+          type="checkbox"
+          class="rounded"
+        />
+        関連作品
+      </label>
     </div>
 
     <!-- タイムラインキャンバス -->
@@ -303,32 +377,31 @@ const getMediaLaneY = (index: number) => {
           </g>
 
           <!-- イベントマーカー（時代の次に表示） -->
-          <g>
-            <text
-              :x="10"
-              :y="getMarkerLaneY() - 8"
-              class="fill-gray-600 text-xs font-bold"
-            >
-              イベント
-            </text>
+          <g v-if="showEvents">
             <EventMarker
               v-for="marker in eventMarkers"
               :key="marker.event.id"
               :marker="marker"
-              :y="getMarkerLaneY()"
+              :y="getMarkerLaneY(marker.laneIndex)"
               @click="(e) => handleItemClick(e, 'event', marker.event)"
+            />
+          </g>
+
+          <!-- COTEN RADIOレーン -->
+          <g v-if="showCotenRadio && podcastLanes.length > 0">
+            <PodcastLane
+              v-for="lane in podcastLanes"
+              :key="lane.series.id"
+              :lane="lane"
+              :y="getPodcastLaneY(lane.laneIndex)"
+              :height="LANE_HEIGHT - 4"
+              :year-to-position="yearToPosition"
+              @click="(e) => handleItemClick(e, 'podcast', lane)"
             />
           </g>
 
           <!-- 人物レーン -->
           <g v-if="personLanes.length > 0">
-            <text
-              :x="10"
-              :y="getPersonLaneY(0) - 8"
-              class="fill-gray-600 text-xs font-bold"
-            >
-              人物
-            </text>
             <PersonLane
               v-for="(lane, index) in personLanes"
               :key="lane.person.name"
@@ -341,14 +414,7 @@ const getMediaLaneY = (index: number) => {
           </g>
 
           <!-- 作品レーン -->
-          <g v-if="mediaLanes.length > 0">
-            <text
-              :x="10"
-              :y="getMediaLaneY(0) - 8"
-              class="fill-gray-600 text-xs font-bold"
-            >
-              関連作品
-            </text>
+          <g v-if="showMedia && mediaLanes.length > 0">
             <MediaLane
               v-for="(lane, index) in mediaLanes"
               :key="`${lane.parentEventId}-${lane.media.title}`"
@@ -358,6 +424,41 @@ const getMediaLaneY = (index: number) => {
               :year-to-position="yearToPosition"
               @click="(e) => handleItemClick(e, 'media', lane)"
             />
+          </g>
+        </g>
+
+        <!-- セクションラベル（固定位置、transformの外） -->
+        <g class="section-labels">
+          <!-- イベントラベル -->
+          <g v-if="showEvents">
+            <rect x="0" :y="getMarkerLaneY(0) - 16" width="80" height="20" fill="white" />
+            <text x="8" :y="getMarkerLaneY(0) - 2" class="fill-gray-600 text-xs font-bold">
+              イベント
+            </text>
+          </g>
+
+          <!-- COTEN RADIOラベル -->
+          <g v-if="showCotenRadio && podcastLanes.length > 0">
+            <rect x="0" :y="getPodcastSectionY() - 16" width="110" height="20" fill="white" />
+            <text x="8" :y="getPodcastSectionY() - 2" class="fill-orange-600 text-xs font-bold">
+              🎙️ COTEN RADIO
+            </text>
+          </g>
+
+          <!-- 人物ラベル -->
+          <g v-if="personLanes.length > 0">
+            <rect x="0" :y="getPersonLaneY(0) - 16" width="50" height="20" fill="white" />
+            <text x="8" :y="getPersonLaneY(0) - 2" class="fill-gray-600 text-xs font-bold">
+              人物
+            </text>
+          </g>
+
+          <!-- 関連作品ラベル -->
+          <g v-if="showMedia && mediaLanes.length > 0">
+            <rect x="0" :y="getMediaLaneY(0) - 16" width="70" height="20" fill="white" />
+            <text x="8" :y="getMediaLaneY(0) - 2" class="fill-gray-600 text-xs font-bold">
+              関連作品
+            </text>
           </g>
         </g>
       </svg>

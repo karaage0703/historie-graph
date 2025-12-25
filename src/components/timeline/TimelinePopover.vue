@@ -7,10 +7,11 @@ import type {
   PersonLaneData,
   MediaLaneData,
   ExtendedHistoryEvent,
+  PodcastLaneData,
 } from '@/types/timeline'
 
 const props = defineProps<{
-  type: 'era' | 'person' | 'media' | 'event'
+  type: 'era' | 'person' | 'media' | 'event' | 'podcast'
   data: unknown
   x: number
   y: number
@@ -28,11 +29,13 @@ const isEra = computed(() => props.type === 'era')
 const isPerson = computed(() => props.type === 'person')
 const isMedia = computed(() => props.type === 'media')
 const isEvent = computed(() => props.type === 'event')
+const isPodcast = computed(() => props.type === 'podcast')
 
 const eraData = computed(() => (isEra.value ? (props.data as EraLaneData) : null))
 const personData = computed(() => (isPerson.value ? (props.data as PersonLaneData) : null))
 const mediaData = computed(() => (isMedia.value ? (props.data as MediaLaneData) : null))
 const eventData = computed(() => (isEvent.value ? (props.data as ExtendedHistoryEvent) : null))
+const podcastData = computed(() => (isPodcast.value ? (props.data as PodcastLaneData) : null))
 
 // Kindleリンク
 const kindleUrl = computed(() => {
@@ -102,6 +105,7 @@ onUnmounted(() => {
         <template v-else-if="isPerson">{{ personData?.person.name }}</template>
         <template v-else-if="isMedia">{{ mediaData?.media.title }}</template>
         <template v-else-if="isEvent">{{ eventData?.title }}</template>
+        <template v-else-if="isPodcast">🎙️ {{ podcastData?.series.title }}</template>
       </h4>
       <button
         class="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
@@ -205,6 +209,44 @@ onUnmounted(() => {
         <p v-if="eventData.description">
           {{ eventData.description }}
         </p>
+      </div>
+    </template>
+
+    <!-- Podcastの詳細 -->
+    <template v-else-if="isPodcast && podcastData">
+      <div class="space-y-1 text-sm text-gray-600">
+        <p class="text-xs text-gray-500">
+          #{{ podcastData.series.seriesNumber }} {{ podcastData.series.subtitle }}
+        </p>
+        <p>
+          <span class="font-medium">カバー範囲:</span>
+          {{ formatYear(podcastData.series.coverageStartYear) }} 〜
+          {{ formatYear(podcastData.series.coverageEndYear) }}
+        </p>
+        <p>
+          <span class="font-medium">時代:</span>
+          {{ podcastData.series.era }}
+        </p>
+        <p>
+          <span class="font-medium">エピソード数:</span>
+          {{ podcastData.series.episodeCount }}話
+        </p>
+        <p v-if="podcastData.series.type === 'short'">
+          <span class="rounded bg-yellow-100 px-1.5 py-0.5 text-xs text-yellow-700">
+            ショート版
+          </span>
+        </p>
+
+        <!-- Spotifyリンク -->
+        <a
+          :href="podcastData.series.spotifyUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 inline-flex items-center gap-1 rounded bg-green-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-green-600"
+        >
+          🎧 Spotifyで聴く
+          <ExternalLink class="h-3 w-3" />
+        </a>
       </div>
     </template>
   </div>
