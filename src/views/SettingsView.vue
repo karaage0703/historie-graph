@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useSettings } from '@/composables/useSettings'
 import { useGithubApi } from '@/composables/useGithubApi'
-import { Settings, Trash2, Save, Eye, EyeOff, Loader2 } from 'lucide-vue-next'
+import { useAffiliateLink } from '@/composables/useAffiliateLink'
+import { Settings, Trash2, Save, Eye, EyeOff, Loader2, Tag } from 'lucide-vue-next'
 
 const { token, owner, repo, isConfigured, saveSettings, clearToken } = useSettings()
 const { validateToken, lastError, clearSha } = useGithubApi()
+const { affiliateTag, loadAffiliateTag } = useAffiliateLink()
 
 const formToken = ref(token.value)
 const formOwner = ref(owner.value)
@@ -14,6 +16,10 @@ const showToken = ref(false)
 const error = ref('')
 const success = ref('')
 const isValidating = ref(false)
+
+onMounted(() => {
+  loadAffiliateTag()
+})
 
 async function handleSave() {
   error.value = ''
@@ -164,6 +170,25 @@ function handleClear() {
             </button>
           </div>
         </form>
+      </div>
+
+      <!-- アフィリエイト設定 -->
+      <div class="mt-6 rounded-lg bg-white p-4 shadow sm:p-6">
+        <h2 class="mb-4 flex items-center gap-2 text-base font-semibold text-gray-800 sm:text-lg">
+          <Tag class="h-5 w-5" />
+          Amazonアソシエイト設定
+        </h2>
+
+        <div v-if="affiliateTag" class="rounded-md bg-green-50 p-3 text-sm text-green-800">
+          アフィリエイトタグ: <span class="font-mono font-semibold">{{ affiliateTag }}</span>
+        </div>
+        <div v-else class="rounded-md bg-gray-50 p-3 text-sm text-gray-600">
+          アフィリエイトタグが設定されていません
+        </div>
+
+        <p class="mt-3 text-xs text-gray-500">
+          アフィリエイトタグは <code class="rounded bg-gray-100 px-1 py-0.5">public/config.json</code> で設定できます
+        </p>
       </div>
     </div>
   </div>
