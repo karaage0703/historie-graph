@@ -267,6 +267,7 @@ describe('Timeline Types', () => {
           media: [],
         },
         position: 100,
+        laneIndex: 0,
       }
       expect(marker.event.year).toBe(-221)
       expect(marker.position).toBe(100)

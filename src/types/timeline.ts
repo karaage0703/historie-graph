@@ -94,6 +94,7 @@ export interface MediaLaneData {
 export interface EventMarkerData {
   event: ExtendedHistoryEvent
   position: number
+  laneIndex: number
 }
 
 /**
@@ -118,4 +119,46 @@ export interface VisibleYearRange {
 export interface ZoomPanState {
   scale: number
   offsetX: number
+}
+
+// =============================================================================
+// COTEN RADIO データ型
+// =============================================================================
+
+/**
+ * COTEN RADIOシリーズデータ
+ */
+export interface CotenRadioSeries {
+  id: string
+  seriesNumber: number
+  title: string
+  subtitle: string
+  region: string
+  era: string
+  coverageStartYear: number
+  coverageEndYear: number
+  episodeCount: number
+  spotifyUrl: string
+  type?: 'short'
+}
+
+/**
+ * COTEN RADIOデータ全体
+ */
+export interface CotenRadioData {
+  podcast: {
+    name: string
+    description: string
+    spotifyUrl: string
+    applePodcastUrl: string
+  }
+  series: CotenRadioSeries[]
+}
+
+/**
+ * Podcastレーンデータ
+ */
+export interface PodcastLaneData {
+  series: CotenRadioSeries
+  laneIndex: number
 }

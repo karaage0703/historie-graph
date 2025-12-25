@@ -185,15 +185,53 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
   })
 
   /**
-   * イベントマーカーデータを生成
+   * イベントマーカーデータを生成（重複回避のレーン割り当て付き）
    */
   const eventMarkers = computed<EventMarkerData[]>(() => {
     const sortedEvents = [...events.value].sort((a, b) => a.year - b.year)
 
-    return sortedEvents.map((event) => ({
-      event,
-      position: yearToPosition(event.year),
-    }))
+    // 最小間隔（ピクセル）- これより近いイベントは別レーンに配置
+    const MIN_SPACING = 80
+
+    const markers: EventMarkerData[] = []
+    const laneEndPositions: number[] = []
+
+    sortedEvents.forEach((event) => {
+      const position = yearToPosition(event.year)
+
+      // 重複しないレーンを探す
+      let assignedLane = -1
+      for (let i = 0; i < laneEndPositions.length; i++) {
+        const endPos = laneEndPositions[i]
+        if (endPos !== undefined && position >= endPos + MIN_SPACING) {
+          assignedLane = i
+          break
+        }
+      }
+
+      if (assignedLane === -1) {
+        assignedLane = laneEndPositions.length
+        laneEndPositions.push(position)
+      } else {
+        laneEndPositions[assignedLane] = position
+      }
+
+      markers.push({
+        event,
+        position,
+        laneIndex: assignedLane,
+      })
+    })
+
+    return markers
+  })
+
+  /**
+   * イベントマーカーの最大レーンインデックス
+   */
+  const eventMaxLaneIndex = computed(() => {
+    if (eventMarkers.value.length === 0) return 0
+    return Math.max(...eventMarkers.value.map((m) => m.laneIndex))
   })
 
   return {
@@ -203,6 +241,7 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
     personLanes,
     mediaLanes,
     eventMarkers,
+    eventMaxLaneIndex,
     yearToPosition,
     positionToYear,
   }
