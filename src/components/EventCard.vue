@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ChevronDown, ChevronUp, MapPin, Calendar, ExternalLink } from 'lucide-vue-next'
-import type { HistoryEvent } from '@/types'
+import type { HistoryEvent, MediaItem } from '@/types'
 import MediaBadge from './MediaBadge.vue'
 
 defineProps<{
   event: HistoryEvent
+  relatedMedia?: MediaItem[]
 }>()
 
 const isExpanded = ref(false)
@@ -73,12 +74,12 @@ const regionLabels: Record<string, string> = {
         </ul>
       </div>
 
-      <div v-if="event.media && event.media.length > 0">
+      <div v-if="relatedMedia && relatedMedia.length > 0">
         <h4 class="mb-1.5 text-sm font-medium text-gray-900 sm:mb-2">関連メディア</h4>
         <div class="flex flex-wrap gap-1.5 sm:gap-2">
           <MediaBadge
-            v-for="(media, index) in event.media"
-            :key="index"
+            v-for="media in relatedMedia"
+            :key="media.id"
             :type="media.type"
             :title="media.title"
             :remark="media.remark"
@@ -86,7 +87,7 @@ const regionLabels: Record<string, string> = {
         </div>
       </div>
 
-      <div v-if="(!event.media || event.media.length === 0) && (!event.links || event.links.length === 0)">
+      <div v-if="(!relatedMedia || relatedMedia.length === 0) && (!event.links || event.links.length === 0)">
         <p class="text-xs text-gray-500 sm:text-sm">追加情報はありません</p>
       </div>
     </div>

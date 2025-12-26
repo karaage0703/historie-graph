@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Book, Film, Tv, BookOpen } from 'lucide-vue-next'
+import { Book, BookOpen } from 'lucide-vue-next'
 import type { MediaType } from '@/types'
 
 defineProps<{
@@ -11,22 +11,16 @@ defineProps<{
 const iconMap = {
   manga: Book,
   novel: BookOpen,
-  movie: Film,
-  anime: Tv,
 }
 
 const labelMap: Record<MediaType, string> = {
   manga: '漫画',
   novel: '小説',
-  movie: '映画',
-  anime: 'アニメ',
 }
 
 const colorMap: Record<MediaType, string> = {
   manga: 'bg-orange-100 text-orange-800',
   novel: 'bg-purple-100 text-purple-800',
-  movie: 'bg-blue-100 text-blue-800',
-  anime: 'bg-pink-100 text-pink-800',
 }
 </script>
 

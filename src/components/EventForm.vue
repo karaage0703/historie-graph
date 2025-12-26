@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { Save, X, Plus, Trash2 } from 'lucide-vue-next'
-import type { HistoryEvent, MediaItem, MediaType, Region } from '@/types'
+import type { HistoryEvent, Region } from '@/types'
 
 const props = defineProps<{
   event?: HistoryEvent
@@ -21,15 +21,9 @@ const formData = ref({
   region: 'japan' as Region,
   description: '',
   links: [] as string[],
-  media: [] as MediaItem[],
 })
 
 const newLink = ref('')
-const newMedia = ref<MediaItem>({
-  title: '',
-  type: 'manga',
-  remark: '',
-})
 
 const errors = ref<Record<string, string>>({})
 
@@ -39,13 +33,6 @@ const regionOptions: { value: Region; label: string }[] = [
   { value: 'europe', label: 'ヨーロッパ' },
   { value: 'middle_east', label: '中東' },
   { value: 'other', label: 'その他' },
-]
-
-const mediaTypeOptions: { value: MediaType; label: string }[] = [
-  { value: 'manga', label: '漫画' },
-  { value: 'novel', label: '小説' },
-  { value: 'movie', label: '映画' },
-  { value: 'anime', label: 'アニメ' },
 ]
 
 watch(
@@ -60,7 +47,6 @@ watch(
         region: newEvent.region,
         description: newEvent.description,
         links: [...newEvent.links],
-        media: newEvent.media.map((m) => ({ ...m })),
       }
     }
   },
@@ -98,17 +84,6 @@ function addLink() {
 
 function removeLink(index: number) {
   formData.value.links.splice(index, 1)
-}
-
-function addMedia() {
-  if (newMedia.value.title.trim()) {
-    formData.value.media.push({ ...newMedia.value })
-    newMedia.value = { title: '', type: 'manga', remark: '' }
-  }
-}
-
-function removeMedia(index: number) {
-  formData.value.media.splice(index, 1)
 }
 </script>
 
@@ -233,59 +208,6 @@ function removeMedia(index: number) {
             type="button"
             class="flex-shrink-0 p-1 text-red-500 hover:text-red-700"
             @click="removeLink(index)"
-          >
-            <Trash2 class="h-4 w-4" />
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-      <label class="mb-2 block text-sm font-medium text-gray-700">関連メディア</label>
-      <div class="mb-2 grid grid-cols-1 gap-2 sm:grid-cols-4">
-        <input
-          v-model="newMedia.title"
-          type="text"
-          class="rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
-          placeholder="タイトル"
-        />
-        <select
-          v-model="newMedia.type"
-          class="rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
-        >
-          <option v-for="opt in mediaTypeOptions" :key="opt.value" :value="opt.value">
-            {{ opt.label }}
-          </option>
-        </select>
-        <input
-          v-model="newMedia.remark"
-          type="text"
-          class="rounded-md border border-gray-300 px-3 py-2.5 text-base sm:py-2 sm:text-sm"
-          placeholder="備考"
-        />
-        <button
-          type="button"
-          class="flex items-center justify-center gap-2 rounded-md bg-gray-100 px-3 py-2.5 hover:bg-gray-200 sm:py-2"
-          @click="addMedia"
-        >
-          <Plus class="h-5 w-5" />
-          <span class="sm:hidden">追加</span>
-        </button>
-      </div>
-      <ul class="space-y-2">
-        <li
-          v-for="(media, index) in formData.media"
-          :key="index"
-          class="flex items-center gap-2 rounded-md bg-gray-50 p-2"
-        >
-          <span class="min-w-0 flex-1 text-sm">
-            {{ media.title }} ({{ mediaTypeOptions.find((o) => o.value === media.type)?.label }})
-            <span v-if="media.remark" class="text-gray-500">- {{ media.remark }}</span>
-          </span>
-          <button
-            type="button"
-            class="flex-shrink-0 p-1 text-red-500 hover:text-red-700"
-            @click="removeMedia(index)"
           >
             <Trash2 class="h-4 w-4" />
           </button>

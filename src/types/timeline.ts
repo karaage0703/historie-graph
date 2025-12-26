@@ -16,21 +16,10 @@ export interface Person {
 }
 
 /**
- * 拡張されたMediaItem型
- * Requirements: 7.3, 7.4
- */
-export interface ExtendedMediaItem extends MediaItem {
-  coverageStartYear?: number
-  coverageEndYear?: number
-  kindleUrl?: string
-}
-
-/**
  * 拡張されたHistoryEvent型
  * Requirements: 7.1, 7.5
  */
-export interface ExtendedHistoryEvent extends Omit<HistoryEvent, 'media'> {
-  media: ExtendedMediaItem[]
+export interface ExtendedHistoryEvent extends HistoryEvent {
   persons?: Person[]
 }
 
@@ -83,8 +72,7 @@ export interface PersonLaneData {
  * Requirements: 4.1-4.3
  */
 export interface MediaLaneData {
-  media: ExtendedMediaItem
-  parentEventId: string
+  media: MediaItem
 }
 
 /**

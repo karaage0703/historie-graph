@@ -1,13 +1,13 @@
 # Historie Graph
 
-歴史イベントをタイムラインで管理・表示するWebアプリケーション。関連する漫画・小説・映画・アニメなどのメディア情報も一緒に管理できます。
+歴史イベントをタイムラインで管理・表示するWebアプリケーション。関連する漫画・小説などのメディア情報も一緒に管理できます。
 
 ## 機能
 
 - **タイムライン表示**: 歴史イベントを年代順に表示
 - **フィルタリング**: 地域（日本、中国、ヨーロッパなど）・時代で絞り込み
 - **イベント管理**: イベントの追加・編集・削除（GitHub連携時）
-- **メディア管理**: 各イベントに関連するメディア（漫画、小説、映画、アニメ）を登録
+- **メディア管理**: 各イベントに関連するメディア（漫画、小説）を登録
 - **レスポンシブデザイン**: モバイル・タブレット・デスクトップに対応
 - **GitHub連携**: データをGitHubリポジトリで管理
 
@@ -71,14 +71,19 @@ npm run preview
       "region": "japan",
       "title": "桶狭間の戦い",
       "description": "説明文...",
-      "links": ["https://..."],
-      "media": [
-        {
-          "title": "センゴク",
-          "type": "manga",
-          "remark": "宮下英樹作"
-        }
-      ]
+      "links": ["https://..."]
+    }
+  ],
+  "media": [
+    {
+      "id": "sengoku",
+      "title": "センゴク",
+      "type": "manga",
+      "remark": "宮下英樹作",
+      "coverageStartYear": 1555,
+      "coverageEndYear": 1600,
+      "kindleUrl": "https://www.amazon.co.jp/...",
+      "relatedEventIds": ["uuid-here"]
     }
   ]
 }
@@ -104,15 +109,44 @@ npm run preview
 | title | string | ○ | イベントタイトル |
 | description | string | - | 説明文 |
 | links | string[] | - | 参考リンク |
-| media | MediaItem[] | - | 関連メディア |
 
 ### MediaItem
 
 | フィールド | 型 | 必須 | 説明 |
 |-----------|-----|------|------|
+| id | string | ○ | ユニークID（kebab-case形式） |
 | title | string | ○ | メディアタイトル |
-| type | string | ○ | 種類（manga, novel, movie, anime） |
-| remark | string | - | 備考（作者など） |
+| type | string | ○ | 種類（manga, novel） |
+| remark | string | ○ | 備考（作者など） |
+| coverageStartYear | number | - | 扱う時代の開始年 |
+| coverageEndYear | number | - | 扱う時代の終了年 |
+| kindleUrl | string | - | Amazon KindleのURL |
+| relatedEventIds | string[] | ○ | 関連イベントのID配列 |
+
+## 作品・イベントの追加リクエスト
+
+管理者以外のユーザーも、GitHub issueを通じて作品や歴史イベントの追加をリクエストできます。
+
+### リクエスト方法
+
+1. [Issues](https://github.com/karaage0703/historie-graph/issues/new/choose) から該当するテンプレートを選択
+   - **作品追加リクエスト**: 漫画・小説の追加
+   - **歴史イベント追加リクエスト**: 新しい歴史イベントの追加
+2. フォームに必要事項を入力して送信
+
+### AI によるissue処理（管理者向け）
+
+Claude Code で以下のスラッシュコマンドを実行すると、issueを自動処理してデータを更新します。
+
+```bash
+# 特定のissueを処理
+/process-issue 123
+
+# オープンなissueを全て処理
+/process-issue
+```
+
+処理の詳細は [.github/ISSUE_PROCESSING.md](.github/ISSUE_PROCESSING.md) を参照してください。
 
 ## ライセンス
 

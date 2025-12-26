@@ -164,8 +164,6 @@ onUnmounted(() => {
             :class="{
               'bg-pink-100 text-pink-700': mediaData.media.type === 'manga',
               'bg-purple-100 text-purple-700': mediaData.media.type === 'novel',
-              'bg-amber-100 text-amber-700': mediaData.media.type === 'movie',
-              'bg-emerald-100 text-emerald-700': mediaData.media.type === 'anime',
             }"
           >
             {{ mediaData.media.type }}

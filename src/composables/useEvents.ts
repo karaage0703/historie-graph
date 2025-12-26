@@ -4,6 +4,7 @@ import { useGithubApi } from './useGithubApi'
 import { useError } from './useError'
 
 const events = ref<HistoryEvent[]>([])
+const media = ref<MediaItem[]>([])
 const isLoading = ref(false)
 
 export function useEvents() {
@@ -14,13 +15,18 @@ export function useEvents() {
     return [...events.value].sort((a, b) => a.year - b.year)
   })
 
+  const sortedMedia = computed(() => {
+    return [...media.value].sort((a, b) => (a.coverageStartYear ?? 0) - (b.coverageStartYear ?? 0))
+  })
+
   async function fetchEvents(): Promise<void> {
     isLoading.value = true
     clearError()
 
     try {
       const data = await fetchData()
-      events.value = data
+      events.value = data.events
+      media.value = data.media ?? []
     } catch (error) {
       if (error instanceof TypeError && error.message.includes('fetch')) {
         setNetworkError()
@@ -44,7 +50,7 @@ export function useEvents() {
 
     events.value = [...events.value, newEvent]
 
-    const result = await saveData(events.value)
+    const result = await saveData(events.value, media.value)
     if (!result.success) {
       events.value = events.value.filter((e) => e.id !== newEvent.id)
       throw new Error(result.error?.message || '保存に失敗しました')
@@ -70,12 +76,11 @@ export function useEvents() {
       title: updates.title ?? originalEvent.title,
       description: updates.description ?? originalEvent.description,
       links: updates.links ?? originalEvent.links,
-      media: updates.media ?? originalEvent.media,
     }
 
     events.value = events.value.map((e) => (e.id === id ? updatedEvent : e))
 
-    const result = await saveData(events.value)
+    const result = await saveData(events.value, media.value)
     if (!result.success) {
       events.value = originalEvents
       throw new Error(result.error?.message || '更新に失敗しました')
@@ -91,32 +96,46 @@ export function useEvents() {
     const originalEvents = [...events.value]
     events.value = events.value.filter((e) => e.id !== id)
 
-    const result = await saveData(events.value)
+    const result = await saveData(events.value, media.value)
     if (!result.success) {
       events.value = originalEvents
       throw new Error(result.error?.message || '削除に失敗しました')
     }
   }
 
-  function addMedia(eventId: string, media: MediaItem): void {
-    const event = events.value.find((e) => e.id === eventId)
-    if (event) {
-      event.media = [...event.media, media]
+  async function addMedia(newMedia: Omit<MediaItem, 'id'>): Promise<void> {
+    const mediaItem: MediaItem = {
+      ...newMedia,
+      id: crypto.randomUUID(),
+    }
+
+    media.value = [...media.value, mediaItem]
+
+    const result = await saveData(events.value, media.value)
+    if (!result.success) {
+      media.value = media.value.filter((m) => m.id !== mediaItem.id)
+      throw new Error(result.error?.message || '保存に失敗しました')
     }
   }
 
-  function removeMedia(eventId: string, mediaIndex: number): void {
-    const event = events.value.find((e) => e.id === eventId)
-    if (event && mediaIndex >= 0 && mediaIndex < event.media.length) {
-      event.media = event.media.filter((_, i) => i !== mediaIndex)
+  async function removeMedia(mediaId: string): Promise<void> {
+    const originalMedia = [...media.value]
+    media.value = media.value.filter((m) => m.id !== mediaId)
+
+    const result = await saveData(events.value, media.value)
+    if (!result.success) {
+      media.value = originalMedia
+      throw new Error(result.error?.message || '削除に失敗しました')
     }
   }
 
   return {
     events,
+    media,
     isLoading,
     isSaving,
     sortedEvents,
+    sortedMedia,
     fetchEvents,
     addEvent,
     updateEvent,

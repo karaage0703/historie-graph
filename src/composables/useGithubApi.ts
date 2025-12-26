@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { Octokit } from 'octokit'
-import type { HistoryEvent, GithubApiError, SaveResult } from '@/types'
+import type { HistorieData, HistoryEvent, MediaItem, GithubApiError, SaveResult } from '@/types'
 import { useSettings } from './useSettings'
 
 const isSaving = ref(false)
@@ -41,7 +41,7 @@ function parseGithubError(error: unknown): GithubApiError {
 export function useGithubApi() {
   const { token, owner, repo, isConfigured } = useSettings()
 
-  async function fetchData(): Promise<HistoryEvent[]> {
+  async function fetchData(): Promise<HistorieData> {
     lastError.value = null
 
     if (!isConfigured.value) {
@@ -50,7 +50,7 @@ export function useGithubApi() {
         throw new Error('ローカルデータの読み込みに失敗しました')
       }
       const data = await response.json()
-      return data.events as HistoryEvent[]
+      return data as HistorieData
     }
 
     try {
@@ -68,7 +68,7 @@ export function useGithubApi() {
       currentSha = response.data.sha
       const content = atob(response.data.content)
       const data = JSON.parse(content)
-      return data.events as HistoryEvent[]
+      return data as HistorieData
     } catch (error) {
       const apiError = parseGithubError(error)
       lastError.value = apiError
@@ -77,7 +77,7 @@ export function useGithubApi() {
     }
   }
 
-  async function saveData(events: HistoryEvent[]): Promise<SaveResult> {
+  async function saveData(events: HistoryEvent[], media: MediaItem[]): Promise<SaveResult> {
     if (!isConfigured.value) {
       return {
         success: false,
@@ -104,7 +104,7 @@ export function useGithubApi() {
         currentSha = getResponse.data.sha
       }
 
-      const jsonContent = JSON.stringify({ events }, null, 2)
+      const jsonContent = JSON.stringify({ events, media }, null, 2)
       const base64Content = btoa(unescape(encodeURIComponent(jsonContent)))
 
       const response = await octokit.rest.repos.createOrUpdateFileContents({

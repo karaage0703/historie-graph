@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import type {
   Person,
-  ExtendedMediaItem,
   ExtendedHistoryEvent,
   AppSettings,
   EraLaneData,
@@ -10,6 +9,7 @@ import type {
   EventMarkerData,
   TimeRange,
 } from './timeline'
+import type { MediaItem } from './index'
 
 describe('Timeline Types', () => {
   describe('Person型', () => {
@@ -52,49 +52,70 @@ describe('Timeline Types', () => {
     })
   })
 
-  describe('ExtendedMediaItem型', () => {
-    it('既存MediaItem型のフィールドを持つ', () => {
-      const media: ExtendedMediaItem = {
+  describe('MediaItem型', () => {
+    it('id, title, type, remark, relatedEventIdsを持つ', () => {
+      const media: MediaItem = {
+        id: 'kingdom',
         title: 'キングダム',
         type: 'manga',
         remark: '原泰久による漫画',
+        relatedEventIds: ['event-1'],
       }
+      expect(media.id).toBe('kingdom')
       expect(media.title).toBe('キングダム')
       expect(media.type).toBe('manga')
       expect(media.remark).toBe('原泰久による漫画')
+      expect(media.relatedEventIds).toContain('event-1')
     })
 
     it('カバー範囲（開始年・終了年）を持てる', () => {
-      const media: ExtendedMediaItem = {
+      const media: MediaItem = {
+        id: 'kingdom',
         title: 'キングダム',
         type: 'manga',
         remark: '',
         coverageStartYear: -259,
         coverageEndYear: -221,
+        relatedEventIds: [],
       }
       expect(media.coverageStartYear).toBe(-259)
       expect(media.coverageEndYear).toBe(-221)
     })
 
     it('KindleURLを持てる', () => {
-      const media: ExtendedMediaItem = {
+      const media: MediaItem = {
+        id: 'sangokushi',
         title: '三国志',
         type: 'manga',
         remark: '',
         kindleUrl: 'https://www.amazon.co.jp/dp/B00X1234',
+        relatedEventIds: [],
       }
       expect(media.kindleUrl).toBe('https://www.amazon.co.jp/dp/B00X1234')
     })
 
-    it('新フィールドはすべてオプショナル（後方互換性）', () => {
-      const media: ExtendedMediaItem = {
+    it('coverageStartYear, coverageEndYear, kindleUrlはオプショナル', () => {
+      const media: MediaItem = {
+        id: 'kouuryuuhou',
         title: '項羽と劉邦',
         type: 'novel',
         remark: '',
+        relatedEventIds: [],
       }
       expect(media.coverageStartYear).toBeUndefined()
       expect(media.coverageEndYear).toBeUndefined()
       expect(media.kindleUrl).toBeUndefined()
+    })
+
+    it('複数のイベントに関連付けできる', () => {
+      const media: MediaItem = {
+        id: 'kouuryuuhou',
+        title: '項羽と劉邦',
+        type: 'novel',
+        remark: '',
+        relatedEventIds: ['event-1', 'event-2', 'event-3'],
+      }
+      expect(media.relatedEventIds).toHaveLength(3)
     })
   })
 
@@ -109,7 +130,6 @@ describe('Timeline Types', () => {
         title: '黄巾の乱',
         description: '太平道による農民反乱',
         links: [],
-        media: [],
       }
       expect(event.id).toBe('1')
       expect(event.year).toBe(184)
@@ -126,7 +146,6 @@ describe('Timeline Types', () => {
         title: '赤壁の戦い',
         description: '孫権・劉備連合軍vs曹操軍',
         links: [],
-        media: [],
         persons: [
           { name: '曹操', birthYear: 155, deathYear: 220 },
           { name: '周瑜', birthYear: 175, deathYear: 210 },
@@ -146,31 +165,8 @@ describe('Timeline Types', () => {
         title: '曹丕が魏を建国',
         description: '',
         links: [],
-        media: [],
       }
       expect(event.persons).toBeUndefined()
-    })
-
-    it('mediaフィールドはExtendedMediaItem配列', () => {
-      const event: ExtendedHistoryEvent = {
-        id: '1',
-        year: 184,
-        yearDisplay: '184年',
-        era: '三国',
-        region: 'china',
-        title: '黄巾の乱',
-        description: '',
-        links: [],
-        media: [
-          {
-            title: '三国志',
-            type: 'manga',
-            remark: '',
-            kindleUrl: 'https://amazon.co.jp/...',
-          },
-        ],
-      }
-      expect(event.media[0]?.kindleUrl).toBe('https://amazon.co.jp/...')
     })
   })
 
@@ -236,19 +232,21 @@ describe('Timeline Types', () => {
   })
 
   describe('MediaLaneData型', () => {
-    it('作品情報と親イベントIDを持つ', () => {
+    it('作品情報を持つ', () => {
       const mediaLane: MediaLaneData = {
         media: {
+          id: 'kingdom',
           title: 'キングダム',
           type: 'manga',
           remark: '',
           coverageStartYear: -259,
           coverageEndYear: -221,
+          relatedEventIds: ['event-1'],
         },
-        parentEventId: 'event-1',
       }
       expect(mediaLane.media.title).toBe('キングダム')
-      expect(mediaLane.parentEventId).toBe('event-1')
+      expect(mediaLane.media.id).toBe('kingdom')
+      expect(mediaLane.media.relatedEventIds).toContain('event-1')
     })
   })
 
@@ -264,7 +262,6 @@ describe('Timeline Types', () => {
           title: '秦の統一',
           description: '',
           links: [],
-          media: [],
         },
         position: 100,
         laneIndex: 0,

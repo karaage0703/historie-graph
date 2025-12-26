@@ -21,8 +21,6 @@ const emit = defineEmits<{
 const mediaColors: Record<string, { fill: string; stroke: string; text: string }> = {
   manga: { fill: '#fce7f3', stroke: '#ec4899', text: '#be185d' },
   novel: { fill: '#ddd6fe', stroke: '#8b5cf6', text: '#6d28d9' },
-  movie: { fill: '#fef3c7', stroke: '#f59e0b', text: '#b45309' },
-  anime: { fill: '#d1fae5', stroke: '#10b981', text: '#047857' },
 }
 
 const getColors = (type: string) => {
@@ -31,7 +29,7 @@ const getColors = (type: string) => {
 
 const colors = getColors(props.lane.media.type)
 
-// カバー範囲がある場合はそれを使用、なければ親イベントの年を基準にする
+// カバー範囲を使用
 const hasRange =
   props.lane.media.coverageStartYear !== undefined &&
   props.lane.media.coverageEndYear !== undefined
@@ -42,7 +40,7 @@ const x = hasRange
 
 const width = hasRange
   ? props.yearToPosition(props.lane.media.coverageEndYear!) - x
-  : 60 // デフォルト幅
+  : 60
 </script>
 
 <template>

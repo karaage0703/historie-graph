@@ -1,0 +1,114 @@
+name: "歴史イベント追加リクエスト"
+description: "新しい歴史イベント（出来事・時代）の追加を要望する"
+title: "[イベント追加] "
+labels: ["event-request", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 歴史イベント追加リクエスト
+        新しい歴史上の出来事や時代の追加をリクエストできます。
+        AIが自動でデータを更新しますので、できるだけ正確な情報をご記入ください。
+
+  - type: input
+    id: event_title
+    attributes:
+      label: イベント名
+      description: 歴史イベントのタイトルを入力してください
+      placeholder: "例: 赤壁の戦い"
+    validations:
+      required: true
+
+  - type: input
+    id: event_year
+    attributes:
+      label: 年代（西暦）
+      description: イベントが発生した年を西暦で入力（紀元前は負の数）
+      placeholder: "例: 208（西暦208年）、-221（紀元前221年）"
+    validations:
+      required: true
+
+  - type: input
+    id: event_year_display
+    attributes:
+      label: 年代（表示用）
+      description: 表示用の年代表記を入力してください
+      placeholder: "例: 208年、前221年、1560年頃"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: event_region
+    attributes:
+      label: 地域
+      description: イベントが発生した地域を選択してください
+      options:
+        - china（中国）
+        - japan（日本）
+        - europe（ヨーロッパ）
+        - middle_east（中東）
+        - other（その他）
+    validations:
+      required: true
+
+  - type: input
+    id: event_era
+    attributes:
+      label: 時代名
+      description: このイベントが属する時代の名称を入力してください
+      placeholder: "例: 後漢、三国時代、戦国時代"
+    validations:
+      required: true
+
+  - type: textarea
+    id: event_description
+    attributes:
+      label: 説明
+      description: イベントの説明を入力してください（2-3文程度）
+      placeholder: |
+        例: 曹操軍と孫権・劉備連合軍の戦い。
+        孫権・劉備軍が火攻めで曹操の大軍を破り、三国鼎立の基礎を築いた。
+    validations:
+      required: true
+
+  - type: textarea
+    id: event_links
+    attributes:
+      label: 参考リンク
+      description: Wikipedia等の参考URLを入力してください（1行に1つ）
+      placeholder: |
+        https://ja.wikipedia.org/wiki/赤壁の戦い
+    validations:
+      required: false
+
+  - type: textarea
+    id: related_media
+    attributes:
+      label: 関連作品（任意）
+      description: |
+        このイベントに関連する作品名があれば入力してください（1行に1つ）。
+        作品の詳細は別途「作品追加リクエスト」で登録できます。
+      placeholder: |
+        例:
+        三国志（横山光輝）
+        キングダム
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: その他の情報
+      description: 追加で伝えたい情報があれば記入してください
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: 確認事項
+      options:
+        - label: 入力した歴史情報が正確であることを確認しました
+          required: true
+        - label: 既に登録されているイベントでないことを確認しました
+          required: true

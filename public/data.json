@@ -8,8 +8,9 @@
       "region": "china",
       "title": "夏王朝の成立",
       "description": "禹が夏王朝を建国。中国史上最初の王朝とされる。治水事業で名声を得た禹が舜から禅譲を受ける。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A4%8F_(%E4%B8%89%E4%BB%A3)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A4%8F_(%E4%B8%89%E4%BB%A3)"
+      ]
     },
     {
       "id": "china-xia-end",
@@ -19,8 +20,9 @@
       "region": "china",
       "title": "夏王朝の滅亡",
       "description": "暴君・桀王が殷の湯王に滅ぼされる。夏王朝は約470年で終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A4%8F_(%E4%B8%89%E4%BB%A3)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A4%8F_(%E4%B8%89%E4%BB%A3)"
+      ]
     },
     {
       "id": "china-shang-start",
@@ -30,8 +32,9 @@
       "region": "china",
       "title": "殷（商）王朝の成立",
       "description": "湯王が殷（商）王朝を建国。甲骨文字や青銅器文化が発展。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%AE%B7"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%AE%B7"
+      ]
     },
     {
       "id": "china-shang-end",
@@ -41,16 +44,8 @@
       "region": "china",
       "title": "殷（商）王朝の滅亡",
       "description": "暴君・紂王が周の武王に牧野の戦いで敗れ滅亡。殷は約550年続いた。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%AE%B7"],
-      "media": [
-        {
-          "title": "封神演義",
-          "type": "manga",
-          "remark": "藤崎竜作。殷周革命を舞台にした神怪ファンタジー",
-          "coverageStartYear": -1100,
-          "coverageEndYear": -1046,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%B0%81%E7%A5%9E%E6%BC%94%E7%BE%A9+%E8%97%A4%E5%B4%8E%E7%AB%9C+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%AE%B7"
       ]
     },
     {
@@ -61,8 +56,9 @@
       "region": "china",
       "title": "西周の成立",
       "description": "武王が周王朝を建国。鎬京（現在の西安付近）を都とする。封建制度を確立。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%91%A8"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%91%A8"
+      ]
     },
     {
       "id": "china-western-zhou-end",
@@ -72,8 +68,9 @@
       "region": "china",
       "title": "西周の滅亡",
       "description": "犬戎の侵入により幽王が殺害され、西周が滅亡。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%91%A8"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%91%A8"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440010",
@@ -83,16 +80,8 @@
       "region": "china",
       "title": "春秋時代の開始",
       "description": "周の平王が洛邑（洛陽）へ遷都。東周の始まりとともに春秋時代が開始。諸侯国が覇を競う時代。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%98%A5%E7%A7%8B%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "東周英雄伝",
-          "type": "manga",
-          "remark": "鄭問作。春秋戦国時代の英雄たちを描く",
-          "coverageStartYear": -770,
-          "coverageEndYear": -221,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%9D%B1%E5%91%A8%E8%8B%B1%E9%9B%84%E4%BC%9D+%E9%84%AD%E5%95%8F+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%98%A5%E7%A7%8B%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -103,8 +92,9 @@
       "region": "china",
       "title": "春秋時代の終了・戦国時代の開始",
       "description": "晋が韓・魏・趙の三国に分裂し、周王から正式に諸侯として認められる。春秋時代が終わり戦国時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440011",
@@ -114,48 +104,8 @@
       "region": "china",
       "title": "戦国時代の開始",
       "description": "晋が韓・魏・趙に三分され、戦国七雄が並び立つ戦国時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
-      "media": [
-        {
-          "title": "キングダム",
-          "type": "manga",
-          "remark": "原泰久作。秦の始皇帝の中国統一を描く",
-          "coverageStartYear": -259,
-          "coverageEndYear": -221,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%AD%E3%83%B3%E3%82%B0%E3%83%80%E3%83%A0+%E5%8E%9F%E6%B3%B0%E4%B9%85+Kindle"
-        },
-        {
-          "title": "史記",
-          "type": "manga",
-          "remark": "横山光輝作。司馬遷の史記を漫画化",
-          "coverageStartYear": -403,
-          "coverageEndYear": -91,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%8F%B2%E8%A8%98+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle"
-        },
-        {
-          "title": "達人伝",
-          "type": "manga",
-          "remark": "王欣太作。荘子を主人公に戦国時代を描く",
-          "coverageStartYear": -369,
-          "coverageEndYear": -286,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%81%94%E4%BA%BA%E4%BC%9D+%E7%8E%8B%E6%AC%A3%E5%A4%AA+Kindle"
-        },
-        {
-          "title": "墨攻",
-          "type": "manga",
-          "remark": "森秀樹作、酒見賢一原作。墨家の守城術と秦の統一戦争を描く",
-          "coverageStartYear": -260,
-          "coverageEndYear": -221,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%A2%A8%E6%94%BB+%E6%A3%AE%E7%A7%80%E6%A8%B9+Kindle"
-        },
-        {
-          "title": "名人伝",
-          "type": "novel",
-          "remark": "中島敦作。列子を原典とした弓の名人の物語",
-          "coverageStartYear": -400,
-          "coverageEndYear": -350,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%90%8D%E4%BA%BA%E4%BC%9D+%E4%B8%AD%E5%B3%B6%E6%95%A6+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"
       ]
     },
     {
@@ -166,8 +116,9 @@
       "region": "china",
       "title": "戦国時代の終了",
       "description": "秦が斉を滅ぼし、戦国七雄を統一。戦国時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440021",
@@ -177,8 +128,9 @@
       "region": "china",
       "title": "秦の中国統一",
       "description": "始皇帝が六国を滅ぼし、中国史上初の統一王朝を樹立。度量衡・文字の統一を行う。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A7%8B%E7%9A%87%E5%B8%9D"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A7%8B%E7%9A%87%E5%B8%9D"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440022",
@@ -188,8 +140,9 @@
       "region": "china",
       "title": "秦の滅亡",
       "description": "秦は建国からわずか15年で滅亡。項羽・劉邦らの反乱軍により滅ぼされる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E7%A7%A6"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E7%A7%A6"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440023",
@@ -199,8 +152,9 @@
       "region": "china",
       "title": "楚漢戦争の開始",
       "description": "秦滅亡後、西楚の覇王・項羽と漢王・劉邦による天下をめぐる戦争が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%A5%9A%E6%BC%A2%E6%88%A6%E4%BA%89"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%A5%9A%E6%BC%A2%E6%88%A6%E4%BA%89"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440001",
@@ -210,16 +164,8 @@
       "region": "china",
       "title": "垓下の戦い・楚漢戦争の終結",
       "description": "項羽と劉邦の最終決戦。劉邦軍が勝利し、項羽は自刎。漢王朝の成立へとつながる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%9E%93%E4%B8%8B%E3%81%AE%E6%88%A6%E3%81%84"],
-      "media": [
-        {
-          "title": "項羽と劉邦",
-          "type": "manga",
-          "remark": "横山光輝作",
-          "coverageStartYear": -232,
-          "coverageEndYear": -195,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%A0%85%E7%BE%BD%E3%81%A8%E5%8A%89%E9%82%A6+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%9E%93%E4%B8%8B%E3%81%AE%E6%88%A6%E3%81%84"
       ]
     },
     {
@@ -230,8 +176,9 @@
       "region": "china",
       "title": "前漢の成立",
       "description": "劉邦が皇帝に即位し、前漢（西漢）を建国。長安を都とする。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%89%8D%E6%BC%A2"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%89%8D%E6%BC%A2"
+      ]
     },
     {
       "id": "china-western-han-end",
@@ -241,8 +188,9 @@
       "region": "china",
       "title": "前漢の滅亡",
       "description": "王莽が禅譲を受け、前漢が滅亡。約210年続いた前漢王朝が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%89%8D%E6%BC%A2"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%89%8D%E6%BC%A2"
+      ]
     },
     {
       "id": "china-xin-start",
@@ -252,8 +200,9 @@
       "region": "china",
       "title": "新の成立",
       "description": "王莽が新王朝を建国。周代の制度復古を目指すが、政策は失敗に終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%96%B0_(%E7%8E%8B%E6%9C%9D)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%96%B0_(%E7%8E%8B%E6%9C%9D)"
+      ]
     },
     {
       "id": "china-xin-end",
@@ -263,8 +212,9 @@
       "region": "china",
       "title": "新の滅亡",
       "description": "赤眉・緑林の乱により王莽が殺害され、新が滅亡。わずか15年の短命王朝。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%96%B0_(%E7%8E%8B%E6%9C%9D)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%96%B0_(%E7%8E%8B%E6%9C%9D)"
+      ]
     },
     {
       "id": "china-eastern-han-start",
@@ -274,8 +224,9 @@
       "region": "china",
       "title": "後漢の成立",
       "description": "劉秀（光武帝）が後漢（東漢）を建国。洛陽を都とする。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%BE%8C%E6%BC%A2"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%BE%8C%E6%BC%A2"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440024",
@@ -285,24 +236,8 @@
       "region": "china",
       "title": "黄巾の乱",
       "description": "太平道を信仰する黄巾党による反乱。後漢王朝の衰退を決定的にし、後漢末期の群雄割拠時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%BB%84%E5%B7%BE%E3%81%AE%E4%B9%B1"],
-      "media": [
-        {
-          "title": "三国志",
-          "type": "manga",
-          "remark": "横山光輝作",
-          "coverageStartYear": 184,
-          "coverageEndYear": 280,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E4%B8%89%E5%9B%BD%E5%BF%97+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle"
-        },
-        {
-          "title": "蒼天航路",
-          "type": "manga",
-          "remark": "王欣太作",
-          "coverageStartYear": 155,
-          "coverageEndYear": 220,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E8%92%BC%E5%A4%A9%E8%88%AA%E8%B7%AF+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%BB%84%E5%B7%BE%E3%81%AE%E4%B9%B1"
       ]
     },
     {
@@ -313,8 +248,9 @@
       "region": "china",
       "title": "後漢の滅亡",
       "description": "献帝が曹丕に禅譲。後漢が滅亡し、三国時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%BE%8C%E6%BC%A2"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%BE%8C%E6%BC%A2"
+      ]
     },
     {
       "id": "china-three-kingdoms-start",
@@ -324,8 +260,9 @@
       "region": "china",
       "title": "三国時代の開始",
       "description": "曹丕が魏を建国。翌年に劉備が蜀漢を、229年に孫権が呉を建国し、三国時代が確立。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%B8%89%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%B8%89%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"
+      ]
     },
     {
       "id": "china-three-kingdoms-end",
@@ -335,8 +272,9 @@
       "region": "china",
       "title": "三国時代の終了",
       "description": "西晋が呉を滅ぼし、中国を再統一。三国時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%B8%89%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%B8%89%E5%9B%BD%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"
+      ]
     },
     {
       "id": "china-western-jin-start",
@@ -346,8 +284,9 @@
       "region": "china",
       "title": "西晋の成立",
       "description": "司馬炎が魏から禅譲を受け、西晋を建国。洛陽を都とする。",
-      "links": ["https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%99%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%99%8B"
+      ]
     },
     {
       "id": "china-western-jin-end",
@@ -357,8 +296,9 @@
       "region": "china",
       "title": "西晋の滅亡",
       "description": "八王の乱と五胡の侵入により西晋が滅亡。永嘉の乱で洛陽が陥落。",
-      "links": ["https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%99%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E8%A5%BF%E6%99%8B"
+      ]
     },
     {
       "id": "china-eastern-jin-start",
@@ -368,8 +308,9 @@
       "region": "china",
       "title": "東晋の成立",
       "description": "司馬睿が建康（南京）で即位し、東晋を建国。江南に漢民族王朝が存続。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%99%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%99%8B"
+      ]
     },
     {
       "id": "china-eastern-jin-end",
@@ -379,8 +320,9 @@
       "region": "china",
       "title": "東晋の滅亡",
       "description": "劉裕が東晋から禅譲を受け、宋（劉宋）を建国。東晋が滅亡。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%99%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%99%8B"
+      ]
     },
     {
       "id": "china-sixteen-kingdoms-start",
@@ -390,8 +332,9 @@
       "region": "china",
       "title": "五胡十六国時代の開始",
       "description": "匈奴の劉淵が漢（前趙）を建国。華北で異民族国家が乱立する五胡十六国時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%BA%94%E8%83%A1%E5%8D%81%E5%85%AD%E5%9B%BD%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%BA%94%E8%83%A1%E5%8D%81%E5%85%AD%E5%9B%BD%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "china-sixteen-kingdoms-end",
@@ -401,8 +344,9 @@
       "region": "china",
       "title": "五胡十六国時代の終了",
       "description": "北魏が華北を統一。五胡十六国時代が終わり、南北朝時代へ移行。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%BA%94%E8%83%A1%E5%8D%81%E5%85%AD%E5%9B%BD%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%BA%94%E8%83%A1%E5%8D%81%E5%85%AD%E5%9B%BD%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "china-northern-southern-start",
@@ -412,8 +356,9 @@
       "region": "china",
       "title": "南北朝時代の開始",
       "description": "南朝の宋（劉宋）が成立。北朝では北魏が華北を支配し、南北に分かれた時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"
+      ]
     },
     {
       "id": "china-northern-southern-end",
@@ -423,8 +368,9 @@
       "region": "china",
       "title": "南北朝時代の終了",
       "description": "隋が南朝の陳を滅ぼし、約170年ぶりに中国を統一。南北朝時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E4%B8%AD%E5%9B%BD)"
+      ]
     },
     {
       "id": "china-sui-start",
@@ -434,8 +380,9 @@
       "region": "china",
       "title": "隋の成立",
       "description": "楊堅（文帝）が北周から禅譲を受け、隋を建国。科挙制度や大運河建設を行う。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%9A%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%9A%8B"
+      ]
     },
     {
       "id": "china-sui-end",
@@ -445,8 +392,9 @@
       "region": "china",
       "title": "隋の滅亡",
       "description": "煬帝の遠征失敗と重税により各地で反乱。李淵により隋が滅亡。わずか37年の短命王朝。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%9A%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%9A%8B"
+      ]
     },
     {
       "id": "china-tang-start",
@@ -456,16 +404,8 @@
       "region": "china",
       "title": "唐の成立",
       "description": "李淵（高祖）が唐を建国。長安を都とし、中国史上最も繁栄した時代の一つとなる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%94%90"],
-      "media": [
-        {
-          "title": "山月記",
-          "type": "novel",
-          "remark": "中島敦作。唐代天宝年間、虎に変じた詩人李徴の物語",
-          "coverageStartYear": 740,
-          "coverageEndYear": 756,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%B1%B1%E6%9C%88%E8%A8%98+%E4%B8%AD%E5%B3%B6%E6%95%A6+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%94%90"
       ]
     },
     {
@@ -476,8 +416,9 @@
       "region": "china",
       "title": "唐の滅亡",
       "description": "朱全忠（朱温）が哀帝から禅譲を受け、唐が滅亡。約290年続いた大帝国が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%94%90"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%94%90"
+      ]
     },
     {
       "id": "china-five-dynasties-start",
@@ -487,8 +428,9 @@
       "region": "china",
       "title": "五代十国時代の開始",
       "description": "後梁が建国され、五代十国時代が始まる。華北で5つの王朝が交代し、各地に10の国が並立。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%BA%94%E4%BB%A3%E5%8D%81%E5%9B%BD%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%BA%94%E4%BB%A3%E5%8D%81%E5%9B%BD%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "china-five-dynasties-end",
@@ -498,8 +440,9 @@
       "region": "china",
       "title": "五代十国時代の終了（北宋成立）",
       "description": "趙匡胤が後周から禅譲を受け、宋（北宋）を建国。五代十国時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%BA%94%E4%BB%A3%E5%8D%81%E5%9B%BD%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%BA%94%E4%BB%A3%E5%8D%81%E5%9B%BD%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "china-northern-song-start",
@@ -509,8 +452,9 @@
       "region": "china",
       "title": "北宋の成立",
       "description": "趙匡胤（太祖）が北宋を建国。開封を都とし、文治主義を推進。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8C%97%E5%AE%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8C%97%E5%AE%8B"
+      ]
     },
     {
       "id": "china-northern-song-end",
@@ -520,8 +464,9 @@
       "region": "china",
       "title": "北宋の滅亡（靖康の変）",
       "description": "金軍が開封を攻略し、徽宗・欽宗を捕虜に。靖康の変により北宋が滅亡。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8C%97%E5%AE%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8C%97%E5%AE%8B"
+      ]
     },
     {
       "id": "china-southern-song-start",
@@ -531,8 +476,9 @@
       "region": "china",
       "title": "南宋の成立",
       "description": "欽宗の弟・趙構（高宗）が臨安（杭州）で即位し、南宋を建国。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8D%97%E5%AE%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%AE%8B"
+      ]
     },
     {
       "id": "china-southern-song-end",
@@ -542,8 +488,9 @@
       "region": "china",
       "title": "南宋の滅亡",
       "description": "崖山の戦いでモンゴル（元）に敗れ、南宋が滅亡。陸秀夫が幼帝を抱いて入水。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8D%97%E5%AE%8B"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%AE%8B"
+      ]
     },
     {
       "id": "china-liao-start",
@@ -553,8 +500,9 @@
       "region": "china",
       "title": "遼の成立",
       "description": "契丹族の耶律阿保機が遼（契丹）を建国。華北の燕雲十六州を支配。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%81%BC"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%81%BC"
+      ]
     },
     {
       "id": "china-liao-end",
@@ -564,8 +512,9 @@
       "region": "china",
       "title": "遼の滅亡",
       "description": "金と北宋の連合軍により遼が滅亡。約200年続いた契丹王朝が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%81%BC"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%81%BC"
+      ]
     },
     {
       "id": "china-jin-start",
@@ -575,8 +524,9 @@
       "region": "china",
       "title": "金の成立",
       "description": "女真族の完顔阿骨打が金を建国。遼を滅ぼし、北宋を圧迫。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%87%91_(%E7%8E%8B%E6%9C%9D)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%87%91_(%E7%8E%8B%E6%9C%9D)"
+      ]
     },
     {
       "id": "china-jin-end",
@@ -586,8 +536,9 @@
       "region": "china",
       "title": "金の滅亡",
       "description": "モンゴルと南宋の連合軍により金が滅亡。約120年続いた女真王朝が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%87%91_(%E7%8E%8B%E6%9C%9D)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%87%91_(%E7%8E%8B%E6%9C%9D)"
+      ]
     },
     {
       "id": "china-yuan-start",
@@ -597,8 +548,9 @@
       "region": "china",
       "title": "元の成立",
       "description": "フビライ・ハンが国号を元と定める。大都（北京）を都とし、中国全土を支配。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%85%83_(%E7%8E%8B%E6%9C%9D)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%85%83_(%E7%8E%8B%E6%9C%9D)"
+      ]
     },
     {
       "id": "china-yuan-end",
@@ -608,8 +560,9 @@
       "region": "china",
       "title": "元の滅亡",
       "description": "朱元璋が明を建国し、元は北方に退去（北元）。約100年続いたモンゴル王朝が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%85%83_(%E7%8E%8B%E6%9C%9D)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%85%83_(%E7%8E%8B%E6%9C%9D)"
+      ]
     },
     {
       "id": "china-ming-start",
@@ -619,8 +572,9 @@
       "region": "china",
       "title": "明の成立",
       "description": "朱元璋（洪武帝）が明を建国。南京を都とし、後に永楽帝が北京に遷都。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%98%8E"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%98%8E"
+      ]
     },
     {
       "id": "china-ming-end",
@@ -630,8 +584,9 @@
       "region": "china",
       "title": "明の滅亡",
       "description": "李自成の乱により崇禎帝が自殺し、明が滅亡。約280年続いた漢民族最後の統一王朝が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%98%8E"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%98%8E"
+      ]
     },
     {
       "id": "china-qing-start",
@@ -641,8 +596,9 @@
       "region": "china",
       "title": "清の成立",
       "description": "満州族の清が北京に入城し、中国支配を開始。康熙帝・雍正帝・乾隆帝時代に最盛期を迎える。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%B8%85"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%B8%85"
+      ]
     },
     {
       "id": "china-qing-end",
@@ -652,8 +608,9 @@
       "region": "china",
       "title": "清の滅亡",
       "description": "辛亥革命により宣統帝（溥儀）が退位。約270年続いた中国最後の王朝が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%B8%85"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%B8%85"
+      ]
     },
     {
       "id": "china-roc-start",
@@ -663,8 +620,9 @@
       "region": "china",
       "title": "中華民国の成立",
       "description": "孫文が臨時大総統に就任し、アジア初の共和国・中華民国が成立。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9B%BD"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9B%BD"
+      ]
     },
     {
       "id": "china-prc-start",
@@ -674,8 +632,9 @@
       "region": "china",
       "title": "中華人民共和国の成立",
       "description": "毛沢東が天安門で中華人民共和国の建国を宣言。国民党政府は台湾に移転。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD"
+      ]
     },
     {
       "id": "china-cultural-revolution",
@@ -685,16 +644,8 @@
       "region": "china",
       "title": "文化大革命",
       "description": "毛沢東が発動した政治運動。紅衛兵による知識人迫害など、約10年にわたり中国社会に大きな影響を与えた。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%96%87%E5%8C%96%E5%A4%A7%E9%9D%A9%E5%91%BD"],
-      "media": [
-        {
-          "title": "三体",
-          "type": "novel",
-          "remark": "劉慈欣作。文化大革命から始まり、宇宙規模の物語へ発展する壮大なSF",
-          "coverageStartYear": 1967,
-          "coverageEndYear": 2400,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E4%B8%89%E4%BD%93+%E5%8A%89%E6%85%88%E6%AC%A3+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%96%87%E5%8C%96%E5%A4%A7%E9%9D%A9%E5%91%BD"
       ]
     },
     {
@@ -705,64 +656,8 @@
       "region": "europe",
       "title": "共和政ローマの成立",
       "description": "ローマ王タルクィニウス・スペルブスを追放し、貴族による共和政が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%85%B1%E5%92%8C%E6%94%BF%E3%83%AD%E3%83%BC%E3%83%9E"],
-      "media": [
-        {
-          "title": "ヒストリエ",
-          "type": "manga",
-          "remark": "岩明均作。マケドニアのエウメネスの生涯を描く",
-          "coverageStartYear": -362,
-          "coverageEndYear": -316,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%92%E3%82%B9%E3%83%88%E3%83%AA%E3%82%A8+%E5%B2%A9%E6%98%8E%E5%9D%87+Kindle"
-        },
-        {
-          "title": "ヘウレーカ",
-          "type": "manga",
-          "remark": "岩明均作。シラクサ包囲戦とアルキメデスを描く",
-          "coverageStartYear": -214,
-          "coverageEndYear": -212,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%98%E3%82%A6%E3%83%AC%E3%83%BC%E3%82%AB+%E5%B2%A9%E6%98%8E%E5%9D%87+Kindle"
-        },
-        {
-          "title": "ブッダ",
-          "type": "manga",
-          "remark": "手塚治虫作。釈迦の生涯を描く大長編",
-          "coverageStartYear": -566,
-          "coverageEndYear": -486,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%96%E3%83%83%E3%83%80+%E6%89%8B%E5%A1%9A%E6%B2%BB%E8%99%AB+Kindle"
-        },
-        {
-          "title": "アド・アストラ",
-          "type": "manga",
-          "remark": "カガノミハチ作。第二次ポエニ戦争、スキピオとハンニバルを描く",
-          "coverageStartYear": -218,
-          "coverageEndYear": -201,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%A2%E3%83%89%E3%83%BB%E3%82%A2%E3%82%B9%E3%83%88%E3%83%A9+%E3%82%AB%E3%82%AC%E3%83%8E%E3%83%9F%E3%83%8F%E3%83%81+Kindle"
-        },
-        {
-          "title": "火の鳥 エジプト編",
-          "type": "manga",
-          "remark": "手塚治虫作。古代エジプトを舞台にした少女クラブ版",
-          "coverageStartYear": -1500,
-          "coverageEndYear": -1200,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%82%A8%E3%82%B8%E3%83%97%E3%83%88%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 ギリシャ編",
-          "type": "manga",
-          "remark": "手塚治虫作。古代ギリシャを舞台にした少女クラブ版",
-          "coverageStartYear": -500,
-          "coverageEndYear": -400,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%82%AE%E3%83%AA%E3%82%B7%E3%83%A3%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 ローマ編",
-          "type": "manga",
-          "remark": "手塚治虫作。古代ローマを舞台にした少女クラブ版",
-          "coverageStartYear": -100,
-          "coverageEndYear": 100,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%83%AD%E3%83%BC%E3%83%9E%E7%B7%A8+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%85%B1%E5%92%8C%E6%94%BF%E3%83%AD%E3%83%BC%E3%83%9E"
       ]
     },
     {
@@ -773,8 +668,9 @@
       "region": "europe",
       "title": "カエサル暗殺",
       "description": "ガイウス・ユリウス・カエサルが元老院議員らによって暗殺される。ローマ内戦の引き金となる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%82%A6%E3%82%B9%E3%83%BB%E3%83%A6%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%AB%E3%82%A8%E3%82%B5%E3%83%AB"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A4%E3%82%A6%E3%82%B9%E3%83%BB%E3%83%A6%E3%83%AA%E3%82%A6%E3%82%B9%E3%83%BB%E3%82%AB%E3%82%A8%E3%82%B5%E3%83%AB"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440031",
@@ -784,8 +680,9 @@
       "region": "europe",
       "title": "共和政ローマの終焉",
       "description": "オクタウィアヌスがアウグストゥスの称号を得て、共和政ローマが終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%85%B1%E5%92%8C%E6%94%BF%E3%83%AD%E3%83%BC%E3%83%9E"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%85%B1%E5%92%8C%E6%94%BF%E3%83%AD%E3%83%BC%E3%83%9E"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440032",
@@ -795,8 +692,9 @@
       "region": "europe",
       "title": "帝政ローマの開始",
       "description": "オクタウィアヌスがアウグストゥスの称号を受け、ローマ帝国（帝政ローマ）が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440012",
@@ -806,16 +704,8 @@
       "region": "europe",
       "title": "ハドリアヌス帝即位",
       "description": "ローマ帝国第14代皇帝ハドリアヌスが即位。帝国領土の安定と文化的発展に貢献。",
-      "links": ["https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%89%E3%83%AA%E3%82%A2%E3%83%8C%E3%82%B9"],
-      "media": [
-        {
-          "title": "テルマエ・ロマエ",
-          "type": "manga",
-          "remark": "ヤマザキマリ作。ハドリアヌス帝時代を描く",
-          "coverageStartYear": 117,
-          "coverageEndYear": 138,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%86%E3%83%AB%E3%83%9E%E3%82%A8%E3%83%BB%E3%83%AD%E3%83%9E%E3%82%A8+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%89%E3%83%AA%E3%82%A2%E3%83%8C%E3%82%B9"
       ]
     },
     {
@@ -826,8 +716,9 @@
       "region": "europe",
       "title": "西ローマ帝国の滅亡",
       "description": "ゲルマン人傭兵隊長オドアケルにより最後の西ローマ皇帝ロムルス・アウグストゥルスが廃位。西ローマ帝国が滅亡。",
-      "links": ["https://ja.wikipedia.org/wiki/%E8%A5%BF%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E8%A5%BF%E3%83%AD%E3%83%BC%E3%83%9E%E5%B8%9D%E5%9B%BD"
+      ]
     },
     {
       "id": "europe-french-revolution",
@@ -837,16 +728,8 @@
       "region": "europe",
       "title": "フランス革命",
       "description": "バスティーユ牢獄襲撃により勃発。絶対王政が崩壊し、近代市民社会の幕開けとなる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9%E9%9D%A9%E5%91%BD"],
-      "media": [
-        {
-          "title": "ベルサイユのばら",
-          "type": "manga",
-          "remark": "池田理代子作。フランス革命前夜のベルサイユ宮殿を舞台にオスカルとマリー・アントワネットを描く",
-          "coverageStartYear": 1755,
-          "coverageEndYear": 1793,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AB%E3%82%B5%E3%82%A4%E3%83%A6%E3%81%AE%E3%81%B0%E3%82%89+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9%E9%9D%A9%E5%91%BD"
       ]
     },
     {
@@ -857,8 +740,9 @@
       "region": "middle_east",
       "title": "ヒジュラ（聖遷）",
       "description": "ムハンマドがメッカからメディナへ移住。イスラーム暦の起点となる重要な出来事。",
-      "links": ["https://ja.wikipedia.org/wiki/%E3%83%92%E3%82%B8%E3%83%A5%E3%83%A9"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%92%E3%82%B8%E3%83%A5%E3%83%A9"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440034",
@@ -868,8 +752,9 @@
       "region": "middle_east",
       "title": "正統カリフ時代の終了",
       "description": "第4代カリフ・アリーの暗殺により正統カリフ時代が終了。ウマイヤ朝が成立。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%AD%A3%E7%B5%B1%E3%82%AB%E3%83%AA%E3%83%95"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%AD%A3%E7%B5%B1%E3%82%AB%E3%83%AA%E3%83%95"
+      ]
     },
     {
       "id": "japan-jomon-start",
@@ -879,8 +764,9 @@
       "region": "japan",
       "title": "縄文時代の開始",
       "description": "氷河期の終了とともに縄文時代が始まる。縄文土器や狩猟採集生活が特徴。",
-      "links": ["https://ja.wikipedia.org/wiki/%E7%B8%84%E6%96%87%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E7%B8%84%E6%96%87%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-jomon-end",
@@ -890,8 +776,9 @@
       "region": "japan",
       "title": "縄文時代の終了",
       "description": "稲作の伝来とともに縄文時代が終わり、弥生時代へ移行。",
-      "links": ["https://ja.wikipedia.org/wiki/%E7%B8%84%E6%96%87%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E7%B8%84%E6%96%87%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-yayoi-start",
@@ -901,8 +788,9 @@
       "region": "japan",
       "title": "弥生時代の開始",
       "description": "大陸から稲作と金属器が伝来。弥生土器や水田稲作が広まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%BC%A5%E7%94%9F%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%BC%A5%E7%94%9F%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-yayoi-end",
@@ -912,8 +800,9 @@
       "region": "japan",
       "title": "弥生時代の終了",
       "description": "前方後円墳の出現とともに弥生時代が終わり、古墳時代へ移行。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%BC%A5%E7%94%9F%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%BC%A5%E7%94%9F%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-kofun-start",
@@ -923,24 +812,8 @@
       "region": "japan",
       "title": "古墳時代の開始",
       "description": "大規模な前方後円墳が造られ始める。大和政権が成立。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%A2%B3%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "火の鳥 黎明編",
-          "type": "manga",
-          "remark": "手塚治虫作。邪馬台国時代を舞台に永遠の命を求める物語",
-          "coverageStartYear": 240,
-          "coverageEndYear": 270,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E9%BB%8E%E6%98%8E%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 ヤマト編",
-          "type": "manga",
-          "remark": "手塚治虫作。ヤマトタケルの時代を描く",
-          "coverageStartYear": 350,
-          "coverageEndYear": 400,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%83%A4%E3%83%9E%E3%83%88%E7%B7%A8+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%A2%B3%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -951,8 +824,9 @@
       "region": "japan",
       "title": "古墳時代の終了",
       "description": "仏教伝来とともに古墳時代が終わり、飛鳥時代へ移行。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%A2%B3%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8F%A4%E5%A2%B3%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-asuka-start",
@@ -962,8 +836,9 @@
       "region": "japan",
       "title": "飛鳥時代の開始",
       "description": "仏教が伝来し、飛鳥地方に宮殿が営まれる。聖徳太子や蘇我氏が活躍。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%A3%9B%E9%B3%A5%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%A3%9B%E9%B3%A5%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-asuka-taika",
@@ -973,16 +848,8 @@
       "region": "japan",
       "title": "大化の改新",
       "description": "中大兄皇子と中臣鎌足が蘇我氏を滅ぼし、律令国家建設を目指す改革を開始。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%8C%96%E3%81%AE%E6%94%B9%E6%96%B0"],
-      "media": [
-        {
-          "title": "火の鳥 太陽編",
-          "type": "manga",
-          "remark": "手塚治虫作。白村江の戦い前後と未来を描く二重構造",
-          "coverageStartYear": 661,
-          "coverageEndYear": 672,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E5%A4%AA%E9%99%BD%E7%B7%A8+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%8C%96%E3%81%AE%E6%94%B9%E6%96%B0"
       ]
     },
     {
@@ -993,8 +860,9 @@
       "region": "japan",
       "title": "飛鳥時代の終了",
       "description": "平城京への遷都により飛鳥時代が終わり、奈良時代へ移行。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%A3%9B%E9%B3%A5%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%A3%9B%E9%B3%A5%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-nara-start",
@@ -1004,24 +872,8 @@
       "region": "japan",
       "title": "奈良時代の開始",
       "description": "元明天皇が平城京に遷都。律令制が完成し、天平文化が栄える。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A5%88%E8%89%AF%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "火の鳥 鳳凰編",
-          "type": "manga",
-          "remark": "手塚治虫作。奈良時代の仏師我王と茜丸の物語",
-          "coverageStartYear": 720,
-          "coverageEndYear": 760,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E9%B3%B3%E5%87%B0%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 羽衣編",
-          "type": "manga",
-          "remark": "手塚治虫作。天女伝説をモチーフにした平安時代中期の物語",
-          "coverageStartYear": 950,
-          "coverageEndYear": 1000,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E7%BE%BD%E8%A1%A3%E7%B7%A8+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A5%88%E8%89%AF%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -1032,8 +884,9 @@
       "region": "japan",
       "title": "奈良時代の終了",
       "description": "桓武天皇が平安京に遷都し、奈良時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A5%88%E8%89%AF%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A5%88%E8%89%AF%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-heian-start",
@@ -1043,24 +896,8 @@
       "region": "japan",
       "title": "平安時代の開始",
       "description": "桓武天皇が平安京（京都）に遷都。摂関政治や国風文化が発展。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%AE%89%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "童の神",
-          "type": "manga",
-          "remark": "今村翔吾原作、深谷陽作画。酒呑童子伝説を基にした平安時代の物語",
-          "coverageStartYear": 990,
-          "coverageEndYear": 1020,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%AB%A5%E3%81%AE%E7%A5%9E+%E6%BC%AB%E7%94%BB+Kindle"
-        },
-        {
-          "title": "あさきゆめみし",
-          "type": "manga",
-          "remark": "大和和紀作。源氏物語を漫画化した平安絵巻",
-          "coverageStartYear": 970,
-          "coverageEndYear": 1020,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%81%82%E3%81%95%E3%81%8D%E3%82%86%E3%82%81%E3%81%BF%E3%81%97+%E5%A4%A7%E5%92%8C%E5%92%8C%E7%B4%80+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%AE%89%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -1071,8 +908,9 @@
       "region": "japan",
       "title": "平安時代の終了",
       "description": "壇ノ浦の戦いで平氏が滅亡し、源氏が勝利。武家政権の成立により平安時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%AE%89%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%B9%B3%E5%AE%89%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440040",
@@ -1082,16 +920,8 @@
       "region": "japan",
       "title": "鎌倉時代の開始",
       "description": "壇ノ浦の戦いで平氏が滅亡。源頼朝が守護・地頭の設置権を獲得し、実質的な武家政権が成立。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "火の鳥 乱世編",
-          "type": "manga",
-          "remark": "手塚治虫作。源平合戦の時代を描く",
-          "coverageStartYear": 1159,
-          "coverageEndYear": 1189,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E4%B9%B1%E4%B8%96%E7%B7%A8+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -1102,15 +932,8 @@
       "region": "japan",
       "title": "鎌倉幕府成立",
       "description": "源頼朝が征夷大将軍に任命され、鎌倉幕府が成立。日本初の武家政権。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E5%B9%95%E5%BA%9C"],
-      "media": [
-        {
-          "title": "鎌倉殿の13人",
-          "type": "anime",
-          "remark": "NHK大河ドラマ",
-          "coverageStartYear": 1160,
-          "coverageEndYear": 1224
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E5%B9%95%E5%BA%9C"
       ]
     },
     {
@@ -1121,16 +944,8 @@
       "region": "japan",
       "title": "鎌倉幕府の滅亡",
       "description": "後醍醐天皇による倒幕運動により、新田義貞が鎌倉を攻略。北条高時が自害し鎌倉幕府が滅亡。",
-      "links": ["https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E5%B9%95%E5%BA%9C"],
-      "media": [
-        {
-          "title": "逃げ上手の若君",
-          "type": "manga",
-          "remark": "松井優征作。北条時行の生涯を描く歴史スペクタクル",
-          "coverageStartYear": 1333,
-          "coverageEndYear": 1353,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%80%83%E3%81%92%E4%B8%8A%E6%89%8B%E3%81%AE%E8%8B%A5%E5%90%9B+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%8E%8C%E5%80%89%E5%B9%95%E5%BA%9C"
       ]
     },
     {
@@ -1141,8 +956,9 @@
       "region": "japan",
       "title": "建武の新政の開始",
       "description": "後醍醐天皇が親政を開始。天皇中心の政治を目指すが、武士の不満が高まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%BB%BA%E6%AD%A6%E3%81%AE%E6%96%B0%E6%94%BF"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%BB%BA%E6%AD%A6%E3%81%AE%E6%96%B0%E6%94%BF"
+      ]
     },
     {
       "id": "japan-kenmu-end",
@@ -1152,8 +968,9 @@
       "region": "japan",
       "title": "建武の新政の終了",
       "description": "足利尊氏が挙兵し、建武の新政が崩壊。南北朝時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%BB%BA%E6%AD%A6%E3%81%AE%E6%96%B0%E6%94%BF"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%BB%BA%E6%AD%A6%E3%81%AE%E6%96%B0%E6%94%BF"
+      ]
     },
     {
       "id": "japan-muromachi-start",
@@ -1163,8 +980,9 @@
       "region": "japan",
       "title": "室町時代の開始",
       "description": "足利尊氏が室町幕府を開く。北朝を擁立し、南北朝の対立が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%AE%A4%E7%94%BA%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%AE%A4%E7%94%BA%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-nanbokucho-start",
@@ -1174,8 +992,9 @@
       "region": "japan",
       "title": "南北朝時代の開始",
       "description": "後醍醐天皇が吉野に逃れ南朝を開く。京都の北朝と対立する南北朝時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E6%97%A5%E6%9C%AC)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E6%97%A5%E6%9C%AC)"
+      ]
     },
     {
       "id": "japan-nanbokucho-end",
@@ -1185,8 +1004,9 @@
       "region": "japan",
       "title": "南北朝の合一",
       "description": "足利義満の仲介により南朝が北朝に合一。約60年続いた南北朝の対立が終結。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E6%97%A5%E6%9C%AC)"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%8C%97%E6%9C%9D%E6%99%82%E4%BB%A3_(%E6%97%A5%E6%9C%AC)"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440042",
@@ -1196,24 +1016,8 @@
       "region": "japan",
       "title": "応仁の乱・戦国時代の開始",
       "description": "応仁の乱が勃発。室町幕府の権威が失墜し、各地で戦国大名が台頭する戦国時代が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E6%97%A5%E6%9C%AC)"],
-      "media": [
-        {
-          "title": "火の鳥 異形編",
-          "type": "manga",
-          "remark": "手塚治虫作。室町時代を舞台にした怪異譚",
-          "coverageStartYear": 1470,
-          "coverageEndYear": 1490,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E7%95%B0%E5%BD%A2%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "チ。―地球の運動について―",
-          "type": "manga",
-          "remark": "魚豊作。15世紀ポーランドを舞台に地動説を追う者たちを描く",
-          "coverageStartYear": 1400,
-          "coverageEndYear": 1500,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%81%E3%80%82+%E5%9C%B0%E7%90%83%E3%81%AE%E9%81%8B%E5%8B%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%88%A6%E5%9B%BD%E6%99%82%E4%BB%A3_(%E6%97%A5%E6%9C%AC)"
       ]
     },
     {
@@ -1224,8 +1028,9 @@
       "region": "japan",
       "title": "室町幕府の滅亡",
       "description": "織田信長が足利義昭を追放し、室町幕府が滅亡。約240年続いた幕府が終焉。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%AE%A4%E7%94%BA%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%AE%A4%E7%94%BA%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-azuchi-momoyama-start",
@@ -1235,8 +1040,9 @@
       "region": "japan",
       "title": "安土桃山時代の開始",
       "description": "織田信長が天下統一を目指し、安土城を築城。桃山文化が栄える。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%AE%89%E5%9C%9F%E6%A1%83%E5%B1%B1%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%AE%89%E5%9C%9F%E6%A1%83%E5%B1%B1%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440004",
@@ -1246,56 +1052,8 @@
       "region": "japan",
       "title": "桶狭間の戦い",
       "description": "織田信長が今川義元を討ち取った戦い。信長の天下布武への第一歩となる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%A1%B6%E7%8B%AD%E9%96%93%E3%81%AE%E6%88%A6%E3%81%84"],
-      "media": [
-        {
-          "title": "センゴク",
-          "type": "manga",
-          "remark": "宮下英樹作",
-          "coverageStartYear": 1560,
-          "coverageEndYear": 1600,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%BB%E3%83%B3%E3%82%B4%E3%82%AF+%E5%AE%AE%E4%B8%8B%E8%8B%B1%E6%A8%B9+Kindle"
-        },
-        {
-          "title": "花の慶次",
-          "type": "manga",
-          "remark": "隆慶一郎原作、原哲夫作画。前田慶次の生涯を描く",
-          "coverageStartYear": 1560,
-          "coverageEndYear": 1612,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E8%8A%B1%E3%81%AE%E6%85%B6%E6%AC%A1+%E5%8E%9F%E5%93%B2%E5%A4%AB+Kindle"
-        },
-        {
-          "title": "殺っちゃえ！！宇喜多さん",
-          "type": "manga",
-          "remark": "重野なおき作。宇喜多直家の生涯を描く4コマ漫画",
-          "coverageStartYear": 1529,
-          "coverageEndYear": 1582,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%AE%BA%E3%81%A3%E3%81%A1%E3%82%83%E3%81%88+%E5%AE%87%E5%96%9C%E5%A4%9A%E3%81%95%E3%82%93+Kindle"
-        },
-        {
-          "title": "へうげもの",
-          "type": "manga",
-          "remark": "山田芳裕作。古田織部を主人公に戦国の数寄者を描く",
-          "coverageStartYear": 1582,
-          "coverageEndYear": 1615,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%81%B8%E3%81%86%E3%81%92%E3%82%82%E3%81%AE+Kindle"
-        },
-        {
-          "title": "忍びの国",
-          "type": "novel",
-          "remark": "和田竜作。天正伊賀の乱を描く忍者小説",
-          "coverageStartYear": 1579,
-          "coverageEndYear": 1581,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%BF%8D%E3%81%B3%E3%81%AE%E5%9B%BD+%E5%92%8C%E7%94%B0%E7%AB%9C+Kindle"
-        },
-        {
-          "title": "覇王の家",
-          "type": "novel",
-          "remark": "司馬遼太郎作。徳川家康の生涯を描く",
-          "coverageStartYear": 1542,
-          "coverageEndYear": 1584,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E8%A6%87%E7%8E%8B%E3%81%AE%E5%AE%B6+%E5%8F%B8%E9%A6%AC%E9%81%BC%E5%A4%AA%E9%83%8E+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%A1%B6%E7%8B%AD%E9%96%93%E3%81%AE%E6%88%A6%E3%81%84"
       ]
     },
     {
@@ -1306,8 +1064,9 @@
       "region": "japan",
       "title": "安土桃山時代の終了",
       "description": "徳川家康が征夷大将軍となり、江戸幕府を開く。安土桃山時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%AE%89%E5%9C%9F%E6%A1%83%E5%B1%B1%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%AE%89%E5%9C%9F%E6%A1%83%E5%B1%B1%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "550e8400-e29b-41d4-a716-446655440043",
@@ -1317,8 +1076,9 @@
       "region": "japan",
       "title": "大坂夏の陣・戦国時代の終焉",
       "description": "大坂夏の陣で豊臣氏が滅亡。徳川幕府による天下統一が完成し、戦国時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%9D%82%E3%81%AE%E9%99%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%9D%82%E3%81%AE%E9%99%A3"
+      ]
     },
     {
       "id": "japan-edo-start",
@@ -1328,24 +1088,8 @@
       "region": "japan",
       "title": "江戸時代の開始",
       "description": "徳川家康が征夷大将軍に任命され、江戸幕府を開く。約260年続く太平の世が始まる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%88%B8%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "影武者徳川家康",
-          "type": "novel",
-          "remark": "隆慶一郎作。関ヶ原で家康が暗殺され、影武者が成り代わる物語",
-          "coverageStartYear": 1600,
-          "coverageEndYear": 1616,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%BD%B1%E6%AD%A6%E8%80%85%E5%BE%B3%E5%B7%9D%E5%AE%B6%E5%BA%B7+%E9%9A%86%E6%85%B6%E4%B8%80%E9%83%8E+Kindle"
-        },
-        {
-          "title": "シグルイ",
-          "type": "manga",
-          "remark": "山口貴由作、南條範夫原作。寛永6年駿河城御前試合を描く",
-          "coverageStartYear": 1629,
-          "coverageEndYear": 1629,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%B7%E3%82%B0%E3%83%AB%E3%82%A4+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%88%B8%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -1356,8 +1100,9 @@
       "region": "japan",
       "title": "江戸時代の終了",
       "description": "王政復古の大号令により江戸幕府が廃止。約260年続いた江戸時代が終わる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%88%B8%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%B1%9F%E6%88%B8%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-meiji-start",
@@ -1367,48 +1112,8 @@
       "region": "japan",
       "title": "明治時代の開始",
       "description": "明治維新により近代国家建設が始まる。廃藩置県や文明開化が進む。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%98%8E%E6%B2%BB%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "るろうに剣心",
-          "type": "manga",
-          "remark": "和月伸宏作。幕末から明治初期を舞台に緋村剣心を描く",
-          "coverageStartYear": 1878,
-          "coverageEndYear": 1879,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%8B%E3%82%8D%E3%81%86%E3%81%AB%E5%89%A3%E5%BF%83+Kindle"
-        },
-        {
-          "title": "燃えよ剣",
-          "type": "novel",
-          "remark": "司馬遼太郎作。新選組副長・土方歳三の生涯を描く",
-          "coverageStartYear": 1863,
-          "coverageEndYear": 1869,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%87%83%E3%81%88%E3%82%88%E5%89%A3+%E5%8F%B8%E9%A6%AC%E9%81%BC%E5%A4%AA%E9%83%8E+Kindle"
-        },
-        {
-          "title": "竜馬がゆく",
-          "type": "novel",
-          "remark": "司馬遼太郎作。幕末の志士・坂本龍馬の生涯を描く",
-          "coverageStartYear": 1853,
-          "coverageEndYear": 1867,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%AB%9C%E9%A6%AC%E3%81%8C%E3%82%86%E3%81%8F+%E5%8F%B8%E9%A6%AC%E9%81%BC%E5%A4%AA%E9%83%8E+Kindle"
-        },
-        {
-          "title": "ゴールデンカムイ",
-          "type": "manga",
-          "remark": "野田サトル作。日露戦争後の北海道を舞台にアイヌの金塊を巡る物語",
-          "coverageStartYear": 1905,
-          "coverageEndYear": 1908,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%87%E3%83%B3%E3%82%AB%E3%83%A0%E3%82%A4+Kindle"
-        },
-        {
-          "title": "松かげに憩う",
-          "type": "manga",
-          "remark": "雨瀬シオリ作。幕末の教育者・吉田松陰の生涯を描く",
-          "coverageStartYear": 1830,
-          "coverageEndYear": 1859,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%9D%BE%E3%81%8B%E3%81%92%E3%81%AB%E6%86%A9%E3%81%86+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%98%8E%E6%B2%BB%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -1419,8 +1124,9 @@
       "region": "japan",
       "title": "明治時代の終了",
       "description": "明治天皇が崩御。44年続いた明治時代が終わり、大正時代へ。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%98%8E%E6%B2%BB%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%98%8E%E6%B2%BB%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-taisho-start",
@@ -1430,16 +1136,8 @@
       "region": "japan",
       "title": "大正時代の開始",
       "description": "大正天皇が即位。大正デモクラシーと呼ばれる民主主義運動が活発化。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%AD%A3%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "鬼滅の刃",
-          "type": "manga",
-          "remark": "吾峠呼世晴作。大正時代を舞台に鬼殺隊の戦いを描く",
-          "coverageStartYear": 1912,
-          "coverageEndYear": 1916,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%AD%A3%E6%99%82%E4%BB%A3"
       ]
     },
     {
@@ -1450,8 +1148,9 @@
       "region": "japan",
       "title": "大正時代の終了",
       "description": "大正天皇が崩御。15年続いた大正時代が終わり、昭和時代へ。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%AD%A3%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%A4%A7%E6%AD%A3%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-showa-start",
@@ -1461,8 +1160,9 @@
       "region": "japan",
       "title": "昭和時代の開始",
       "description": "昭和天皇が即位。戦前・戦後を経て、高度経済成長を遂げる。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%98%AD%E5%92%8C%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%98%AD%E5%92%8C%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-showa-end",
@@ -1472,8 +1172,9 @@
       "region": "japan",
       "title": "昭和時代の終了",
       "description": "昭和天皇が崩御。64年続いた昭和時代が終わり、平成時代へ。",
-      "links": ["https://ja.wikipedia.org/wiki/%E6%98%AD%E5%92%8C%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E6%98%AD%E5%92%8C%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-heisei-start",
@@ -1483,8 +1184,9 @@
       "region": "japan",
       "title": "平成時代の開始",
       "description": "平成天皇（明仁上皇）が即位。バブル崩壊後の「失われた30年」と情報化社会の進展。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%88%90%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%88%90%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-heisei-end",
@@ -1494,8 +1196,9 @@
       "region": "japan",
       "title": "平成時代の終了",
       "description": "明仁天皇が退位（生前退位）。31年続いた平成時代が終わり、令和時代へ。",
-      "links": ["https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%88%90%E6%99%82%E4%BB%A3"],
-      "media": []
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%88%90%E6%99%82%E4%BB%A3"
+      ]
     },
     {
       "id": "japan-reiwa-start",
@@ -1505,56 +1208,634 @@
       "region": "japan",
       "title": "令和時代の開始",
       "description": "徳仁天皇が即位し、令和時代が始まる。コロナ禍を経験した新時代。",
-      "links": ["https://ja.wikipedia.org/wiki/%E4%BB%A4%E5%92%8C%E6%99%82%E4%BB%A3"],
-      "media": [
-        {
-          "title": "プロジェクト・ヘイル・メアリー",
-          "type": "novel",
-          "remark": "アンディ・ウィアー作。太陽の異変を止めるため宇宙へ旅立つ近未来SF",
-          "coverageStartYear": 2025,
-          "coverageEndYear": 2040,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%83%BB%E3%83%98%E3%82%A4%E3%83%AB%E3%83%BB%E3%83%A1%E3%82%A2%E3%83%AA%E3%83%BC+Kindle"
-        },
-        {
-          "title": "火の鳥 未来編",
-          "type": "manga",
-          "remark": "手塚治虫作。遠未来の地球滅亡と再生を描く",
-          "coverageStartYear": 3404,
-          "coverageEndYear": 3404,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E6%9C%AA%E6%9D%A5%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 宇宙編",
-          "type": "manga",
-          "remark": "手塚治虫作。宇宙を舞台にした未来の物語",
-          "coverageStartYear": 2577,
-          "coverageEndYear": 2577,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E5%AE%87%E5%AE%99%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 復活編",
-          "type": "manga",
-          "remark": "手塚治虫作。2482年と3030年を行き来する輪廻転生の物語",
-          "coverageStartYear": 2482,
-          "coverageEndYear": 3030,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E5%BE%A9%E6%B4%BB%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 望郷編",
-          "type": "manga",
-          "remark": "手塚治虫作。惑星エデンでの人類の営みを描く",
-          "coverageStartYear": 2155,
-          "coverageEndYear": 2300,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E6%9C%9B%E9%83%B7%E7%B7%A8+Kindle"
-        },
-        {
-          "title": "火の鳥 生命編",
-          "type": "manga",
-          "remark": "手塚治虫作。クローン技術と生命倫理を描く",
-          "coverageStartYear": 2155,
-          "coverageEndYear": 2155,
-          "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E7%94%9F%E5%91%BD%E7%B7%A8+Kindle"
-        }
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%BB%A4%E5%92%8C%E6%99%82%E4%BB%A3"
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "hinotori-egypt",
+      "title": "火の鳥 エジプト編",
+      "type": "manga",
+      "remark": "手塚治虫作。古代エジプトを舞台にした少女クラブ版",
+      "coverageStartYear": -1500,
+      "coverageEndYear": -1200,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%82%A8%E3%82%B8%E3%83%97%E3%83%88%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440030"
+      ]
+    },
+    {
+      "id": "houshin-engi",
+      "title": "封神演義",
+      "type": "manga",
+      "remark": "藤崎竜作。殷周革命を舞台にした神怪ファンタジー",
+      "coverageStartYear": -1100,
+      "coverageEndYear": -1046,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%B0%81%E7%A5%9E%E6%BC%94%E7%BE%A9+%E8%97%A4%E5%B4%8E%E7%AB%9C+Kindle",
+      "relatedEventIds": [
+        "china-shang-end"
+      ]
+    },
+    {
+      "id": "toushu-eiyuuden",
+      "title": "東周英雄伝",
+      "type": "manga",
+      "remark": "鄭問作。春秋戦国時代の英雄たちを描く",
+      "coverageStartYear": -770,
+      "coverageEndYear": -221,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%9D%B1%E5%91%A8%E8%8B%B1%E9%9B%84%E4%BC%9D+%E9%84%AD%E5%95%8F+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440010"
+      ]
+    },
+    {
+      "id": "buddha",
+      "title": "ブッダ",
+      "type": "manga",
+      "remark": "手塚治虫作。釈迦の生涯を描く大長編",
+      "coverageStartYear": -566,
+      "coverageEndYear": -486,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%96%E3%83%83%E3%83%80+%E6%89%8B%E5%A1%9A%E6%B2%BB%E8%99%AB+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440030"
+      ]
+    },
+    {
+      "id": "hinotori-greece",
+      "title": "火の鳥 ギリシャ編",
+      "type": "manga",
+      "remark": "手塚治虫作。古代ギリシャを舞台にした少女クラブ版",
+      "coverageStartYear": -500,
+      "coverageEndYear": -400,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%82%AE%E3%83%AA%E3%82%B7%E3%83%A3%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440030"
+      ]
+    },
+    {
+      "id": "shiki",
+      "title": "史記",
+      "type": "manga",
+      "remark": "横山光輝作。司馬遷の史記を漫画化",
+      "coverageStartYear": -403,
+      "coverageEndYear": -91,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%8F%B2%E8%A8%98+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440011"
+      ]
+    },
+    {
+      "id": "meijin-den",
+      "title": "名人伝",
+      "type": "novel",
+      "remark": "中島敦作。列子を原典とした弓の名人の物語",
+      "coverageStartYear": -400,
+      "coverageEndYear": -350,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%90%8D%E4%BA%BA%E4%BC%9D+%E4%B8%AD%E5%B3%B6%E6%95%A6+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440011"
+      ]
+    },
+    {
+      "id": "tatsujin-den",
+      "title": "達人伝",
+      "type": "manga",
+      "remark": "王欣太作。荘子を主人公に戦国時代を描く",
+      "coverageStartYear": -369,
+      "coverageEndYear": -286,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%81%94%E4%BA%BA%E4%BC%9D+%E7%8E%8B%E6%AC%A3%E5%A4%AA+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440011"
+      ]
+    },
+    {
+      "id": "historie",
+      "title": "ヒストリエ",
+      "type": "manga",
+      "remark": "岩明均作。マケドニアのエウメネスの生涯を描く",
+      "coverageStartYear": -362,
+      "coverageEndYear": -316,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%92%E3%82%B9%E3%83%88%E3%83%AA%E3%82%A8+%E5%B2%A9%E6%98%8E%E5%9D%87+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440030"
+      ]
+    },
+    {
+      "id": "bokkou",
+      "title": "墨攻",
+      "type": "manga",
+      "remark": "森秀樹作、酒見賢一原作。墨家の守城術と秦の統一戦争を描く",
+      "coverageStartYear": -260,
+      "coverageEndYear": -221,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%A2%A8%E6%94%BB+%E6%A3%AE%E7%A7%80%E6%A8%B9+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440011"
+      ]
+    },
+    {
+      "id": "kingdom",
+      "title": "キングダム",
+      "type": "manga",
+      "remark": "原泰久作。秦の始皇帝の中国統一を描く",
+      "coverageStartYear": -259,
+      "coverageEndYear": -221,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%AD%E3%83%B3%E3%82%B0%E3%83%80%E3%83%A0+%E5%8E%9F%E6%B3%B0%E4%B9%85+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440011"
+      ]
+    },
+    {
+      "id": "kouu-to-ryuuhou",
+      "title": "項羽と劉邦",
+      "type": "manga",
+      "remark": "横山光輝作",
+      "coverageStartYear": -232,
+      "coverageEndYear": -195,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%A0%85%E7%BE%BD%E3%81%A8%E5%8A%89%E9%82%A6+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440001"
+      ]
+    },
+    {
+      "id": "ad-astra",
+      "title": "アド・アストラ",
+      "type": "manga",
+      "remark": "カガノミハチ作。第二次ポエニ戦争、スキピオとハンニバルを描く",
+      "coverageStartYear": -218,
+      "coverageEndYear": -201,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%A2%E3%83%89%E3%83%BB%E3%82%A2%E3%82%B9%E3%83%88%E3%83%A9+%E3%82%AB%E3%82%AC%E3%83%8E%E3%83%9F%E3%83%8F%E3%83%81+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440030"
+      ]
+    },
+    {
+      "id": "heureka",
+      "title": "ヘウレーカ",
+      "type": "manga",
+      "remark": "岩明均作。シラクサ包囲戦とアルキメデスを描く",
+      "coverageStartYear": -214,
+      "coverageEndYear": -212,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%98%E3%82%A6%E3%83%AC%E3%83%BC%E3%82%AB+%E5%B2%A9%E6%98%8E%E5%9D%87+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440030"
+      ]
+    },
+    {
+      "id": "hinotori-rome",
+      "title": "火の鳥 ローマ編",
+      "type": "manga",
+      "remark": "手塚治虫作。古代ローマを舞台にした少女クラブ版",
+      "coverageStartYear": -100,
+      "coverageEndYear": 100,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%83%AD%E3%83%BC%E3%83%9E%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440030"
+      ]
+    },
+    {
+      "id": "thermae-romae",
+      "title": "テルマエ・ロマエ",
+      "type": "manga",
+      "remark": "ヤマザキマリ作。ハドリアヌス帝時代を描く",
+      "coverageStartYear": 117,
+      "coverageEndYear": 138,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%86%E3%83%AB%E3%83%9E%E3%82%A8%E3%83%BB%E3%83%AD%E3%83%9E%E3%82%A8+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440012"
+      ]
+    },
+    {
+      "id": "souten-kouro",
+      "title": "蒼天航路",
+      "type": "manga",
+      "remark": "王欣太作",
+      "coverageStartYear": 155,
+      "coverageEndYear": 220,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E8%92%BC%E5%A4%A9%E8%88%AA%E8%B7%AF+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440024"
+      ]
+    },
+    {
+      "id": "sangokushi",
+      "title": "三国志",
+      "type": "manga",
+      "remark": "横山光輝作",
+      "coverageStartYear": 184,
+      "coverageEndYear": 280,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E4%B8%89%E5%9B%BD%E5%BF%97+%E6%A8%AA%E5%B1%B1%E5%85%89%E8%BC%9D+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440024"
+      ]
+    },
+    {
+      "id": "hinotori-reimei",
+      "title": "火の鳥 黎明編",
+      "type": "manga",
+      "remark": "手塚治虫作。邪馬台国時代を舞台に永遠の命を求める物語",
+      "coverageStartYear": 240,
+      "coverageEndYear": 270,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E9%BB%8E%E6%98%8E%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-kofun-start"
+      ]
+    },
+    {
+      "id": "hinotori-yamato",
+      "title": "火の鳥 ヤマト編",
+      "type": "manga",
+      "remark": "手塚治虫作。ヤマトタケルの時代を描く",
+      "coverageStartYear": 350,
+      "coverageEndYear": 400,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E3%83%A4%E3%83%9E%E3%83%88%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-kofun-start"
+      ]
+    },
+    {
+      "id": "hinotori-taiyo",
+      "title": "火の鳥 太陽編",
+      "type": "manga",
+      "remark": "手塚治虫作。白村江の戦い前後と未来を描く二重構造",
+      "coverageStartYear": 661,
+      "coverageEndYear": 672,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E5%A4%AA%E9%99%BD%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-asuka-taika"
+      ]
+    },
+    {
+      "id": "hinotori-houou",
+      "title": "火の鳥 鳳凰編",
+      "type": "manga",
+      "remark": "手塚治虫作。奈良時代の仏師我王と茜丸の物語",
+      "coverageStartYear": 720,
+      "coverageEndYear": 760,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E9%B3%B3%E5%87%B0%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-nara-start"
+      ]
+    },
+    {
+      "id": "sangetsuki",
+      "title": "山月記",
+      "type": "novel",
+      "remark": "中島敦作。唐代天宝年間、虎に変じた詩人李徴の物語",
+      "coverageStartYear": 740,
+      "coverageEndYear": 756,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%B1%B1%E6%9C%88%E8%A8%98+%E4%B8%AD%E5%B3%B6%E6%95%A6+Kindle",
+      "relatedEventIds": [
+        "china-tang-start"
+      ]
+    },
+    {
+      "id": "hinotori-hagoromo",
+      "title": "火の鳥 羽衣編",
+      "type": "manga",
+      "remark": "手塚治虫作。天女伝説をモチーフにした平安時代中期の物語",
+      "coverageStartYear": 950,
+      "coverageEndYear": 1000,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E7%BE%BD%E8%A1%A3%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-nara-start"
+      ]
+    },
+    {
+      "id": "asaki-yumemishi",
+      "title": "あさきゆめみし",
+      "type": "manga",
+      "remark": "大和和紀作。源氏物語を漫画化した平安絵巻",
+      "coverageStartYear": 970,
+      "coverageEndYear": 1020,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%81%82%E3%81%95%E3%81%8D%E3%82%86%E3%82%81%E3%81%BF%E3%81%97+%E5%A4%A7%E5%92%8C%E5%92%8C%E7%B4%80+Kindle",
+      "relatedEventIds": [
+        "japan-heian-start"
+      ]
+    },
+    {
+      "id": "warawa-no-kami",
+      "title": "童の神",
+      "type": "manga",
+      "remark": "今村翔吾原作、深谷陽作画。酒呑童子伝説を基にした平安時代の物語",
+      "coverageStartYear": 990,
+      "coverageEndYear": 1020,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%AB%A5%E3%81%AE%E7%A5%9E+%E6%BC%AB%E7%94%BB+Kindle",
+      "relatedEventIds": [
+        "japan-heian-start"
+      ]
+    },
+    {
+      "id": "hinotori-ransei",
+      "title": "火の鳥 乱世編",
+      "type": "manga",
+      "remark": "手塚治虫作。源平合戦の時代を描く",
+      "coverageStartYear": 1159,
+      "coverageEndYear": 1189,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E4%B9%B1%E4%B8%96%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440040"
+      ]
+    },
+    {
+      "id": "nige-jouzu-no-wakagimi",
+      "title": "逃げ上手の若君",
+      "type": "manga",
+      "remark": "松井優征作。北条時行の生涯を描く歴史スペクタクル",
+      "coverageStartYear": 1333,
+      "coverageEndYear": 1353,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%80%83%E3%81%92%E4%B8%8A%E6%89%8B%E3%81%AE%E8%8B%A5%E5%90%9B+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440041"
+      ]
+    },
+    {
+      "id": "chi-chikyu-no-undou",
+      "title": "チ。―地球の運動について―",
+      "type": "manga",
+      "remark": "魚豊作。15世紀ポーランドを舞台に地動説を追う者たちを描く",
+      "coverageStartYear": 1400,
+      "coverageEndYear": 1500,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%81%E3%80%82+%E5%9C%B0%E7%90%83%E3%81%AE%E9%81%8B%E5%8B%95%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440042"
+      ]
+    },
+    {
+      "id": "hinotori-igyou",
+      "title": "火の鳥 異形編",
+      "type": "manga",
+      "remark": "手塚治虫作。室町時代を舞台にした怪異譚",
+      "coverageStartYear": 1470,
+      "coverageEndYear": 1490,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E7%95%B0%E5%BD%A2%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440042"
+      ]
+    },
+    {
+      "id": "yacchaue-ukita-san",
+      "title": "殺っちゃえ！！宇喜多さん",
+      "type": "manga",
+      "remark": "重野なおき作。宇喜多直家の生涯を描く4コマ漫画",
+      "coverageStartYear": 1529,
+      "coverageEndYear": 1582,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%AE%BA%E3%81%A3%E3%81%A1%E3%82%83%E3%81%88+%E5%AE%87%E5%96%9C%E5%A4%9A%E3%81%95%E3%82%93+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ]
+    },
+    {
+      "id": "haou-no-ie",
+      "title": "覇王の家",
+      "type": "novel",
+      "remark": "司馬遼太郎作。徳川家康の生涯を描く",
+      "coverageStartYear": 1542,
+      "coverageEndYear": 1584,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E8%A6%87%E7%8E%8B%E3%81%AE%E5%AE%B6+%E5%8F%B8%E9%A6%AC%E9%81%BC%E5%A4%AA%E9%83%8E+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ]
+    },
+    {
+      "id": "sengoku",
+      "title": "センゴク",
+      "type": "manga",
+      "remark": "宮下英樹作",
+      "coverageStartYear": 1560,
+      "coverageEndYear": 1600,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%BB%E3%83%B3%E3%82%B4%E3%82%AF+%E5%AE%AE%E4%B8%8B%E8%8B%B1%E6%A8%B9+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ]
+    },
+    {
+      "id": "hana-no-keiji",
+      "title": "花の慶次",
+      "type": "manga",
+      "remark": "隆慶一郎原作、原哲夫作画。前田慶次の生涯を描く",
+      "coverageStartYear": 1560,
+      "coverageEndYear": 1612,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E8%8A%B1%E3%81%AE%E6%85%B6%E6%AC%A1+%E5%8E%9F%E5%93%B2%E5%A4%AB+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ]
+    },
+    {
+      "id": "shinobi-no-kuni",
+      "title": "忍びの国",
+      "type": "novel",
+      "remark": "和田竜作。天正伊賀の乱を描く忍者小説",
+      "coverageStartYear": 1579,
+      "coverageEndYear": 1581,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%BF%8D%E3%81%B3%E3%81%AE%E5%9B%BD+%E5%92%8C%E7%94%B0%E7%AB%9C+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ]
+    },
+    {
+      "id": "hyouge-mono",
+      "title": "へうげもの",
+      "type": "manga",
+      "remark": "山田芳裕作。古田織部を主人公に戦国の数寄者を描く",
+      "coverageStartYear": 1582,
+      "coverageEndYear": 1615,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%81%B8%E3%81%86%E3%81%92%E3%82%82%E3%81%AE+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440004"
+      ]
+    },
+    {
+      "id": "kagemusha-tokugawa",
+      "title": "影武者徳川家康",
+      "type": "novel",
+      "remark": "隆慶一郎作。関ヶ原で家康が暗殺され、影武者が成り代わる物語",
+      "coverageStartYear": 1600,
+      "coverageEndYear": 1616,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%BD%B1%E6%AD%A6%E8%80%85%E5%BE%B3%E5%B7%9D%E5%AE%B6%E5%BA%B7+%E9%9A%86%E6%85%B6%E4%B8%80%E9%83%8E+Kindle",
+      "relatedEventIds": [
+        "japan-edo-start"
+      ]
+    },
+    {
+      "id": "shigurui",
+      "title": "シグルイ",
+      "type": "manga",
+      "remark": "山口貴由作、南條範夫原作。寛永6年駿河城御前試合を描く",
+      "coverageStartYear": 1629,
+      "coverageEndYear": 1629,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%B7%E3%82%B0%E3%83%AB%E3%82%A4+Kindle",
+      "relatedEventIds": [
+        "japan-edo-start"
+      ]
+    },
+    {
+      "id": "versailles-no-bara",
+      "title": "ベルサイユのばら",
+      "type": "manga",
+      "remark": "池田理代子作。フランス革命前夜のベルサイユ宮殿を舞台にオスカルとマリー・アントワネットを描く",
+      "coverageStartYear": 1755,
+      "coverageEndYear": 1793,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%99%E3%83%AB%E3%82%B5%E3%82%A4%E3%83%A6%E3%81%AE%E3%81%B0%E3%82%89+Kindle",
+      "relatedEventIds": [
+        "europe-french-revolution"
+      ]
+    },
+    {
+      "id": "matsukage-ni-ikou",
+      "title": "松かげに憩う",
+      "type": "manga",
+      "remark": "雨瀬シオリ作。幕末の教育者・吉田松陰の生涯を描く",
+      "coverageStartYear": 1830,
+      "coverageEndYear": 1859,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%9D%BE%E3%81%8B%E3%81%92%E3%81%AB%E6%86%A9%E3%81%86+Kindle",
+      "relatedEventIds": [
+        "japan-meiji-start"
+      ]
+    },
+    {
+      "id": "ryouma-ga-yuku",
+      "title": "竜馬がゆく",
+      "type": "novel",
+      "remark": "司馬遼太郎作。幕末の志士・坂本龍馬の生涯を描く",
+      "coverageStartYear": 1853,
+      "coverageEndYear": 1867,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%AB%9C%E9%A6%AC%E3%81%8C%E3%82%86%E3%81%8F+%E5%8F%B8%E9%A6%AC%E9%81%BC%E5%A4%AA%E9%83%8E+Kindle",
+      "relatedEventIds": [
+        "japan-meiji-start"
+      ]
+    },
+    {
+      "id": "moeyo-ken",
+      "title": "燃えよ剣",
+      "type": "novel",
+      "remark": "司馬遼太郎作。新選組副長・土方歳三の生涯を描く",
+      "coverageStartYear": 1863,
+      "coverageEndYear": 1869,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%87%83%E3%81%88%E3%82%88%E5%89%A3+%E5%8F%B8%E9%A6%AC%E9%81%BC%E5%A4%AA%E9%83%8E+Kindle",
+      "relatedEventIds": [
+        "japan-meiji-start"
+      ]
+    },
+    {
+      "id": "rurouni-kenshin",
+      "title": "るろうに剣心",
+      "type": "manga",
+      "remark": "和月伸宏作。幕末から明治初期を舞台に緋村剣心を描く",
+      "coverageStartYear": 1878,
+      "coverageEndYear": 1879,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%8B%E3%82%8D%E3%81%86%E3%81%AB%E5%89%A3%E5%BF%83+Kindle",
+      "relatedEventIds": [
+        "japan-meiji-start"
+      ]
+    },
+    {
+      "id": "golden-kamuy",
+      "title": "ゴールデンカムイ",
+      "type": "manga",
+      "remark": "野田サトル作。日露戦争後の北海道を舞台にアイヌの金塊を巡る物語",
+      "coverageStartYear": 1905,
+      "coverageEndYear": 1908,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%87%E3%83%B3%E3%82%AB%E3%83%A0%E3%82%A4+Kindle",
+      "relatedEventIds": [
+        "japan-meiji-start"
+      ]
+    },
+    {
+      "id": "kimetsu-no-yaiba",
+      "title": "鬼滅の刃",
+      "type": "manga",
+      "remark": "吾峠呼世晴作。大正時代を舞台に鬼殺隊の戦いを描く",
+      "coverageStartYear": 1912,
+      "coverageEndYear": 1916,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%AC%BC%E6%BB%85%E3%81%AE%E5%88%83+Kindle",
+      "relatedEventIds": [
+        "japan-taisho-start"
+      ]
+    },
+    {
+      "id": "three-body",
+      "title": "三体",
+      "type": "novel",
+      "remark": "劉慈欣作。文化大革命から始まり、宇宙規模の物語へ発展する壮大なSF",
+      "coverageStartYear": 1967,
+      "coverageEndYear": 2400,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E4%B8%89%E4%BD%93+%E5%8A%89%E6%85%88%E6%AC%A3+Kindle",
+      "relatedEventIds": [
+        "china-cultural-revolution"
+      ]
+    },
+    {
+      "id": "project-hail-mary",
+      "title": "プロジェクト・ヘイル・メアリー",
+      "type": "novel",
+      "remark": "アンディ・ウィアー作。太陽の異変を止めるため宇宙へ旅立つ近未来SF",
+      "coverageStartYear": 2025,
+      "coverageEndYear": 2040,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%83%BB%E3%83%98%E3%82%A4%E3%83%AB%E3%83%BB%E3%83%A1%E3%82%A2%E3%83%AA%E3%83%BC+Kindle",
+      "relatedEventIds": [
+        "japan-reiwa-start"
+      ]
+    },
+    {
+      "id": "hinotori-boukyou",
+      "title": "火の鳥 望郷編",
+      "type": "manga",
+      "remark": "手塚治虫作。惑星エデンでの人類の営みを描く",
+      "coverageStartYear": 2155,
+      "coverageEndYear": 2300,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E6%9C%9B%E9%83%B7%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-reiwa-start"
+      ]
+    },
+    {
+      "id": "hinotori-seimei",
+      "title": "火の鳥 生命編",
+      "type": "manga",
+      "remark": "手塚治虫作。クローン技術と生命倫理を描く",
+      "coverageStartYear": 2155,
+      "coverageEndYear": 2155,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E7%94%9F%E5%91%BD%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-reiwa-start"
+      ]
+    },
+    {
+      "id": "hinotori-fukkatsu",
+      "title": "火の鳥 復活編",
+      "type": "manga",
+      "remark": "手塚治虫作。2482年と3030年を行き来する輪廻転生の物語",
+      "coverageStartYear": 2482,
+      "coverageEndYear": 3030,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E5%BE%A9%E6%B4%BB%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-reiwa-start"
+      ]
+    },
+    {
+      "id": "hinotori-uchu",
+      "title": "火の鳥 宇宙編",
+      "type": "manga",
+      "remark": "手塚治虫作。宇宙を舞台にした未来の物語",
+      "coverageStartYear": 2577,
+      "coverageEndYear": 2577,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E5%AE%87%E5%AE%99%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-reiwa-start"
+      ]
+    },
+    {
+      "id": "hinotori-mirai",
+      "title": "火の鳥 未来編",
+      "type": "manga",
+      "remark": "手塚治虫作。遠未来の地球滅亡と再生を描く",
+      "coverageStartYear": 3404,
+      "coverageEndYear": 3404,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%81%AB%E3%81%AE%E9%B3%A5+%E6%9C%AA%E6%9D%A5%E7%B7%A8+Kindle",
+      "relatedEventIds": [
+        "japan-reiwa-start"
       ]
     }
   ]
