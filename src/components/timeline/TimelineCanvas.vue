@@ -368,15 +368,6 @@ const getMediaLaneY = (index: number) => {
 
           <!-- 国別時代レーン -->
           <g v-for="group in regionEraGroups" :key="group.region">
-            <!-- 国名ラベル -->
-            <text
-              :x="10"
-              :y="(regionHeights[group.region]?.startY ?? 24) + 16"
-              class="fill-gray-600 text-xs font-bold"
-              :style="{ transform: `scaleX(${1 / scale})`, transformOrigin: `10px ${(regionHeights[group.region]?.startY ?? 24) + 16}px` }"
-            >
-              {{ group.regionLabel }}
-            </text>
             <!-- 時代レーン -->
             <EraLane
               v-for="lane in group.lanes"
@@ -447,6 +438,18 @@ const getMediaLaneY = (index: number) => {
 
         <!-- セクションラベル（固定位置、transformの外） -->
         <g class="section-labels">
+          <!-- 国名ラベル -->
+          <g v-for="group in regionEraGroups" :key="`label-${group.region}`">
+            <rect x="0" :y="(regionHeights[group.region]?.startY ?? 24)" width="50" height="20" fill="white" />
+            <text
+              x="8"
+              :y="(regionHeights[group.region]?.startY ?? 24) + 16"
+              class="fill-gray-600 text-xs font-bold"
+            >
+              {{ group.regionLabel }}
+            </text>
+          </g>
+
           <!-- イベントラベル -->
           <g v-if="showEvents">
             <rect x="0" :y="getMarkerLaneY(0) - 16" width="80" height="20" fill="white" />
