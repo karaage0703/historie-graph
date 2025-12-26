@@ -1431,6 +1431,38 @@
   ],
   "media": [
     {
+      "id": "kojiki",
+      "title": "古事記",
+      "type": "classic",
+      "remark": "日本最古の歴史書。天地開闢から推古天皇までの神話・伝説・歴史を記す",
+      "coverageStartYear": -14000,
+      "coverageEndYear": 628,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E5%8F%A4%E4%BA%8B%E8%A8%98+Kindle",
+      "relatedEventIds": [
+        "japan-jomon-start"
+      ]
+    },
+    {
+      "id": "old-testament",
+      "title": "旧約聖書",
+      "type": "classic",
+      "remark": "ユダヤ教・キリスト教の聖典。天地創造からバビロン捕囚後までを記す",
+      "coverageStartYear": -4000,
+      "coverageEndYear": -400,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%97%A7%E7%B4%84%E8%81%96%E6%9B%B8+Kindle",
+      "relatedEventIds": []
+    },
+    {
+      "id": "new-testament",
+      "title": "新約聖書",
+      "type": "classic",
+      "remark": "キリスト教の聖典。イエス・キリストの生涯と初代教会の歴史を記す",
+      "coverageStartYear": -4,
+      "coverageEndYear": 100,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%96%B0%E7%B4%84%E8%81%96%E6%9B%B8+Kindle",
+      "relatedEventIds": []
+    },
+    {
       "id": "hinotori-egypt",
       "title": "火の鳥 エジプト編",
       "type": "manga",
