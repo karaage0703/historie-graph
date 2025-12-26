@@ -649,6 +649,54 @@
       ]
     },
     {
+      "id": "europe-ancient-greece-start",
+      "year": -800,
+      "yearDisplay": "前800年頃",
+      "era": "古代ギリシャ",
+      "region": "europe",
+      "title": "古代ギリシャ・ポリスの成立",
+      "description": "アテネ、スパルタなどのポリス（都市国家）が成立。民主政治や哲学の発祥地となる。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%8F%A4%E4%BB%A3%E3%82%AE%E3%83%AA%E3%82%B7%E3%82%A2"
+      ]
+    },
+    {
+      "id": "europe-ancient-greece-end",
+      "year": -338,
+      "yearDisplay": "前338年",
+      "era": "古代ギリシャ",
+      "region": "europe",
+      "title": "古代ギリシャの終焉",
+      "description": "カイロネイアの戦いでマケドニアがギリシャ諸ポリスを制圧。ギリシャの独立時代が終わる。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%A4%E3%83%AD%E3%83%8D%E3%82%A4%E3%82%A2%E3%81%AE%E6%88%A6%E3%81%84"
+      ]
+    },
+    {
+      "id": "europe-hellenism-start",
+      "year": -323,
+      "yearDisplay": "前323年",
+      "era": "ヘレニズム時代",
+      "region": "europe",
+      "title": "ヘレニズム時代の開始",
+      "description": "アレクサンドロス大王の死後、後継者たちによる王国が分立。ギリシャ文化が東方に広がる。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%98%E3%83%AC%E3%83%8B%E3%82%BA%E3%83%A0"
+      ]
+    },
+    {
+      "id": "europe-hellenism-end",
+      "year": -30,
+      "yearDisplay": "前30年",
+      "era": "ヘレニズム時代",
+      "region": "europe",
+      "title": "ヘレニズム時代の終焉",
+      "description": "プトレマイオス朝エジプトがローマに征服され、ヘレニズム諸王国が終焉。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%98%E3%83%AC%E3%83%8B%E3%82%BA%E3%83%A0"
+      ]
+    },
+    {
       "id": "550e8400-e29b-41d4-a716-446655440030",
       "year": -509,
       "yearDisplay": "前509年",
@@ -721,6 +769,54 @@
       ]
     },
     {
+      "id": "europe-medieval-start",
+      "year": 476,
+      "yearDisplay": "476年",
+      "era": "中世ヨーロッパ",
+      "region": "europe",
+      "title": "中世ヨーロッパの開始",
+      "description": "西ローマ帝国の滅亡により中世が始まる。封建制度とキリスト教が社会の基盤となる。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E4%B8%AD%E4%B8%96%E3%83%A8%E3%83%BC%E3%83%AD%E3%83%83%E3%83%91"
+      ]
+    },
+    {
+      "id": "europe-medieval-end",
+      "year": 1453,
+      "yearDisplay": "1453年",
+      "era": "中世ヨーロッパ",
+      "region": "europe",
+      "title": "中世ヨーロッパの終焉",
+      "description": "東ローマ帝国（ビザンツ帝国）がオスマン帝国に滅ぼされる。ルネサンスへの転換期。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%86%E3%82%A3%E3%83%8E%E3%83%BC%E3%83%97%E3%83%AB%E3%81%AE%E9%99%A5%E8%90%BD"
+      ]
+    },
+    {
+      "id": "europe-renaissance-start",
+      "year": 1400,
+      "yearDisplay": "1400年頃",
+      "era": "ルネサンス",
+      "region": "europe",
+      "title": "ルネサンスの開始",
+      "description": "イタリアを中心に古代ギリシャ・ローマの文化復興運動が始まる。芸術・科学・思想が大きく発展。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%8D%E3%82%B5%E3%83%B3%E3%82%B9"
+      ]
+    },
+    {
+      "id": "europe-renaissance-end",
+      "year": 1600,
+      "yearDisplay": "1600年頃",
+      "era": "ルネサンス",
+      "region": "europe",
+      "title": "ルネサンスの終焉",
+      "description": "宗教改革や宗教戦争の影響でルネサンスが終わり、バロック時代へ移行。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%8D%E3%82%B5%E3%83%B3%E3%82%B9"
+      ]
+    },
+    {
       "id": "europe-french-revolution",
       "year": 1789,
       "yearDisplay": "1789年",
@@ -730,6 +826,54 @@
       "description": "バスティーユ牢獄襲撃により勃発。絶対王政が崩壊し、近代市民社会の幕開けとなる。",
       "links": [
         "https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9%E9%9D%A9%E5%91%BD"
+      ]
+    },
+    {
+      "id": "middle-east-achaemenid-start",
+      "year": -550,
+      "yearDisplay": "前550年頃",
+      "era": "アケメネス朝ペルシャ",
+      "region": "middle_east",
+      "title": "アケメネス朝ペルシャの成立",
+      "description": "キュロス2世がメディア王国を征服し、アケメネス朝ペルシャ帝国を建国。史上初の世界帝国。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B1%E3%83%A1%E3%83%8D%E3%82%B9%E6%9C%9D"
+      ]
+    },
+    {
+      "id": "middle-east-achaemenid-end",
+      "year": -330,
+      "yearDisplay": "前330年",
+      "era": "アケメネス朝ペルシャ",
+      "region": "middle_east",
+      "title": "アケメネス朝ペルシャの滅亡",
+      "description": "アレクサンドロス大王の東征により、ダレイオス3世が敗北。約220年続いた大帝国が滅亡。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%B1%E3%83%A1%E3%83%8D%E3%82%B9%E6%9C%9D"
+      ]
+    },
+    {
+      "id": "middle-east-sassanid-start",
+      "year": 224,
+      "yearDisplay": "224年",
+      "era": "ササン朝ペルシャ",
+      "region": "middle_east",
+      "title": "ササン朝ペルシャの成立",
+      "description": "アルダシール1世がパルティアを倒し、ササン朝ペルシャを建国。ゾロアスター教を国教とする。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%B5%E3%83%B3%E6%9C%9D"
+      ]
+    },
+    {
+      "id": "middle-east-sassanid-end",
+      "year": 651,
+      "yearDisplay": "651年",
+      "era": "ササン朝ペルシャ",
+      "region": "middle_east",
+      "title": "ササン朝ペルシャの滅亡",
+      "description": "アラブ・イスラーム軍の征服により、ヤズデギルド3世が殺害され、ササン朝が滅亡。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%B5%E3%83%B3%E6%9C%9D"
       ]
     },
     {
@@ -754,6 +898,78 @@
       "description": "第4代カリフ・アリーの暗殺により正統カリフ時代が終了。ウマイヤ朝が成立。",
       "links": [
         "https://ja.wikipedia.org/wiki/%E6%AD%A3%E7%B5%B1%E3%82%AB%E3%83%AA%E3%83%95"
+      ]
+    },
+    {
+      "id": "middle-east-umayyad-start",
+      "year": 661,
+      "yearDisplay": "661年",
+      "era": "ウマイヤ朝",
+      "region": "middle_east",
+      "title": "ウマイヤ朝の成立",
+      "description": "ムアーウィヤがカリフに即位し、ウマイヤ朝が成立。ダマスクスを首都とする。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%83%9E%E3%82%A4%E3%83%A4%E6%9C%9D"
+      ]
+    },
+    {
+      "id": "middle-east-umayyad-end",
+      "year": 750,
+      "yearDisplay": "750年",
+      "era": "ウマイヤ朝",
+      "region": "middle_east",
+      "title": "ウマイヤ朝の滅亡",
+      "description": "アッバース革命によりウマイヤ朝が滅亡。一族はイベリア半島に逃れ後ウマイヤ朝を建国。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%83%9E%E3%82%A4%E3%83%A4%E6%9C%9D"
+      ]
+    },
+    {
+      "id": "middle-east-abbasid-start",
+      "year": 750,
+      "yearDisplay": "750年",
+      "era": "アッバース朝",
+      "region": "middle_east",
+      "title": "アッバース朝の成立",
+      "description": "アブー・アル＝アッバースがカリフに即位。バグダードを首都とし、イスラーム文化の黄金時代を築く。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%83%E3%83%90%E3%83%BC%E3%82%B9%E6%9C%9D"
+      ]
+    },
+    {
+      "id": "middle-east-abbasid-end",
+      "year": 1258,
+      "yearDisplay": "1258年",
+      "era": "アッバース朝",
+      "region": "middle_east",
+      "title": "アッバース朝の滅亡",
+      "description": "モンゴル帝国のフレグによりバグダードが陥落。約500年続いたアッバース朝が滅亡。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%83%E3%83%90%E3%83%BC%E3%82%B9%E6%9C%9D"
+      ]
+    },
+    {
+      "id": "middle-east-ottoman-start",
+      "year": 1299,
+      "yearDisplay": "1299年",
+      "era": "オスマン帝国",
+      "region": "middle_east",
+      "title": "オスマン帝国の成立",
+      "description": "オスマン1世がアナトリアで建国。後にビザンツ帝国を滅ぼし、三大陸にまたがる大帝国となる。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%B9%E3%83%9E%E3%83%B3%E5%B8%9D%E5%9B%BD"
+      ]
+    },
+    {
+      "id": "middle-east-ottoman-end",
+      "year": 1922,
+      "yearDisplay": "1922年",
+      "era": "オスマン帝国",
+      "region": "middle_east",
+      "title": "オスマン帝国の滅亡",
+      "description": "第一次世界大戦後、トルコ革命によりスルタン制が廃止され、600年以上続いたオスマン帝国が滅亡。",
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%B9%E3%83%9E%E3%83%B3%E5%B8%9D%E5%9B%BD"
       ]
     },
     {
