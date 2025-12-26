@@ -108,6 +108,9 @@ export function useTimeline(
         (e) => e.region === region && e.era === era
       )
 
+      // フィルタ済みイベントがない場合はレーン自体をスキップ
+      if (filteredEraEvents.length === 0) return
+
       lanes.push({
         era,
         region,
