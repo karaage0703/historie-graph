@@ -2,6 +2,8 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { X, BookOpen, ExternalLink } from 'lucide-vue-next'
 import { useAffiliateLink } from '@/composables/useAffiliateLink'
+import MediaBadge from '@/components/MediaBadge.vue'
+import type { MediaItem } from '@/types'
 import type {
   EraLaneData,
   PersonLaneData,
@@ -15,6 +17,7 @@ const props = defineProps<{
   data: unknown
   x: number
   y: number
+  allMedia?: MediaItem[]
 }>()
 
 const emit = defineEmits<{
@@ -42,6 +45,18 @@ const kindleUrl = computed(() => {
   if (!isMedia.value || !mediaData.value?.media.kindleUrl) return null
   return generateAffiliateUrl(mediaData.value.media.kindleUrl)
 })
+
+// イベントに関連するメディアを取得
+const relatedMedia = computed(() => {
+  if (!isEvent.value || !eventData.value || !props.allMedia) return []
+  return props.allMedia.filter((m) => m.relatedEventIds.includes(eventData.value!.id))
+})
+
+// 特定のイベントIDに関連するメディアを取得
+const getRelatedMediaForEvent = (eventId: string) => {
+  if (!props.allMedia) return []
+  return props.allMedia.filter((m) => m.relatedEventIds.includes(eventId))
+}
 
 // 年の表示
 const formatYear = (year: number) => {
@@ -117,7 +132,7 @@ onUnmounted(() => {
 
     <!-- 時代の詳細 -->
     <template v-if="isEra && eraData">
-      <div class="space-y-1 text-sm text-gray-600">
+      <div class="space-y-2 text-sm text-gray-600">
         <p>
           <span class="font-medium">期間:</span>
           {{ formatYear(eraData.startYear) }} 〜 {{ formatYear(eraData.endYear) }}
@@ -126,10 +141,29 @@ onUnmounted(() => {
           <span class="font-medium">継続年数:</span>
           {{ eraData.duration }}年
         </p>
-        <p>
-          <span class="font-medium">イベント数:</span>
-          {{ eraData.events.length }}件
-        </p>
+
+        <!-- イベント一覧 -->
+        <div v-if="eraData.events.length > 0" class="pt-2 border-t border-gray-100">
+          <p class="font-medium text-gray-900 mb-1.5">イベント ({{ eraData.events.length }}件):</p>
+          <ul class="space-y-2 max-h-48 overflow-y-auto">
+            <li v-for="event in eraData.events" :key="event.id">
+              <div class="text-xs">
+                <span class="text-gray-500">{{ event.yearDisplay }}</span>
+                <span class="ml-1 font-medium">{{ event.title }}</span>
+              </div>
+              <div v-if="getRelatedMediaForEvent(event.id).length > 0" class="flex flex-wrap gap-1 mt-1">
+                <MediaBadge
+                  v-for="media in getRelatedMediaForEvent(event.id)"
+                  :key="media.id"
+                  :type="media.type"
+                  :title="media.title"
+                  :remark="media.remark"
+                  :kindle-url="media.kindleUrl"
+                />
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </template>
 
@@ -195,7 +229,7 @@ onUnmounted(() => {
 
     <!-- イベントの詳細 -->
     <template v-else-if="isEvent && eventData">
-      <div class="space-y-1 text-sm text-gray-600">
+      <div class="space-y-2 text-sm text-gray-600">
         <p>
           <span class="font-medium">年:</span>
           {{ eventData.yearDisplay }}
@@ -207,6 +241,21 @@ onUnmounted(() => {
         <p v-if="eventData.description">
           {{ eventData.description }}
         </p>
+
+        <!-- 関連メディア -->
+        <div v-if="relatedMedia.length > 0" class="pt-2 border-t border-gray-100">
+          <p class="font-medium text-gray-900 mb-1.5">関連作品:</p>
+          <div class="flex flex-wrap gap-1.5">
+            <MediaBadge
+              v-for="media in relatedMedia"
+              :key="media.id"
+              :type="media.type"
+              :title="media.title"
+              :remark="media.remark"
+              :kindle-url="media.kindleUrl"
+            />
+          </div>
+        </div>
       </div>
     </template>
 

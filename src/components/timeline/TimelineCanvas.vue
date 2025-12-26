@@ -489,6 +489,7 @@ const getMediaLaneY = (index: number) => {
       :data="popoverData.data"
       :x="popoverData.x"
       :y="popoverData.y"
+      :all-media="allMedia"
       @close="closePopover"
     />
   </div>

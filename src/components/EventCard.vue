@@ -83,6 +83,7 @@ const regionLabels: Record<string, string> = {
             :type="media.type"
             :title="media.title"
             :remark="media.remark"
+            :kindle-url="media.kindleUrl"
           />
         </div>
       </div>
