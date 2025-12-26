@@ -1837,6 +1837,19 @@
       "relatedEventIds": [
         "japan-reiwa-start"
       ]
+    },
+    {
+      "id": "yanase-takashi-ashita-wo-hiraku-kotoba",
+      "title": "やなせたかし 明日をひらく言葉",
+      "type": "novel",
+      "remark": "アンパンマンの作者 やなせたかしの名言集。戦争体験や70歳でのブレイクなど波乱の人生から生まれた言葉を収録",
+      "coverageStartYear": 1919,
+      "coverageEndYear": 2013,
+      "kindleUrl": "https://www.amazon.co.jp/dp/B0183G2JZQ",
+      "relatedEventIds": [
+        "japan-showa-start",
+        "japan-heisei-start"
+      ]
     }
   ]
 }
