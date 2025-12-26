@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { PodcastLaneData } from '@/types/timeline'
 
 const props = defineProps<{
@@ -6,7 +7,11 @@ const props = defineProps<{
   y: number
   height: number
   yearToPosition: (year: number) => number
+  scale: number
 }>()
+
+// テキストの逆スケール変換
+const textTransform = computed(() => `scaleX(${1 / props.scale})`)
 
 const emit = defineEmits<{
   (e: 'click', event: MouseEvent): void
@@ -55,6 +60,7 @@ const truncatedTitle = displayTitle.length > 15 ? displayTitle.slice(0, 15) + '.
       text-anchor="middle"
       class="pointer-events-none text-xs font-medium"
       :fill="isShort ? colors.shortText : colors.text"
+      :style="{ transform: textTransform, transformOrigin: `${x + width / 2}px ${y + height / 2 + 4}px` }"
     >
       {{ truncatedTitle }}
     </text>

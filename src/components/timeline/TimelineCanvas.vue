@@ -348,6 +348,7 @@ const getMediaLaneY = (index: number) => {
                 y="16"
                 text-anchor="middle"
                 class="fill-gray-500 text-xs"
+                :style="{ transform: `scaleX(${1 / scale})`, transformOrigin: `${label.position}px 16px` }"
               >
                 {{ label.label }}
               </text>
@@ -361,6 +362,7 @@ const getMediaLaneY = (index: number) => {
               :x="10"
               :y="(regionHeights[group.region]?.startY ?? 24) + 16"
               class="fill-gray-600 text-xs font-bold"
+              :style="{ transform: `scaleX(${1 / scale})`, transformOrigin: `10px ${(regionHeights[group.region]?.startY ?? 24) + 16}px` }"
             >
               {{ group.regionLabel }}
             </text>
@@ -372,6 +374,7 @@ const getMediaLaneY = (index: number) => {
               :y="getEraLaneY(lane.region, lane.laneIndex)"
               :height="LANE_HEIGHT - 4"
               :year-to-position="yearToPosition"
+              :scale="scale"
               @click="(e) => handleItemClick(e, 'era', lane)"
             />
           </g>
@@ -383,6 +386,7 @@ const getMediaLaneY = (index: number) => {
               :key="marker.event.id"
               :marker="marker"
               :y="getMarkerLaneY(marker.laneIndex)"
+              :scale="scale"
               @click="(e) => handleItemClick(e, 'event', marker.event)"
             />
           </g>
@@ -396,6 +400,7 @@ const getMediaLaneY = (index: number) => {
               :y="getPodcastLaneY(lane.laneIndex)"
               :height="LANE_HEIGHT - 4"
               :year-to-position="yearToPosition"
+              :scale="scale"
               @click="(e) => handleItemClick(e, 'podcast', lane)"
             />
           </g>
@@ -409,6 +414,7 @@ const getMediaLaneY = (index: number) => {
               :y="getPersonLaneY(index)"
               :height="LANE_HEIGHT - 4"
               :year-to-position="yearToPosition"
+              :scale="scale"
               @click="(e) => handleItemClick(e, 'person', lane)"
             />
           </g>
@@ -422,6 +428,7 @@ const getMediaLaneY = (index: number) => {
               :y="getMediaLaneY(index)"
               :height="LANE_HEIGHT - 4"
               :year-to-position="yearToPosition"
+              :scale="scale"
               @click="(e) => handleItemClick(e, 'media', lane)"
             />
           </g>

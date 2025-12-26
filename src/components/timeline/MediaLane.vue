@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { MediaLaneData } from '@/types/timeline'
 
 const props = defineProps<{
@@ -6,7 +7,11 @@ const props = defineProps<{
   y: number
   height: number
   yearToPosition: (year: number) => number
+  scale: number
 }>()
+
+// テキストの逆スケール変換
+const textTransform = computed(() => `scaleX(${1 / props.scale})`)
 
 const emit = defineEmits<{
   (e: 'click', event: MouseEvent): void
@@ -62,6 +67,7 @@ const width = hasRange
       text-anchor="middle"
       class="pointer-events-none text-xs font-medium"
       :fill="colors.text"
+      :style="{ transform: textTransform, transformOrigin: `${x + Math.max(width, 40) / 2}px ${y + height / 2 + 4}px` }"
     >
       {{ lane.media.title.length > 10 ? lane.media.title.slice(0, 10) + '...' : lane.media.title }}
     </text>
