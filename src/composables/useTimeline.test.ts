@@ -5,6 +5,17 @@ import type { ExtendedHistoryEvent } from '@/types/timeline'
 import type { MediaItem } from '@/types'
 
 describe('useTimeline', () => {
+  // ヘルパー: 同じeventsを両方の引数に渡す（テスト用）
+  const useTimelineWithSameEvents = (
+    events: ReturnType<typeof ref<ExtendedHistoryEvent[]>>,
+    media: ReturnType<typeof ref<MediaItem[]>>
+  ) => useTimeline(
+    events as unknown as Parameters<typeof useTimeline>[0],
+    events as unknown as Parameters<typeof useTimeline>[1],
+    media as unknown as Parameters<typeof useTimeline>[2],
+    media as unknown as Parameters<typeof useTimeline>[3]
+  )
+
   const createTestEvents = (): ExtendedHistoryEvent[] => [
     {
       id: '1',
@@ -80,7 +91,7 @@ describe('useTimeline', () => {
     it('全イベントの最小年と最大年を計算する', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { timeRange } = useTimeline(events, media)
+      const { timeRange } = useTimelineWithSameEvents(events, media)
 
       expect(timeRange.value.minYear).toBe(-221)
       expect(timeRange.value.maxYear).toBe(184)
@@ -110,7 +121,7 @@ describe('useTimeline', () => {
         },
       ])
       const media = ref<MediaItem[]>([])
-      const { timeRange } = useTimeline(events, media)
+      const { timeRange } = useTimelineWithSameEvents(events, media)
 
       expect(timeRange.value.minYear).toBe(-500)
       expect(timeRange.value.maxYear).toBe(-100)
@@ -119,7 +130,7 @@ describe('useTimeline', () => {
     it('空配列の場合は0を返す', () => {
       const events = ref<ExtendedHistoryEvent[]>([])
       const media = ref<MediaItem[]>([])
-      const { timeRange } = useTimeline(events, media)
+      const { timeRange } = useTimelineWithSameEvents(events, media)
 
       expect(timeRange.value.minYear).toBe(0)
       expect(timeRange.value.maxYear).toBe(0)
@@ -130,7 +141,7 @@ describe('useTimeline', () => {
     it('年をピクセル位置に変換する', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { yearToPosition } = useTimeline(events, media)
+      const { yearToPosition } = useTimelineWithSameEvents(events, media)
 
       // minYear = -221, 1年あたり2ピクセル
       const position = yearToPosition(-221)
@@ -143,7 +154,7 @@ describe('useTimeline', () => {
     it('positionToYearはyearToPositionの逆変換', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { yearToPosition, positionToYear } = useTimeline(events, media)
+      const { yearToPosition, positionToYear } = useTimelineWithSameEvents(events, media)
 
       const year = -200
       const position = yearToPosition(year)
@@ -156,7 +167,7 @@ describe('useTimeline', () => {
     it('時代ごとにグループ化される', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { eraLanes } = useTimeline(events, media)
+      const { eraLanes } = useTimelineWithSameEvents(events, media)
 
       // 秦、楚漢戦争、前漢、後漢末の4つ
       expect(eraLanes.value.length).toBeGreaterThanOrEqual(4)
@@ -186,7 +197,7 @@ describe('useTimeline', () => {
         },
       ])
       const media = ref<MediaItem[]>([])
-      const { eraLanes } = useTimeline(events, media)
+      const { eraLanes } = useTimelineWithSameEvents(events, media)
 
       const qinLane = eraLanes.value.find((l) => l.era === '秦')
       expect(qinLane?.startYear).toBe(-221)
@@ -217,7 +228,7 @@ describe('useTimeline', () => {
         },
       ])
       const media = ref<MediaItem[]>([])
-      const { eraLanes } = useTimeline(events, media)
+      const { eraLanes } = useTimelineWithSameEvents(events, media)
 
       // china (order: 0) が europe (order: 2) より前
       expect(eraLanes.value[0]?.region).toBe('china')
@@ -229,7 +240,7 @@ describe('useTimeline', () => {
     it('人物を抽出する', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { personLanes } = useTimeline(events, media)
+      const { personLanes } = useTimelineWithSameEvents(events, media)
 
       expect(personLanes.value.length).toBeGreaterThan(0)
     })
@@ -260,7 +271,7 @@ describe('useTimeline', () => {
         },
       ])
       const media = ref<MediaItem[]>([])
-      const { personLanes } = useTimeline(events, media)
+      const { personLanes } = useTimelineWithSameEvents(events, media)
 
       const sharedPerson = personLanes.value.filter((p) => p.person.name === '共通人物')
       expect(sharedPerson.length).toBe(1)
@@ -273,7 +284,7 @@ describe('useTimeline', () => {
     it('メディアを取得する', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { mediaLanes } = useTimeline(events, media)
+      const { mediaLanes } = useTimelineWithSameEvents(events, media)
 
       expect(mediaLanes.value.length).toBe(2)
     })
@@ -281,7 +292,7 @@ describe('useTimeline', () => {
     it('メディアがない場合は空配列', () => {
       const events = ref(createTestEvents())
       const media = ref<MediaItem[]>([])
-      const { mediaLanes } = useTimeline(events, media)
+      const { mediaLanes } = useTimelineWithSameEvents(events, media)
 
       expect(mediaLanes.value.length).toBe(0)
     })
@@ -289,7 +300,7 @@ describe('useTimeline', () => {
     it('メディア情報が正しく含まれる', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { mediaLanes } = useTimeline(events, media)
+      const { mediaLanes } = useTimelineWithSameEvents(events, media)
 
       const kingdom = mediaLanes.value.find((l) => l.media.title === 'キングダム')
       expect(kingdom).toBeDefined()
@@ -303,7 +314,7 @@ describe('useTimeline', () => {
     it('各イベントのマーカーデータを生成する', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { eventMarkers } = useTimeline(events, media)
+      const { eventMarkers } = useTimelineWithSameEvents(events, media)
 
       expect(eventMarkers.value.length).toBe(4)
     })
@@ -311,7 +322,7 @@ describe('useTimeline', () => {
     it('ポジションが計算される', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { eventMarkers, yearToPosition } = useTimeline(events, media)
+      const { eventMarkers, yearToPosition } = useTimelineWithSameEvents(events, media)
 
       const marker = eventMarkers.value.find((m) => m.event.id === '1')
       expect(marker?.position).toBe(yearToPosition(-221))
@@ -320,7 +331,7 @@ describe('useTimeline', () => {
     it('レーンインデックスが割り当てられる', () => {
       const events = ref(createTestEvents())
       const media = ref(createTestMedia())
-      const { eventMarkers } = useTimeline(events, media)
+      const { eventMarkers } = useTimelineWithSameEvents(events, media)
 
       eventMarkers.value.forEach((marker) => {
         expect(marker.laneIndex).toBeGreaterThanOrEqual(0)

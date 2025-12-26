@@ -29,10 +29,14 @@ export function useTimelineZoom(
   // 初期化（timeRangeとcontainerWidthが設定された後）
   watch(
     [timeRangeRef, containerWidthRef],
-    () => {
-      if (!initialized.value && timeRangeRef.value.minYear !== timeRangeRef.value.maxYear && containerWidthRef.value > 0) {
+    ([newTimeRange, newContainerWidth], [oldTimeRange]) => {
+      if (!initialized.value && newTimeRange.minYear !== newTimeRange.maxYear && newContainerWidth > 0) {
         offsetX.value = calculateInitialOffset()
         initialized.value = true
+      } else if (initialized.value && oldTimeRange &&
+        (newTimeRange.minYear !== oldTimeRange.minYear || newTimeRange.maxYear !== oldTimeRange.maxYear)) {
+        // フィルタで範囲が変わった場合、オフセットを再制限してリセット
+        offsetX.value = calculateInitialOffset()
       }
     },
     { immediate: true }
@@ -60,6 +64,28 @@ export function useTimelineZoom(
     return Math.max(MIN_SCALE, Math.min(MAX_SCALE, value))
   }
 
+  // オフセットをタイムライン範囲内に制限
+  const clampOffset = (offset: number, currentScale: number): number => {
+    const timeRange = timeRangeRef.value
+    const containerWidth = containerWidthRef.value
+
+    if (timeRange.minYear === timeRange.maxYear) return offset
+
+    const timelineWidth = (timeRange.maxYear - timeRange.minYear) * PIXELS_PER_YEAR * currentScale
+
+    // タイムラインが画面より小さい場合は中央に配置
+    if (timelineWidth <= containerWidth) {
+      return (containerWidth - timelineWidth) / 2
+    }
+
+    // 最大オフセット（最小年が画面左端）
+    const maxOffset = 0
+    // 最小オフセット（最大年が画面右端）
+    const minOffset = containerWidth - timelineWidth
+
+    return Math.max(minOffset, Math.min(maxOffset, offset))
+  }
+
   // 画面中央を基準にズーム
   const zoomAtCenter = (newScale: number): void => {
     const containerWidth = containerWidthRef.value
@@ -73,7 +99,7 @@ export function useTimelineZoom(
     const newOffsetX = containerWidth / 2 - centerContentX * clampedNewScale
 
     scale.value = clampedNewScale
-    offsetX.value = newOffsetX
+    offsetX.value = clampOffset(newOffsetX, clampedNewScale)
   }
 
   const zoomIn = (): void => {
@@ -89,7 +115,7 @@ export function useTimelineZoom(
   }
 
   const panTo = (newOffsetX: number): void => {
-    offsetX.value = newOffsetX
+    offsetX.value = clampOffset(newOffsetX, scale.value)
   }
 
   const reset = (): void => {

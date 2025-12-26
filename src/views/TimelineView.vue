@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, computed, ref, watch } from 'vue'
 import { Clock, LayoutGrid, GitBranch } from 'lucide-vue-next'
 import { useEvents } from '@/composables/useEvents'
 import { useFilters } from '@/composables/useFilters'
@@ -11,18 +11,33 @@ import { TimelineCanvas } from '@/components/timeline'
 import type { ExtendedHistoryEvent } from '@/types/timeline'
 
 const { sortedEvents, sortedMedia, isLoading, fetchEvents } = useEvents()
-const { filteredEvents } = useFilters()
+const { filteredEvents, filteredMedia, initializeDefaultYearRange } = useFilters()
 
 // 表示モード: 'card' または 'timeline'
 const viewMode = ref<'card' | 'timeline'>('timeline')
 
 const displayEvents = computed(() => filteredEvents(sortedEvents.value))
+const displayMedia = computed(() => filteredMedia(sortedMedia.value))
 
-// ExtendedHistoryEventに変換
+// データ読み込み後にデフォルト年代範囲を初期化
+watch([sortedEvents, sortedMedia], ([events, media]) => {
+  if (events.length > 0 || media.length > 0) {
+    initializeDefaultYearRange(events, media)
+  }
+}, { immediate: true })
+
+// ExtendedHistoryEventに変換（フィルタ済み）
 const extendedEvents = computed<ExtendedHistoryEvent[]>(() => {
   return displayEvents.value.map((event) => ({
     ...event,
     // personsは既存データにはないのでundefined
+  }))
+})
+
+// 全イベント（時代レーン計算用）
+const allExtendedEvents = computed<ExtendedHistoryEvent[]>(() => {
+  return sortedEvents.value.map((event) => ({
+    ...event,
   }))
 })
 
@@ -89,7 +104,12 @@ onMounted(() => {
 
         <!-- タイムライン表示 -->
         <div v-else class="rounded-lg bg-white p-4 shadow sm:p-6">
-          <TimelineCanvas :events="extendedEvents" :media="sortedMedia" />
+          <TimelineCanvas
+            :events="extendedEvents"
+            :all-events="allExtendedEvents"
+            :media="displayMedia"
+            :all-media="sortedMedia"
+          />
         </div>
       </template>
     </div>

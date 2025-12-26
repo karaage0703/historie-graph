@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { Filter, X, ChevronDown, ChevronUp } from 'lucide-vue-next'
 import { useFilters } from '@/composables/useFilters'
 import type { HistoryEvent } from '@/types'
@@ -17,7 +17,30 @@ const {
   clearFilters,
   availableRegions,
   availableEras,
+  defaultYearRangeMin,
+  defaultYearRangeMax,
+  setYearRange,
 } = useFilters()
+
+// 年代入力用のローカル状態（デフォルト値で初期化）
+const yearMinInput = ref<number>(defaultYearRangeMin.value)
+const yearMaxInput = ref<number>(defaultYearRangeMax.value)
+
+// デフォルト値が変更されたら入力値も更新
+watch([defaultYearRangeMin, defaultYearRangeMax], ([newMin, newMax]) => {
+  yearMinInput.value = newMin
+  yearMaxInput.value = newMax
+})
+
+function updateYearRange() {
+  setYearRange(yearMinInput.value, yearMaxInput.value)
+}
+
+function resetYearRange() {
+  yearMinInput.value = defaultYearRangeMin.value
+  yearMaxInput.value = defaultYearRangeMax.value
+  setYearRange(null, null)
+}
 
 const isExpanded = ref(false)
 
@@ -121,6 +144,42 @@ function toggleEra(era: string) {
               {{ era }}
             </button>
           </div>
+        </div>
+
+        <div>
+          <h3 class="mb-2 text-sm font-medium text-gray-700">年代範囲</h3>
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="flex items-center gap-1">
+              <input
+                v-model.number="yearMinInput"
+                type="number"
+                class="w-24 rounded border border-gray-300 px-2 py-1 text-sm focus:border-blue-500 focus:outline-none"
+                @change="updateYearRange"
+              />
+              <span class="text-sm text-gray-500">年</span>
+            </div>
+            <span class="text-gray-400">〜</span>
+            <div class="flex items-center gap-1">
+              <input
+                v-model.number="yearMaxInput"
+                type="number"
+                class="w-24 rounded border border-gray-300 px-2 py-1 text-sm focus:border-blue-500 focus:outline-none"
+                @change="updateYearRange"
+              />
+              <span class="text-sm text-gray-500">年</span>
+            </div>
+            <button
+              v-if="yearMinInput !== defaultYearRangeMin || yearMaxInput !== defaultYearRangeMax"
+              type="button"
+              class="text-sm text-gray-500 hover:text-gray-700"
+              @click="resetYearRange"
+            >
+              リセット
+            </button>
+          </div>
+          <p class="mt-1 text-xs text-gray-400">
+            ※紀元前は負の数で入力（例: -500）
+          </p>
         </div>
       </div>
     </div>

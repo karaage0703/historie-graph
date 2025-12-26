@@ -1,7 +1,10 @@
 import { ref, computed, type Ref } from 'vue'
 import type { CotenRadioData, CotenRadioSeries, PodcastLaneData } from '@/types/timeline'
 
-export function useCotenRadio(selectedRegions?: Ref<string[]>) {
+export function useCotenRadio(
+  selectedRegions?: Ref<string[]>,
+  yearRange?: Ref<{ min: number; max: number } | null>
+) {
   const cotenData = ref<CotenRadioData | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
@@ -40,6 +43,15 @@ export function useCotenRadio(selectedRegions?: Ref<string[]>) {
       // 地域フィルター（共通フィルターを使用）
       if (selectedRegions?.value && selectedRegions.value.length > 0) {
         if (!selectedRegions.value.includes(series.region)) {
+          return false
+        }
+      }
+
+      // 年代フィルター
+      if (yearRange?.value) {
+        const { min, max } = yearRange.value
+        // シリーズのカバー範囲とフィルタ範囲が重なっていれば表示
+        if (series.coverageEndYear < min || series.coverageStartYear > max) {
           return false
         }
       }
