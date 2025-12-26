@@ -6,6 +6,7 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/historie-graph/',
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
