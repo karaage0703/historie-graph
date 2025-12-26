@@ -1933,6 +1933,16 @@
       ]
     },
     {
+      "id": "sayonara-sorcier",
+      "title": "さよならソルシエ",
+      "type": "manga",
+      "remark": "穂積作。ゴッホの弟テオドルスを主人公に、兄フィンセント・ファン・ゴッホとの絆を描く",
+      "coverageStartYear": 1853,
+      "coverageEndYear": 1891,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%81%95%E3%82%88%E3%81%AA%E3%82%89%E3%82%BD%E3%83%AB%E3%82%B7%E3%82%A8+%E7%A9%82%E7%A9%8D+Kindle",
+      "relatedEventIds": []
+    },
+    {
       "id": "matsukage-ni-ikou",
       "title": "松かげに憩う",
       "type": "manga",
