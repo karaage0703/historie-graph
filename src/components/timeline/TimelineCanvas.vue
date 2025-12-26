@@ -15,7 +15,9 @@ import TimelinePopover from './TimelinePopover.vue'
 
 const props = defineProps<{
   events: ExtendedHistoryEvent[]
+  allEvents: ExtendedHistoryEvent[]
   media: MediaItem[]
+  allMedia: MediaItem[]
 }>()
 
 // 共通フィルター
@@ -24,14 +26,18 @@ const {
   showEvents,
   showCotenRadio,
   showMedia,
+  effectiveYearRange,
 } = useFilters()
+
+// 年代範囲をRefとして渡すための変換
+const yearRangeRef = computed(() => effectiveYearRange.value)
 
 // COTEN RADIO（共通フィルターを渡す）
 const {
   loadCotenRadio,
   podcastLanes,
   maxLaneIndex: podcastMaxLaneIndex,
-} = useCotenRadio(selectedRegions)
+} = useCotenRadio(selectedRegions, yearRangeRef)
 
 const emit = defineEmits<{
   (e: 'select', item: { type: string; data: unknown }): void
@@ -43,7 +49,9 @@ const containerWidth = ref(1000)
 
 // タイムラインデータ
 const eventsRef = computed(() => props.events)
+const allEventsRef = computed(() => props.allEvents)
 const mediaRef = computed(() => props.media)
+const allMediaRef = computed(() => props.allMedia)
 const {
   timeRange,
   regionEraGroups,
@@ -52,7 +60,7 @@ const {
   eventMarkers,
   eventMaxLaneIndex,
   yearToPosition,
-} = useTimeline(eventsRef, mediaRef)
+} = useTimeline(eventsRef, allEventsRef, mediaRef, allMediaRef, yearRangeRef)
 
 // ズーム/パン（Refを渡す）
 const { scale, offsetX, transform, visibleYearRange, zoomIn, zoomOut, panTo, reset } =

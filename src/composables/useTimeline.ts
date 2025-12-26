@@ -22,11 +22,26 @@ const REGION_ORDER: Record<string, { order: number; label: string }> = {
 // タイムラインの1年あたりのピクセル数（基本値）
 const PIXELS_PER_YEAR = 2
 
-export function useTimeline(events: Ref<ExtendedHistoryEvent[]>, media: Ref<MediaItem[]>) {
+export function useTimeline(
+  events: Ref<ExtendedHistoryEvent[]>,
+  allEvents: Ref<ExtendedHistoryEvent[]>,
+  media: Ref<MediaItem[]>,
+  _allMedia: Ref<MediaItem[]>, // 将来の拡張用（時代レーンと同様のクリップ処理）
+  yearRangeOverride?: Ref<{ min: number; max: number } | null>
+) {
   /**
    * 年代範囲を算出
+   * yearRangeOverrideが指定されている場合はそれを使用
    */
   const timeRange = computed<TimeRange>(() => {
+    // 年代範囲のオーバーライドが指定されている場合
+    if (yearRangeOverride?.value) {
+      return {
+        minYear: yearRangeOverride.value.min,
+        maxYear: yearRangeOverride.value.max,
+      }
+    }
+
     if (events.value.length === 0) {
       return { minYear: 0, maxYear: 0 }
     }
@@ -56,12 +71,13 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>, media: Ref<Medi
 
   /**
    * 時代レーンデータを生成（国別）
+   * 全イベントから時代の範囲を計算し、フィルタ範囲にクリップ
    */
   const eraLanes = computed<EraLaneData[]>(() => {
-    // 地域+時代ごとにイベントをグループ化
+    // 地域+時代ごとに全イベントをグループ化（時代の本来の範囲を計算）
     const regionEraMap = new Map<string, ExtendedHistoryEvent[]>()
 
-    events.value.forEach((event) => {
+    allEvents.value.forEach((event) => {
       const key = `${event.region}::${event.era}`
       const existing = regionEraMap.get(key) || []
       existing.push(event)
@@ -70,14 +86,27 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>, media: Ref<Medi
 
     // レーンデータを生成
     const lanes: EraLaneData[] = []
+    const { minYear, maxYear } = timeRange.value
 
     regionEraMap.forEach((eraEvents, key) => {
       const parts = key.split('::')
       const region = parts[0] ?? ''
       const era = parts[1] ?? ''
       const years = eraEvents.map((e) => e.year)
-      const startYear = Math.min(...years)
-      const endYear = Math.max(...years)
+      const originalStartYear = Math.min(...years)
+      const originalEndYear = Math.max(...years)
+
+      // 時代レーンをタイムライン範囲にクリップ
+      const startYear = Math.max(originalStartYear, minYear)
+      const endYear = Math.min(originalEndYear, maxYear)
+
+      // クリップ後に有効な範囲がなければスキップ
+      if (startYear > endYear) return
+
+      // フィルタ済みイベントのみをeventsに含める
+      const filteredEraEvents = events.value.filter(
+        (e) => e.region === region && e.era === era
+      )
 
       lanes.push({
         era,
@@ -85,7 +114,7 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>, media: Ref<Medi
         startYear,
         endYear,
         duration: Math.abs(endYear - startYear),
-        events: eraEvents,
+        events: filteredEraEvents,
         laneIndex: 0, // 後で重複計算
       })
     })

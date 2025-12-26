@@ -17,8 +17,8 @@ const emit = defineEmits<{
 // テキストの逆スケール変換
 const textTransform = computed(() => `scaleX(${1 / props.scale})`)
 
-const x = props.yearToPosition(props.lane.person.birthYear)
-const width = props.yearToPosition(props.lane.person.deathYear) - x
+const x = computed(() => props.yearToPosition(props.lane.person.birthYear))
+const width = computed(() => props.yearToPosition(props.lane.person.deathYear) - x.value)
 </script>
 
 <template>

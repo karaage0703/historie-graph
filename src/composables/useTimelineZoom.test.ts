@@ -109,22 +109,36 @@ describe('useTimelineZoom', () => {
   })
 
   describe('パン操作', () => {
-    it('panToでオフセットを変更できる', () => {
+    it('panToでオフセットを変更できる（範囲内）', () => {
+      // 広い範囲を設定して制限に引っかからないようにする
       const { offsetX, panTo } = useTimelineZoom(
-        createTimeRangeRef(),
-        createContainerWidthRef()
-      )
-      panTo(200)
-      expect(offsetX.value).toBe(200)
-    })
-
-    it('負のオフセットも設定できる', () => {
-      const { offsetX, panTo } = useTimelineZoom(
-        createTimeRangeRef(),
-        createContainerWidthRef()
+        ref({ minYear: -5000, maxYear: 5000 }),
+        ref(1000)
       )
       panTo(-100)
       expect(offsetX.value).toBe(-100)
+    })
+
+    it('オフセットはタイムライン範囲内に制限される', () => {
+      // minYear: -221, maxYear: 280 → 幅: 501年 × 2px = 1002px
+      const { offsetX, panTo } = useTimelineZoom(
+        createTimeRangeRef(),
+        createContainerWidthRef()
+      )
+      // 最大オフセット（最小年が画面左端）は0
+      panTo(500)
+      expect(offsetX.value).toBe(0)
+    })
+
+    it('タイムラインが画面より小さい場合は中央に配置される', () => {
+      // minYear: 0, maxYear: 100 → 幅: 100年 × 2px = 200px < 1000px
+      const { offsetX, panTo } = useTimelineZoom(
+        ref({ minYear: 0, maxYear: 100 }),
+        ref(1000)
+      )
+      panTo(-500)
+      // 中央配置: (1000 - 200) / 2 = 400
+      expect(offsetX.value).toBe(400)
     })
   })
 

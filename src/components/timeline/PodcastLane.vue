@@ -27,15 +27,15 @@ const colors = {
   shortText: '#a16207',
 }
 
-const isShort = props.lane.series.type === 'short'
+const isShort = computed(() => props.lane.series.type === 'short')
 
-const x = props.yearToPosition(props.lane.series.coverageStartYear)
-const endX = props.yearToPosition(props.lane.series.coverageEndYear)
-const width = Math.max(endX - x, 60)
+const x = computed(() => props.yearToPosition(props.lane.series.coverageStartYear))
+const endX = computed(() => props.yearToPosition(props.lane.series.coverageEndYear))
+const width = computed(() => Math.max(endX.value - x.value, 60))
 
 // 表示用タイトル（シリーズ番号 + タイトル）
-const displayTitle = `#${props.lane.series.seriesNumber} ${props.lane.series.title}`
-const truncatedTitle = displayTitle.length > 15 ? displayTitle.slice(0, 15) + '...' : displayTitle
+const displayTitle = computed(() => `#${props.lane.series.seriesNumber} ${props.lane.series.title}`)
+const truncatedTitle = computed(() => displayTitle.value.length > 15 ? displayTitle.value.slice(0, 15) + '...' : displayTitle.value)
 </script>
 
 <template>

@@ -27,20 +27,23 @@ const getColors = (type: string) => {
   return mediaColors[type] || { fill: '#e5e7eb', stroke: '#9ca3af', text: '#374151' }
 }
 
-const colors = getColors(props.lane.media.type)
+const colors = computed(() => getColors(props.lane.media.type))
 
 // カバー範囲を使用
-const hasRange =
+const hasRange = computed(() =>
   props.lane.media.coverageStartYear !== undefined &&
   props.lane.media.coverageEndYear !== undefined
+)
 
-const x = hasRange
+const x = computed(() => hasRange.value
   ? props.yearToPosition(props.lane.media.coverageStartYear!)
   : 0
+)
 
-const width = hasRange
-  ? props.yearToPosition(props.lane.media.coverageEndYear!) - x
+const width = computed(() => hasRange.value
+  ? props.yearToPosition(props.lane.media.coverageEndYear!) - x.value
   : 60
+)
 </script>
 
 <template>
@@ -53,8 +56,8 @@ const width = hasRange
       :y="y"
       :width="Math.max(width, 40)"
       :height="height"
-      :fill="colors.fill"
-      :stroke="colors.stroke"
+      :fill="colors?.fill"
+      :stroke="colors?.stroke"
       stroke-width="1"
       rx="4"
       class="hover:stroke-2"
@@ -64,7 +67,7 @@ const width = hasRange
       :y="y + height / 2 + 4"
       text-anchor="middle"
       class="pointer-events-none text-xs font-medium"
-      :fill="colors.text"
+      :fill="colors?.text"
       :style="{ transform: textTransform, transformOrigin: `${x + Math.max(width, 40) / 2}px ${y + height / 2 + 4}px` }"
     >
       {{ lane.media.title.length > 10 ? lane.media.title.slice(0, 10) + '...' : lane.media.title }}

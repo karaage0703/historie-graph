@@ -37,8 +37,8 @@ const getColor = (era: string): string => {
   return eraColors[era] || eraColors['default'] || '#e5e7eb'
 }
 
-const x = props.yearToPosition(props.lane.startYear)
-const width = props.yearToPosition(props.lane.endYear) - x
+const x = computed(() => props.yearToPosition(props.lane.startYear))
+const width = computed(() => props.yearToPosition(props.lane.endYear) - x.value)
 </script>
 
 <template>
