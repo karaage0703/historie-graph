@@ -20,7 +20,7 @@ export function useCotenRadio(
     error.value = null
 
     try {
-      const response = await fetch('/coten-radio.json')
+      const response = await fetch(`${import.meta.env.BASE_URL}coten-radio.json`)
       if (!response.ok) {
         throw new Error(`Failed to load: ${response.status}`)
       }

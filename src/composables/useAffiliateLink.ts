@@ -9,7 +9,7 @@ export function useAffiliateLink() {
     if (isLoaded.value) return
 
     try {
-      const response = await fetch('/config.json')
+      const response = await fetch(`${import.meta.env.BASE_URL}config.json`)
       if (response.ok) {
         const config = await response.json()
         if (config.affiliateTag) {
