@@ -24,7 +24,9 @@ dist-ssr
 *.sw?
 
 # Claude Code
-.claude/
+.claude/*
+!.claude/commands/
+.claude/commands/kiro/
 CLAUDE.md
 
 # Kiro specs

@@ -1,0 +1,126 @@
+name: "作品追加リクエスト"
+description: "歴史をテーマにした漫画・小説の追加を要望する"
+title: "[作品追加] "
+labels: ["media-request", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 作品追加リクエスト
+        歴史をテーマにした作品の追加をリクエストできます。
+        AIが自動でデータを更新しますので、できるだけ正確な情報をご記入ください。
+
+  - type: input
+    id: media_title
+    attributes:
+      label: 作品名
+      description: 作品の正式名称を入力してください
+      placeholder: "例: キングダム"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: media_type
+    attributes:
+      label: 作品の種類
+      description: 作品のメディアタイプを選択してください
+      options:
+        - manga（漫画）
+        - novel（小説）
+    validations:
+      required: true
+
+  - type: input
+    id: media_remark
+    attributes:
+      label: 備考
+      description: 作者名や補足情報を入力してください
+      placeholder: "例: 原泰久作。秦の始皇帝の中国統一を描く"
+    validations:
+      required: true
+
+  - type: input
+    id: coverage_start_year
+    attributes:
+      label: 作品が扱う年代（開始）
+      description: 作品が描く時代の開始年を西暦で入力（紀元前は負の数）
+      placeholder: "例: -259（紀元前259年の場合）"
+    validations:
+      required: false
+
+  - type: input
+    id: coverage_end_year
+    attributes:
+      label: 作品が扱う年代（終了）
+      description: 作品が描く時代の終了年を西暦で入力（紀元前は負の数）
+      placeholder: "例: -221（紀元前221年の場合）"
+    validations:
+      required: false
+
+  - type: input
+    id: kindle_url
+    attributes:
+      label: Kindle URL（任意）
+      description: Amazon KindleのURLがあれば入力してください
+      placeholder: "https://www.amazon.co.jp/..."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: target_region
+    attributes:
+      label: 関連する地域
+      description: 作品が主に扱う地域を選択してください
+      options:
+        - china（中国）
+        - japan（日本）
+        - europe（ヨーロッパ）
+        - middle_east（中東）
+        - other（その他）
+    validations:
+      required: true
+
+  - type: input
+    id: target_era
+    attributes:
+      label: 関連する時代
+      description: 作品が主に扱う時代の名称を入力してください
+      placeholder: "例: 戦国時代、三国時代、鎌倉時代など"
+    validations:
+      required: true
+
+  - type: textarea
+    id: related_event_ids
+    attributes:
+      label: 紐付けるイベントID（任意）
+      description: |
+        既存イベントに紐付ける場合、そのIDを入力してください（複数可、1行に1つ）。
+        分からなければ空欄でOK。時代や地域から自動で候補を探します。
+      placeholder: |
+        例:
+        550e8400-e29b-41d4-a716-446655440011
+        660e8400-e29b-41d4-a716-446655440022
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: その他の情報
+      description: 追加で伝えたい情報があれば記入してください
+      placeholder: |
+        - 参考URL
+        - 作品の特徴
+        - 関連する歴史上の人物や出来事など
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: 確認事項
+      options:
+        - label: この作品が歴史をテーマにしていることを確認しました
+          required: true
+        - label: 既に登録されている作品でないことを確認しました
+          required: true

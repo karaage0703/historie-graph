@@ -4,6 +4,7 @@ import { useTimeline } from '@/composables/useTimeline'
 import { useTimelineZoom } from '@/composables/useTimelineZoom'
 import { useCotenRadio } from '@/composables/useCotenRadio'
 import { useFilters } from '@/composables/useFilters'
+import type { MediaItem } from '@/types'
 import type { ExtendedHistoryEvent } from '@/types/timeline'
 import EraLane from './EraLane.vue'
 import PersonLane from './PersonLane.vue'
@@ -14,6 +15,7 @@ import TimelinePopover from './TimelinePopover.vue'
 
 const props = defineProps<{
   events: ExtendedHistoryEvent[]
+  media: MediaItem[]
 }>()
 
 // 共通フィルター
@@ -41,6 +43,7 @@ const containerWidth = ref(1000)
 
 // タイムラインデータ
 const eventsRef = computed(() => props.events)
+const mediaRef = computed(() => props.media)
 const {
   timeRange,
   regionEraGroups,
@@ -49,7 +52,7 @@ const {
   eventMarkers,
   eventMaxLaneIndex,
   yearToPosition,
-} = useTimeline(eventsRef)
+} = useTimeline(eventsRef, mediaRef)
 
 // ズーム/パン（Refを渡す）
 const { scale, offsetX, transform, visibleYearRange, zoomIn, zoomOut, panTo, reset } =
@@ -423,7 +426,7 @@ const getMediaLaneY = (index: number) => {
           <g v-if="showMedia && mediaLanes.length > 0">
             <MediaLane
               v-for="(lane, index) in mediaLanes"
-              :key="`${lane.parentEventId}-${lane.media.title}`"
+              :key="lane.media.id"
               :lane="lane"
               :y="getMediaLaneY(index)"
               :height="LANE_HEIGHT - 4"

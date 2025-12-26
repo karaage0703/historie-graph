@@ -1,4 +1,5 @@
 import { computed, type Ref } from 'vue'
+import type { MediaItem } from '@/types'
 import type {
   ExtendedHistoryEvent,
   EraLaneData,
@@ -21,7 +22,7 @@ const REGION_ORDER: Record<string, { order: number; label: string }> = {
 // タイムラインの1年あたりのピクセル数（基本値）
 const PIXELS_PER_YEAR = 2
 
-export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
+export function useTimeline(events: Ref<ExtendedHistoryEvent[]>, media: Ref<MediaItem[]>) {
   /**
    * 年代範囲を算出
    */
@@ -170,18 +171,9 @@ export function useTimeline(events: Ref<ExtendedHistoryEvent[]>) {
    * 作品レーンデータを生成
    */
   const mediaLanes = computed<MediaLaneData[]>(() => {
-    const lanes: MediaLaneData[] = []
-
-    events.value.forEach((event) => {
-      event.media.forEach((media) => {
-        lanes.push({
-          media,
-          parentEventId: event.id,
-        })
-      })
-    })
-
-    return lanes
+    return media.value.map((m) => ({
+      media: m,
+    }))
   })
 
   /**

@@ -10,7 +10,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 import { TimelineCanvas } from '@/components/timeline'
 import type { ExtendedHistoryEvent } from '@/types/timeline'
 
-const { sortedEvents, isLoading, fetchEvents } = useEvents()
+const { sortedEvents, sortedMedia, isLoading, fetchEvents } = useEvents()
 const { filteredEvents } = useFilters()
 
 // 表示モード: 'card' または 'timeline'
@@ -18,17 +18,18 @@ const viewMode = ref<'card' | 'timeline'>('timeline')
 
 const displayEvents = computed(() => filteredEvents(sortedEvents.value))
 
-// ExtendedHistoryEventに変換（後方互換性のため既存データをそのまま使用）
+// ExtendedHistoryEventに変換
 const extendedEvents = computed<ExtendedHistoryEvent[]>(() => {
   return displayEvents.value.map((event) => ({
     ...event,
-    media: event.media.map((m) => ({
-      ...m,
-      // 既存データにはcoverageStartYear等がないので、そのまま
-    })),
     // personsは既存データにはないのでundefined
   }))
 })
+
+// イベントに関連するメディアを取得
+const getRelatedMedia = (eventId: string) => {
+  return sortedMedia.value.filter((m) => m.relatedEventIds.includes(eventId))
+}
 
 onMounted(() => {
   fetchEvents()
@@ -78,12 +79,17 @@ onMounted(() => {
 
         <!-- カード表示 -->
         <div v-else-if="viewMode === 'card'" class="space-y-3 sm:space-y-4">
-          <EventCard v-for="event in displayEvents" :key="event.id" :event="event" />
+          <EventCard
+            v-for="event in displayEvents"
+            :key="event.id"
+            :event="event"
+            :related-media="getRelatedMedia(event.id)"
+          />
         </div>
 
         <!-- タイムライン表示 -->
         <div v-else class="rounded-lg bg-white p-4 shadow sm:p-6">
-          <TimelineCanvas :events="extendedEvents" />
+          <TimelineCanvas :events="extendedEvents" :media="sortedMedia" />
         </div>
       </template>
     </div>

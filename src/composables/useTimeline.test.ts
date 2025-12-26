@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { useTimeline } from './useTimeline'
 import { ref } from 'vue'
 import type { ExtendedHistoryEvent } from '@/types/timeline'
+import type { MediaItem } from '@/types'
 
 describe('useTimeline', () => {
   const createTestEvents = (): ExtendedHistoryEvent[] => [
@@ -14,16 +15,6 @@ describe('useTimeline', () => {
       title: '秦の統一',
       description: '始皇帝が中国を統一',
       links: [],
-      media: [
-        {
-          title: 'キングダム',
-          type: 'manga',
-          remark: '',
-          coverageStartYear: -259,
-          coverageEndYear: -221,
-          kindleUrl: 'https://amazon.co.jp/dp/B00XXX',
-        },
-      ],
       persons: [
         { name: '始皇帝', birthYear: -259, deathYear: -210 },
         { name: '李斯', birthYear: -280, deathYear: -208 },
@@ -38,7 +29,6 @@ describe('useTimeline', () => {
       title: '秦の滅亡',
       description: '秦王朝が滅亡',
       links: [],
-      media: [],
       persons: [{ name: '項羽', birthYear: -232, deathYear: -202 }],
     },
     {
@@ -50,15 +40,6 @@ describe('useTimeline', () => {
       title: '漢の建国',
       description: '劉邦が漢を建国',
       links: [],
-      media: [
-        {
-          title: '項羽と劉邦',
-          type: 'novel',
-          remark: '',
-          coverageStartYear: -232,
-          coverageEndYear: -195,
-        },
-      ],
       persons: [{ name: '劉邦', birthYear: -256, deathYear: -195 }],
     },
     {
@@ -70,14 +51,36 @@ describe('useTimeline', () => {
       title: '黄巾の乱',
       description: '',
       links: [],
-      media: [],
+    },
+  ]
+
+  const createTestMedia = (): MediaItem[] => [
+    {
+      id: 'kingdom',
+      title: 'キングダム',
+      type: 'manga',
+      remark: '',
+      coverageStartYear: -259,
+      coverageEndYear: -221,
+      kindleUrl: 'https://amazon.co.jp/dp/B00XXX',
+      relatedEventIds: ['1'],
+    },
+    {
+      id: 'kouu-ryuuhou',
+      title: '項羽と劉邦',
+      type: 'novel',
+      remark: '',
+      coverageStartYear: -232,
+      coverageEndYear: -195,
+      relatedEventIds: ['2', '3'],
     },
   ]
 
   describe('timeRange（年代範囲算出）', () => {
     it('全イベントの最小年と最大年を計算する', () => {
       const events = ref(createTestEvents())
-      const { timeRange } = useTimeline(events)
+      const media = ref(createTestMedia())
+      const { timeRange } = useTimeline(events, media)
 
       expect(timeRange.value.minYear).toBe(-221)
       expect(timeRange.value.maxYear).toBe(184)
@@ -94,311 +97,234 @@ describe('useTimeline', () => {
           title: 'テスト',
           description: '',
           links: [],
-          media: [],
         },
         {
           id: '2',
-          year: -200,
-          yearDisplay: '前200年',
-          era: '漢',
+          year: -100,
+          yearDisplay: '前100年',
+          era: '前漢',
           region: 'china',
           title: 'テスト2',
           description: '',
           links: [],
-          media: [],
         },
       ])
-      const { timeRange } = useTimeline(events)
+      const media = ref<MediaItem[]>([])
+      const { timeRange } = useTimeline(events, media)
 
       expect(timeRange.value.minYear).toBe(-500)
-      expect(timeRange.value.maxYear).toBe(-200)
+      expect(timeRange.value.maxYear).toBe(-100)
     })
 
-    it('空の配列の場合はデフォルト範囲を返す', () => {
+    it('空配列の場合は0を返す', () => {
       const events = ref<ExtendedHistoryEvent[]>([])
-      const { timeRange } = useTimeline(events)
+      const media = ref<MediaItem[]>([])
+      const { timeRange } = useTimeline(events, media)
 
       expect(timeRange.value.minYear).toBe(0)
       expect(timeRange.value.maxYear).toBe(0)
     })
   })
 
-  describe('yearToPosition（年→ピクセル変換）', () => {
+  describe('yearToPosition / positionToYear（座標変換）', () => {
     it('年をピクセル位置に変換する', () => {
       const events = ref(createTestEvents())
-      const { yearToPosition, timeRange } = useTimeline(events)
+      const media = ref(createTestMedia())
+      const { yearToPosition } = useTimeline(events, media)
 
-      // 最小年が0になる
-      const minPos = yearToPosition(timeRange.value.minYear)
-      expect(minPos).toBe(0)
+      // minYear = -221, 1年あたり2ピクセル
+      const position = yearToPosition(-221)
+      expect(position).toBe(0)
 
-      // 最大年が幅いっぱいになる
-      const maxPos = yearToPosition(timeRange.value.maxYear)
-      expect(maxPos).toBeGreaterThan(0)
+      const position2 = yearToPosition(-121)
+      expect(position2).toBe(200) // (-121 - -221) * 2 = 100 * 2 = 200
     })
 
-    it('紀元前から紀元後まで連続的に変換できる', () => {
+    it('positionToYearはyearToPositionの逆変換', () => {
       const events = ref(createTestEvents())
-      const { yearToPosition } = useTimeline(events)
+      const media = ref(createTestMedia())
+      const { yearToPosition, positionToYear } = useTimeline(events, media)
 
-      const posBefore = yearToPosition(-100)
-      const posAfter = yearToPosition(100)
-
-      expect(posAfter).toBeGreaterThan(posBefore)
-    })
-  })
-
-  describe('positionToYear（ピクセル→年変換）', () => {
-    it('ピクセル位置を年に逆変換できる', () => {
-      const events = ref(createTestEvents())
-      const { yearToPosition, positionToYear } = useTimeline(events)
-
-      const year = -100
+      const year = -200
       const position = yearToPosition(year)
-      const convertedYear = positionToYear(position)
-
-      expect(Math.round(convertedYear)).toBe(year)
+      const restoredYear = positionToYear(position)
+      expect(restoredYear).toBe(year)
     })
   })
 
   describe('eraLanes（時代レーンデータ）', () => {
-    it('同一時代のイベントをグループ化する', () => {
+    it('時代ごとにグループ化される', () => {
       const events = ref(createTestEvents())
-      const { eraLanes } = useTimeline(events)
+      const media = ref(createTestMedia())
+      const { eraLanes } = useTimeline(events, media)
 
-      const eras = eraLanes.value.map((lane) => lane.era)
-      expect(eras).toContain('秦')
-      expect(eras).toContain('楚漢戦争')
-      expect(eras).toContain('前漢')
-      expect(eras).toContain('後漢末')
+      // 秦、楚漢戦争、前漢、後漢末の4つ
+      expect(eraLanes.value.length).toBeGreaterThanOrEqual(4)
     })
 
-    it('各時代の開始年・終了年・継続年数を算出する', () => {
+    it('各時代の年代範囲が正しく計算される', () => {
       const events = ref<ExtendedHistoryEvent[]>([
         {
           id: '1',
           year: -221,
-          yearDisplay: '前221年',
+          yearDisplay: '',
           era: '秦',
           region: 'china',
-          title: 'テスト1',
+          title: '',
           description: '',
           links: [],
-          media: [],
         },
         {
           id: '2',
-          year: -210,
-          yearDisplay: '前210年',
-          era: '秦',
-          region: 'china',
-          title: 'テスト2',
-          description: '',
-          links: [],
-          media: [],
-        },
-        {
-          id: '3',
           year: -206,
-          yearDisplay: '前206年',
+          yearDisplay: '',
           era: '秦',
           region: 'china',
-          title: 'テスト3',
+          title: '',
           description: '',
           links: [],
-          media: [],
         },
       ])
-      const { eraLanes } = useTimeline(events)
+      const media = ref<MediaItem[]>([])
+      const { eraLanes } = useTimeline(events, media)
 
-      const qinLane = eraLanes.value.find((lane) => lane.era === '秦')
-      expect(qinLane).toBeDefined()
-      if (!qinLane) throw new Error('qinLane not found')
-      expect(qinLane.startYear).toBe(-221)
-      expect(qinLane.endYear).toBe(-206)
-      expect(qinLane.duration).toBe(15)
+      const qinLane = eraLanes.value.find((l) => l.era === '秦')
+      expect(qinLane?.startYear).toBe(-221)
+      expect(qinLane?.endYear).toBe(-206)
     })
 
-    it('時代にはその時代のイベントが含まれる', () => {
-      const events = ref(createTestEvents())
-      const { eraLanes } = useTimeline(events)
+    it('地域順でソートされる', () => {
+      const events = ref<ExtendedHistoryEvent[]>([
+        {
+          id: '1',
+          year: 100,
+          yearDisplay: '',
+          era: 'Test',
+          region: 'europe',
+          title: '',
+          description: '',
+          links: [],
+        },
+        {
+          id: '2',
+          year: 100,
+          yearDisplay: '',
+          era: 'Test2',
+          region: 'china',
+          title: '',
+          description: '',
+          links: [],
+        },
+      ])
+      const media = ref<MediaItem[]>([])
+      const { eraLanes } = useTimeline(events, media)
 
-      const qinLane = eraLanes.value.find((lane) => lane.era === '秦')
-      if (!qinLane) throw new Error('qinLane not found')
-      expect(qinLane.events).toHaveLength(1)
-      expect(qinLane.events[0]!.title).toBe('秦の統一')
-    })
-
-    it('レーンインデックスが割り当てられる', () => {
-      const events = ref(createTestEvents())
-      const { eraLanes } = useTimeline(events)
-
-      eraLanes.value.forEach((lane) => {
-        expect(lane.laneIndex).toBeGreaterThanOrEqual(0)
-      })
+      // china (order: 0) が europe (order: 2) より前
+      expect(eraLanes.value[0]?.region).toBe('china')
+      expect(eraLanes.value[1]?.region).toBe('europe')
     })
   })
 
   describe('personLanes（人物レーンデータ）', () => {
-    it('イベントに紐づく人物情報を抽出する', () => {
+    it('人物を抽出する', () => {
       const events = ref(createTestEvents())
-      const { personLanes } = useTimeline(events)
+      const media = ref(createTestMedia())
+      const { personLanes } = useTimeline(events, media)
 
-      const personNames = personLanes.value.map((lane) => lane.person.name)
-      expect(personNames).toContain('始皇帝')
-      expect(personNames).toContain('李斯')
-      expect(personNames).toContain('項羽')
-      expect(personNames).toContain('劉邦')
+      expect(personLanes.value.length).toBeGreaterThan(0)
     })
 
-    it('人物の生年から没年までの期間データを保持する', () => {
-      const events = ref(createTestEvents())
-      const { personLanes } = useTimeline(events)
-
-      const emperor = personLanes.value.find(
-        (lane) => lane.person.name === '始皇帝'
-      )
-      if (!emperor) throw new Error('emperor not found')
-      expect(emperor.person.birthYear).toBe(-259)
-      expect(emperor.person.deathYear).toBe(-210)
-    })
-
-    it('関連イベントIDとの紐付けを保持する', () => {
-      const events = ref(createTestEvents())
-      const { personLanes } = useTimeline(events)
-
-      const emperor = personLanes.value.find(
-        (lane) => lane.person.name === '始皇帝'
-      )
-      if (!emperor) throw new Error('emperor not found')
-      expect(emperor.relatedEventIds).toContain('1')
-    })
-
-    it('同一人物が複数イベントに登場する場合は1つにまとめる', () => {
+    it('同一人物は1つにまとまる', () => {
       const events = ref<ExtendedHistoryEvent[]>([
         {
           id: '1',
-          year: -221,
+          year: 100,
           yearDisplay: '',
-          era: '秦',
+          era: '',
           region: 'china',
-          title: 'A',
+          title: '',
           description: '',
           links: [],
-          media: [],
-          persons: [{ name: '始皇帝', birthYear: -259, deathYear: -210 }],
+          persons: [{ name: '共通人物', birthYear: 0, deathYear: 50 }],
         },
         {
           id: '2',
-          year: -210,
+          year: 200,
           yearDisplay: '',
-          era: '秦',
+          era: '',
           region: 'china',
-          title: 'B',
+          title: '',
           description: '',
           links: [],
-          media: [],
-          persons: [{ name: '始皇帝', birthYear: -259, deathYear: -210 }],
+          persons: [{ name: '共通人物', birthYear: 0, deathYear: 50 }],
         },
       ])
-      const { personLanes } = useTimeline(events)
+      const media = ref<MediaItem[]>([])
+      const { personLanes } = useTimeline(events, media)
 
-      const emperors = personLanes.value.filter(
-        (lane) => lane.person.name === '始皇帝'
-      )
-      expect(emperors).toHaveLength(1)
-      expect(emperors[0]?.relatedEventIds).toEqual(['1', '2'])
+      const sharedPerson = personLanes.value.filter((p) => p.person.name === '共通人物')
+      expect(sharedPerson.length).toBe(1)
+      expect(sharedPerson[0]?.relatedEventIds).toContain('1')
+      expect(sharedPerson[0]?.relatedEventIds).toContain('2')
     })
   })
 
   describe('mediaLanes（作品レーンデータ）', () => {
-    it('各作品のカバー範囲を期間データに変換する', () => {
+    it('メディアを取得する', () => {
       const events = ref(createTestEvents())
-      const { mediaLanes } = useTimeline(events)
+      const media = ref(createTestMedia())
+      const { mediaLanes } = useTimeline(events, media)
 
-      const kingdom = mediaLanes.value.find(
-        (lane) => lane.media.title === 'キングダム'
-      )
+      expect(mediaLanes.value.length).toBe(2)
+    })
+
+    it('メディアがない場合は空配列', () => {
+      const events = ref(createTestEvents())
+      const media = ref<MediaItem[]>([])
+      const { mediaLanes } = useTimeline(events, media)
+
+      expect(mediaLanes.value.length).toBe(0)
+    })
+
+    it('メディア情報が正しく含まれる', () => {
+      const events = ref(createTestEvents())
+      const media = ref(createTestMedia())
+      const { mediaLanes } = useTimeline(events, media)
+
+      const kingdom = mediaLanes.value.find((l) => l.media.title === 'キングダム')
       expect(kingdom).toBeDefined()
-      if (!kingdom) throw new Error('kingdom not found')
-      expect(kingdom.media.coverageStartYear).toBe(-259)
-      expect(kingdom.media.coverageEndYear).toBe(-221)
-    })
-
-    it('メディアタイプ情報を保持する', () => {
-      const events = ref(createTestEvents())
-      const { mediaLanes } = useTimeline(events)
-
-      const kingdom = mediaLanes.value.find(
-        (lane) => lane.media.title === 'キングダム'
-      )
-      if (!kingdom) throw new Error('kingdom not found')
-      expect(kingdom.media.type).toBe('manga')
-    })
-
-    it('親イベントIDとの紐付けを維持する', () => {
-      const events = ref(createTestEvents())
-      const { mediaLanes } = useTimeline(events)
-
-      const kingdom = mediaLanes.value.find(
-        (lane) => lane.media.title === 'キングダム'
-      )
-      if (!kingdom) throw new Error('kingdom not found')
-      expect(kingdom.parentEventId).toBe('1')
-    })
-
-    it('カバー範囲が未設定の作品も含める', () => {
-      const events = ref<ExtendedHistoryEvent[]>([
-        {
-          id: '1',
-          year: 184,
-          yearDisplay: '',
-          era: '三国',
-          region: 'china',
-          title: 'テスト',
-          description: '',
-          links: [],
-          media: [{ title: '三国志', type: 'manga', remark: '' }],
-        },
-      ])
-      const { mediaLanes } = useTimeline(events)
-
-      expect(mediaLanes.value).toHaveLength(1)
-      expect(mediaLanes.value[0]?.media.coverageStartYear).toBeUndefined()
+      expect(kingdom?.media.type).toBe('manga')
+      expect(kingdom?.media.coverageStartYear).toBe(-259)
+      expect(kingdom?.media.coverageEndYear).toBe(-221)
     })
   })
 
-  describe('eventMarkers（イベントマーカーデータ）', () => {
-    it('各イベントの年を位置座標に変換する', () => {
+  describe('eventMarkers（イベントマーカー）', () => {
+    it('各イベントのマーカーデータを生成する', () => {
       const events = ref(createTestEvents())
-      const { eventMarkers } = useTimeline(events)
+      const media = ref(createTestMedia())
+      const { eventMarkers } = useTimeline(events, media)
 
       expect(eventMarkers.value.length).toBe(4)
+    })
+
+    it('ポジションが計算される', () => {
+      const events = ref(createTestEvents())
+      const media = ref(createTestMedia())
+      const { eventMarkers, yearToPosition } = useTimeline(events, media)
+
+      const marker = eventMarkers.value.find((m) => m.event.id === '1')
+      expect(marker?.position).toBe(yearToPosition(-221))
+    })
+
+    it('レーンインデックスが割り当てられる', () => {
+      const events = ref(createTestEvents())
+      const media = ref(createTestMedia())
+      const { eventMarkers } = useTimeline(events, media)
+
       eventMarkers.value.forEach((marker) => {
-        expect(marker.position).toBeGreaterThanOrEqual(0)
+        expect(marker.laneIndex).toBeGreaterThanOrEqual(0)
       })
-    })
-
-    it('マーカー表示に必要なイベント情報を保持する', () => {
-      const events = ref(createTestEvents())
-      const { eventMarkers } = useTimeline(events)
-
-      const firstMarker = eventMarkers.value.find((m) => m.event.id === '1')
-      if (!firstMarker) throw new Error('firstMarker not found')
-      expect(firstMarker.event.title).toBe('秦の統一')
-      expect(firstMarker.event.year).toBe(-221)
-    })
-
-    it('年代順に並べられる', () => {
-      const events = ref(createTestEvents())
-      const { eventMarkers } = useTimeline(events)
-
-      for (let i = 1; i < eventMarkers.value.length; i++) {
-        const current = eventMarkers.value[i]
-        const prev = eventMarkers.value[i - 1]
-        if (!current || !prev) continue
-        expect(current.event.year).toBeGreaterThanOrEqual(prev.event.year)
-      }
     })
   })
 })

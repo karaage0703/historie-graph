@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "既存の作品・イベントを確認"
+    url: "https://github.com/karaage0703/historie-graph/blob/main/public/data.json"
+    about: "追加前に既存データを確認してください"

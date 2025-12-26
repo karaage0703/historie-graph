@@ -1,11 +1,16 @@
-export type MediaType = 'manga' | 'novel' | 'movie' | 'anime'
+export type MediaType = 'manga' | 'novel'
 
 export type Region = 'china' | 'japan' | 'europe' | 'middle_east' | 'other'
 
 export interface MediaItem {
+  id: string
   title: string
   type: MediaType
   remark: string
+  coverageStartYear?: number
+  coverageEndYear?: number
+  kindleUrl?: string
+  relatedEventIds: string[]
 }
 
 export interface HistoryEvent {
@@ -17,6 +22,10 @@ export interface HistoryEvent {
   title: string
   description: string
   links: string[]
+}
+
+export interface HistorieData {
+  events: HistoryEvent[]
   media: MediaItem[]
 }
 

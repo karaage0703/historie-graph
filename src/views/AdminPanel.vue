@@ -172,9 +172,6 @@ const regionLabels: Record<string, string> = {
                   </span>
                 </div>
                 <h3 class="text-sm font-medium text-gray-900 sm:text-base">{{ event.title }}</h3>
-                <p v-if="event.media.length > 0" class="mt-1 text-xs text-gray-500 sm:text-sm">
-                  {{ event.media.length }}件のメディア
-                </p>
               </div>
               <div class="flex flex-shrink-0 gap-1 sm:gap-2">
                 <button
