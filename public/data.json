@@ -1463,6 +1463,18 @@
       "relatedEventIds": []
     },
     {
+      "id": "odyssey",
+      "title": "オデュッセイア",
+      "type": "classic",
+      "remark": "ホメロス作。トロイア戦争後のオデュッセウスの10年に及ぶ帰郷の旅を描く古代ギリシャの叙事詩",
+      "coverageStartYear": -1180,
+      "coverageEndYear": -1170,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%AA%E3%83%87%E3%83%A5%E3%83%83%E3%82%BB%E3%82%A4%E3%82%A2+Kindle",
+      "relatedEventIds": [
+        "europe-ancient-greece-start"
+      ]
+    },
+    {
       "id": "hinotori-egypt",
       "title": "火の鳥 エジプト編",
       "type": "manga",
