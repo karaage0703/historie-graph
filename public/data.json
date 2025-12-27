@@ -1975,6 +1975,18 @@
       "relatedEventIds": []
     },
     {
+      "id": "vinland-saga",
+      "title": "ヴィンランド・サガ",
+      "type": "manga",
+      "remark": "幸村誠作。11世紀初頭のヴァイキングを描く歴史大河漫画。復讐に燃える少年トルフィンの成長物語",
+      "coverageStartYear": 1002,
+      "coverageEndYear": 1020,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%B4%E3%82%A3%E3%83%B3%E3%83%A9%E3%83%B3%E3%83%89%E3%82%B5%E3%82%AC+%E5%B9%B8%E6%9D%91%E8%AA%A0+Kindle",
+      "relatedEventIds": [
+        "europe-medieval-start"
+      ]
+    },
+    {
       "id": "matsukage-ni-ikou",
       "title": "松かげに憩う",
       "type": "manga",
