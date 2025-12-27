@@ -109,5 +109,20 @@ onMounted(() => {
     <main>
       <RouterView />
     </main>
+    <footer class="mt-8 border-t border-gray-200 bg-white py-4">
+      <div class="mx-auto max-w-7xl px-4 text-center text-xs text-gray-500 space-y-2">
+        <p>
+          <a
+            href="https://github.com/karaage0703/historie-graph/issues/new/choose"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            作品の追加リクエストはこちら
+          </a>
+        </p>
+        <p>※ 本サイトはAmazonアソシエイト・プログラムに参加しています。商品リンクにはアフィリエイトリンクが含まれる場合があります。</p>
+      </div>
+    </footer>
   </div>
 </template>

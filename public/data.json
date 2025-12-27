@@ -1463,6 +1463,18 @@
       "relatedEventIds": []
     },
     {
+      "id": "odyssey",
+      "title": "オデュッセイア",
+      "type": "classic",
+      "remark": "ホメロス作。トロイア戦争後のオデュッセウスの10年に及ぶ帰郷の旅を描く古代ギリシャの叙事詩",
+      "coverageStartYear": -1180,
+      "coverageEndYear": -1170,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%AA%E3%83%87%E3%83%A5%E3%83%83%E3%82%BB%E3%82%A4%E3%82%A2+Kindle",
+      "relatedEventIds": [
+        "europe-ancient-greece-start"
+      ]
+    },
+    {
       "id": "hinotori-egypt",
       "title": "火の鳥 エジプト編",
       "type": "manga",
@@ -1973,6 +1985,18 @@
       "coverageEndYear": 1891,
       "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%81%95%E3%82%88%E3%81%AA%E3%82%89%E3%82%BD%E3%83%AB%E3%82%B7%E3%82%A8+%E7%A9%82%E7%A9%8D+Kindle",
       "relatedEventIds": []
+    },
+    {
+      "id": "vinland-saga",
+      "title": "ヴィンランド・サガ",
+      "type": "manga",
+      "remark": "幸村誠作。11世紀初頭のヴァイキングを描く歴史大河漫画。復讐に燃える少年トルフィンの成長物語",
+      "coverageStartYear": 1002,
+      "coverageEndYear": 1020,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%B4%E3%82%A3%E3%83%B3%E3%83%A9%E3%83%B3%E3%83%89%E3%82%B5%E3%82%AC+%E5%B9%B8%E6%9D%91%E8%AA%A0+Kindle",
+      "relatedEventIds": [
+        "europe-medieval-start"
+      ]
     },
     {
       "id": "matsukage-ni-ikou",

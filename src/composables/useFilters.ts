@@ -7,8 +7,8 @@ const selectedEras = ref<string[]>([])
 // 年代フィルタ
 const yearRangeMin = ref<number | null>(null)
 const yearRangeMax = ref<number | null>(null)
-const defaultYearRangeMin = ref<number>(0)
-const defaultYearRangeMax = ref<number>(2100)
+const defaultYearRangeMin = ref<number>(-2000)
+const defaultYearRangeMax = ref<number>(2000)
 
 // タイムラインセクション表示切り替え
 const showEvents = ref(true)
@@ -64,42 +64,13 @@ export function useFilters() {
   }
 
   /**
-   * イベントと作品データから妥当なデフォルト年代範囲を計算
-   * イベントと作品の両方を考慮し、外れ値（縄文時代など）を除外
+   * デフォルト年代範囲を初期化（固定値: -2000〜2000）
+   * 以前はデータから計算していたが、固定値を使用するように変更
    */
-  function initializeDefaultYearRange(events: HistoryEvent[], media: MediaItem[]): void {
-    // イベントの年を収集（外れ値を除外）
-    const eventYears = events.map((e) => e.year).sort((a, b) => a - b)
-    let eventMin = 0
-    let eventMax = 2100
-
-    if (eventYears.length > 0) {
-      // 下位1%と上位99%のパーセンタイルを使用して極端な外れ値のみ除外
-      const lowerIndex = Math.max(1, Math.floor(eventYears.length * 0.01))
-      const upperIndex = Math.min(eventYears.length - 1, Math.ceil(eventYears.length * 0.99) - 1)
-
-      eventMin = eventYears[lowerIndex] ?? eventYears[0] ?? 0
-      eventMax = eventYears[upperIndex] ?? eventYears[eventYears.length - 1] ?? 2100
-    }
-
-    // 作品のカバー範囲を収集
-    const mediaYears: number[] = []
-    media.forEach((m) => {
-      if (m.coverageStartYear !== undefined) mediaYears.push(m.coverageStartYear)
-      if (m.coverageEndYear !== undefined) mediaYears.push(m.coverageEndYear)
-    })
-
-    let mediaMin = eventMin
-    let mediaMax = eventMax
-
-    if (mediaYears.length >= 2) {
-      mediaMin = Math.min(...mediaYears)
-      mediaMax = Math.max(...mediaYears)
-    }
-
-    // イベントと作品の両方を含む範囲を採用
-    defaultYearRangeMin.value = Math.min(eventMin, mediaMin)
-    defaultYearRangeMax.value = Math.max(eventMax, mediaMax)
+  function initializeDefaultYearRange(_events: HistoryEvent[], _media: MediaItem[]): void {
+    // 固定のデフォルト範囲を使用（refの初期値と同じ）
+    defaultYearRangeMin.value = -2000
+    defaultYearRangeMax.value = 2000
   }
 
   function filteredEvents(events: HistoryEvent[]): HistoryEvent[] {
