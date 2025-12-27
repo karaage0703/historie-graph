@@ -264,6 +264,106 @@ const getMediaLaneY = (index: number) => {
   const personCount = personLanes.value.length
   return getPodcastSectionY() + podcastSectionHeight.value + personCount * LANE_HEIGHT + LANE_GAP + index * LANE_HEIGHT
 }
+
+// 範囲外に伸びている時代（左側にオーバーフロー）- 表示中のレーン
+const overflowEras = computed(() => {
+  const { minYear } = timeRange.value
+  const overflows: { era: string; region: string; startYear: number; y: number }[] = []
+
+  regionEraGroups.value.forEach((group) => {
+    group.lanes.forEach((lane) => {
+      if (lane.startYear < minYear) {
+        overflows.push({
+          era: lane.era,
+          region: lane.region,
+          startYear: lane.startYear,
+          y: getEraLaneY(lane.region, lane.laneIndex),
+        })
+      }
+    })
+  })
+
+  return overflows
+})
+
+// 範囲外に伸びている作品（左側にオーバーフロー）- 表示中のレーン
+const overflowMedia = computed(() => {
+  const { minYear } = timeRange.value
+  const overflows: { title: string; startYear: number; y: number }[] = []
+
+  mediaLanes.value.forEach((lane, index) => {
+    const startYear = lane.media.coverageStartYear
+    if (startYear !== undefined && startYear < minYear) {
+      overflows.push({
+        title: lane.media.title,
+        startYear,
+        y: getMediaLaneY(index),
+      })
+    }
+  })
+
+  return overflows
+})
+
+// 完全に範囲外の時代（表示範囲と重ならない）
+const outsideEras = computed(() => {
+  const { minYear, maxYear } = timeRange.value
+  const regionEraMap = new Map<string, { region: string; era: string; startYear: number; endYear: number }>()
+
+  // 全イベントから時代を抽出
+  props.allEvents.forEach((event) => {
+    const key = `${event.region}::${event.era}`
+    const existing = regionEraMap.get(key)
+    if (existing) {
+      existing.startYear = Math.min(existing.startYear, event.year)
+      existing.endYear = Math.max(existing.endYear, event.year)
+    } else {
+      regionEraMap.set(key, {
+        region: event.region,
+        era: event.era,
+        startYear: event.year,
+        endYear: event.year,
+      })
+    }
+  })
+
+  // 完全に範囲外のものを抽出
+  const outside: { region: string; era: string; startYear: number; endYear: number; side: 'left' | 'right' }[] = []
+  regionEraMap.forEach((data) => {
+    if (data.endYear < minYear) {
+      outside.push({ ...data, side: 'left' })
+    } else if (data.startYear > maxYear) {
+      outside.push({ ...data, side: 'right' })
+    }
+  })
+
+  return outside.sort((a, b) => a.startYear - b.startYear)
+})
+
+// 完全に範囲外の作品
+const outsideMedia = computed(() => {
+  const { minYear, maxYear } = timeRange.value
+  const outside: { title: string; startYear: number; endYear: number; side: 'left' | 'right' }[] = []
+
+  props.allMedia.forEach((media) => {
+    const start = media.coverageStartYear
+    const end = media.coverageEndYear
+    if (start !== undefined && end !== undefined) {
+      if (end < minYear) {
+        outside.push({ title: media.title, startYear: start, endYear: end, side: 'left' })
+      } else if (start > maxYear) {
+        outside.push({ title: media.title, startYear: start, endYear: end, side: 'right' })
+      }
+    }
+  })
+
+  return outside.sort((a, b) => a.startYear - b.startYear)
+})
+
+// 年を表示用文字列に変換
+const formatYear = (year: number): string => {
+  return year < 0 ? `前${Math.abs(year)}年` : `${year}年`
+}
 </script>
 
 <template>
@@ -297,6 +397,23 @@ const getMediaLaneY = (index: number) => {
       <span class="text-gray-400">
         ({{ Math.round(scale * 100) }}%)
       </span>
+    </div>
+
+    <!-- 範囲外アイテム表示 -->
+    <div v-if="outsideEras.length > 0 || outsideMedia.length > 0" class="mb-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <span class="font-medium text-amber-700">表示範囲外:</span>
+        <template v-for="item in outsideEras" :key="`outside-era-${item.region}-${item.era}`">
+          <span class="text-amber-600">
+            {{ item.side === 'left' ? '←' : '→' }} {{ item.era }} ({{ formatYear(item.startYear) }}〜{{ formatYear(item.endYear) }})
+          </span>
+        </template>
+        <template v-for="item in outsideMedia" :key="`outside-media-${item.title}`">
+          <span class="text-purple-600">
+            {{ item.side === 'left' ? '←' : '→' }} {{ item.title }} ({{ formatYear(item.startYear) }}〜{{ formatYear(item.endYear) }})
+          </span>
+        </template>
+      </div>
     </div>
 
     <!-- 表示切り替え -->
@@ -479,6 +596,30 @@ const getMediaLaneY = (index: number) => {
             <rect x="0" :y="getMediaLaneY(0) - 16" width="70" height="20" fill="white" />
             <text x="8" :y="getMediaLaneY(0) - 2" class="fill-gray-600 text-xs font-bold">
               関連作品
+            </text>
+          </g>
+
+          <!-- 範囲外時代インジケーター -->
+          <g v-for="overflow in overflowEras" :key="`overflow-era-${overflow.region}-${overflow.era}`">
+            <rect x="50" :y="overflow.y" width="180" height="20" fill="rgba(255,255,255,0.9)" rx="2" />
+            <text
+              x="54"
+              :y="overflow.y + 14"
+              class="fill-gray-500 text-xs"
+            >
+              ← {{ overflow.era }} ({{ formatYear(overflow.startYear) }}〜)
+            </text>
+          </g>
+
+          <!-- 範囲外作品インジケーター -->
+          <g v-if="showMedia" v-for="overflow in overflowMedia" :key="`overflow-media-${overflow.title}`">
+            <rect x="70" :y="overflow.y" width="200" height="20" fill="rgba(255,255,255,0.9)" rx="2" />
+            <text
+              x="74"
+              :y="overflow.y + 14"
+              class="fill-purple-600 text-xs"
+            >
+              ← {{ overflow.title }} ({{ formatYear(overflow.startYear) }}〜)
             </text>
           </g>
         </g>

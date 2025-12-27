@@ -93,15 +93,11 @@ export function useTimeline(
       const region = parts[0] ?? ''
       const era = parts[1] ?? ''
       const years = eraEvents.map((e) => e.year)
-      const originalStartYear = Math.min(...years)
-      const originalEndYear = Math.max(...years)
+      const startYear = Math.min(...years)
+      const endYear = Math.max(...years)
 
-      // 時代レーンをタイムライン範囲にクリップ
-      const startYear = Math.max(originalStartYear, minYear)
-      const endYear = Math.min(originalEndYear, maxYear)
-
-      // クリップ後に有効な範囲がなければスキップ
-      if (startYear > endYear) return
+      // 時代がタイムライン範囲と重ならなければスキップ
+      if (endYear < minYear || startYear > maxYear) return
 
       // フィルタ済みイベントのみをeventsに含める
       const filteredEraEvents = events.value.filter(
