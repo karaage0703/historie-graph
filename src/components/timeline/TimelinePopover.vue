@@ -61,6 +61,13 @@ const getRelatedMediaForEvent = (eventId: string) => {
   return props.allMedia.filter((m) => m.relatedEventIds.includes(eventId))
 }
 
+// 故事成語に関連するメディアを取得
+const idiomRelatedMedia = computed(() => {
+  if (!isIdiom.value || !idiomData.value || !props.allMedia) return []
+  const mediaIds = idiomData.value.idiom.relatedMediaIds
+  return props.allMedia.filter((m) => mediaIds.includes(m.id))
+})
+
 // 年の表示
 const formatYear = (year: number) => {
   return year < 0 ? `前${Math.abs(year)}年` : `${year}年`
@@ -319,6 +326,21 @@ onUnmounted(() => {
           <span class="font-medium">年代:</span>
           {{ idiomData.idiom.yearDisplay }}（{{ idiomData.idiom.era }}）
         </p>
+
+        <!-- 関連メディア -->
+        <div v-if="idiomRelatedMedia.length > 0" class="pt-2 border-t border-gray-100">
+          <p class="font-medium text-gray-900 mb-1.5">関連作品:</p>
+          <div class="flex flex-wrap gap-1.5">
+            <MediaBadge
+              v-for="media in idiomRelatedMedia"
+              :key="media.id"
+              :type="media.type"
+              :title="media.title"
+              :remark="media.remark"
+              :kindle-url="media.kindleUrl"
+            />
+          </div>
+        </div>
 
         <!-- Wikipediaリンク -->
         <a
