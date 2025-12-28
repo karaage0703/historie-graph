@@ -10,7 +10,7 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
 import { TimelineCanvas } from '@/components/timeline'
 import type { ExtendedHistoryEvent } from '@/types/timeline'
 
-const { sortedEvents, sortedMedia, isLoading, fetchEvents } = useEvents()
+const { sortedEvents, sortedMedia, sortedIdioms, isLoading, fetchEvents } = useEvents()
 const { filteredEvents, filteredMedia, initializeDefaultYearRange } = useFilters()
 
 // 表示モード: 'card' または 'timeline'
@@ -109,6 +109,7 @@ onMounted(() => {
             :all-events="allExtendedEvents"
             :media="displayMedia"
             :all-media="sortedMedia"
+            :idioms="sortedIdioms"
           />
         </div>
       </template>

@@ -3,14 +3,16 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useTimeline } from '@/composables/useTimeline'
 import { useTimelineZoom } from '@/composables/useTimelineZoom'
 import { useCotenRadio } from '@/composables/useCotenRadio'
+import { useIdioms } from '@/composables/useIdioms'
 import { useFilters } from '@/composables/useFilters'
-import type { MediaItem } from '@/types'
+import type { MediaItem, Idiom } from '@/types'
 import type { ExtendedHistoryEvent } from '@/types/timeline'
 import EraLane from './EraLane.vue'
 import PersonLane from './PersonLane.vue'
 import MediaLane from './MediaLane.vue'
 import PodcastLane from './PodcastLane.vue'
 import EventMarker from './EventMarker.vue'
+import IdiomMarker from './IdiomMarker.vue'
 import TimelinePopover from './TimelinePopover.vue'
 
 const props = defineProps<{
@@ -18,6 +20,7 @@ const props = defineProps<{
   allEvents: ExtendedHistoryEvent[]
   media: MediaItem[]
   allMedia: MediaItem[]
+  idioms: Idiom[]
 }>()
 
 // 共通フィルター
@@ -26,6 +29,7 @@ const {
   showEvents,
   showCotenRadio,
   showMedia,
+  showIdioms,
   effectiveYearRange,
 } = useFilters()
 
@@ -38,6 +42,13 @@ const {
   podcastLanes,
   maxLaneIndex: podcastMaxLaneIndex,
 } = useCotenRadio(selectedRegions, yearRangeRef)
+
+// 故事成語
+const idiomsRef = computed(() => props.idioms)
+const {
+  idiomLanes,
+  maxLaneIndex: idiomMaxLaneIndex,
+} = useIdioms(idiomsRef, selectedRegions, yearRangeRef)
 
 const emit = defineEmits<{
   (e: 'select', item: { type: string; data: unknown }): void
@@ -76,7 +87,7 @@ const popoverData = ref<{
   show: boolean
   x: number
   y: number
-  type: 'era' | 'person' | 'media' | 'event' | 'podcast'
+  type: 'era' | 'person' | 'media' | 'event' | 'podcast' | 'idiom'
   data: unknown
 }>({
   show: false,
@@ -137,9 +148,15 @@ const mediaSectionHeight = computed(() => {
   return mediaLanes.value.length * LANE_HEIGHT + LANE_GAP
 })
 
+// 故事成語レーンの高さ
+const idiomSectionHeight = computed(() => {
+  if (!showIdioms.value || idiomLanes.value.length === 0) return 0
+  return (idiomMaxLaneIndex.value + 1) * LANE_HEIGHT + LANE_GAP
+})
+
 const svgHeight = computed(() => {
   const personHeight = personLanes.value.length * LANE_HEIGHT
-  return markerStartY.value + eventSectionHeight.value + podcastSectionHeight.value + personHeight + LANE_GAP + mediaSectionHeight.value + 60
+  return markerStartY.value + eventSectionHeight.value + idiomSectionHeight.value + podcastSectionHeight.value + personHeight + LANE_GAP + mediaSectionHeight.value + 60
 })
 
 // タイムラインの幅（将来の仮想化で使用予定）
@@ -181,7 +198,7 @@ const handleMouseUp = () => {
 // クリックハンドラ
 const handleItemClick = (
   e: MouseEvent,
-  type: 'era' | 'person' | 'media' | 'event' | 'podcast',
+  type: 'era' | 'person' | 'media' | 'event' | 'podcast' | 'idiom',
   data: unknown
 ) => {
   popoverData.value = {
@@ -247,9 +264,18 @@ const getMarkerLaneY = (laneIndex: number) => {
   return markerStartY.value + laneIndex * LANE_HEIGHT
 }
 
+// 故事成語レーンの開始Y座標
+const getIdiomSectionY = () => {
+  return markerStartY.value + eventSectionHeight.value
+}
+
+const getIdiomLaneY = (laneIndex: number) => {
+  return getIdiomSectionY() + laneIndex * LANE_HEIGHT
+}
+
 // COTEN RADIOレーンの開始Y座標
 const getPodcastSectionY = () => {
-  return markerStartY.value + eventSectionHeight.value
+  return markerStartY.value + eventSectionHeight.value + idiomSectionHeight.value
 }
 
 const getPodcastLaneY = (laneIndex: number) => {
@@ -443,6 +469,14 @@ const formatYear = (year: number): string => {
         />
         関連作品
       </label>
+      <label class="flex items-center gap-1.5 text-gray-600">
+        <input
+          v-model="showIdioms"
+          type="checkbox"
+          class="rounded"
+        />
+        故事成語
+      </label>
     </div>
 
     <!-- タイムラインキャンバス -->
@@ -510,6 +544,19 @@ const formatYear = (year: number): string => {
             />
           </g>
 
+          <!-- 故事成語マーカー -->
+          <g v-if="showIdioms && idiomLanes.length > 0">
+            <IdiomMarker
+              v-for="lane in idiomLanes"
+              :key="lane.idiom.id"
+              :lane="lane"
+              :y="getIdiomLaneY(lane.laneIndex)"
+              :scale="scale"
+              :year-to-position="yearToPosition"
+              @click="(e) => handleItemClick(e, 'idiom', lane)"
+            />
+          </g>
+
           <!-- COTEN RADIOレーン -->
           <g v-if="showCotenRadio && podcastLanes.length > 0">
             <PodcastLane
@@ -572,6 +619,14 @@ const formatYear = (year: number): string => {
             <rect x="0" :y="getMarkerLaneY(0) - 16" width="80" height="20" fill="white" />
             <text x="8" :y="getMarkerLaneY(0) - 2" class="fill-gray-600 text-xs font-bold">
               イベント
+            </text>
+          </g>
+
+          <!-- 故事成語ラベル -->
+          <g v-if="showIdioms && idiomLanes.length > 0">
+            <rect x="0" :y="getIdiomSectionY() - 16" width="80" height="20" fill="white" />
+            <text x="8" :y="getIdiomSectionY() - 2" class="fill-purple-600 text-xs font-bold">
+              故事成語
             </text>
           </g>
 

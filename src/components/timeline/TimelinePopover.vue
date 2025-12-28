@@ -10,10 +10,11 @@ import type {
   MediaLaneData,
   ExtendedHistoryEvent,
   PodcastLaneData,
+  IdiomLaneData,
 } from '@/types/timeline'
 
 const props = defineProps<{
-  type: 'era' | 'person' | 'media' | 'event' | 'podcast'
+  type: 'era' | 'person' | 'media' | 'event' | 'podcast' | 'idiom'
   data: unknown
   x: number
   y: number
@@ -33,12 +34,14 @@ const isPerson = computed(() => props.type === 'person')
 const isMedia = computed(() => props.type === 'media')
 const isEvent = computed(() => props.type === 'event')
 const isPodcast = computed(() => props.type === 'podcast')
+const isIdiom = computed(() => props.type === 'idiom')
 
 const eraData = computed(() => (isEra.value ? (props.data as EraLaneData) : null))
 const personData = computed(() => (isPerson.value ? (props.data as PersonLaneData) : null))
 const mediaData = computed(() => (isMedia.value ? (props.data as MediaLaneData) : null))
 const eventData = computed(() => (isEvent.value ? (props.data as ExtendedHistoryEvent) : null))
 const podcastData = computed(() => (isPodcast.value ? (props.data as PodcastLaneData) : null))
+const idiomData = computed(() => (isIdiom.value ? (props.data as IdiomLaneData) : null))
 
 // Kindleリンク
 const kindleUrl = computed(() => {
@@ -121,6 +124,7 @@ onUnmounted(() => {
         <template v-else-if="isMedia">{{ mediaData?.media.title }}</template>
         <template v-else-if="isEvent">{{ eventData?.title }}</template>
         <template v-else-if="isPodcast">🎙️ {{ podcastData?.series.title }}</template>
+        <template v-else-if="isIdiom">📜 {{ idiomData?.idiom.idiom }}</template>
       </h4>
       <button
         class="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600"
@@ -292,6 +296,39 @@ onUnmounted(() => {
           class="mt-2 inline-flex items-center gap-1 rounded bg-green-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-green-600"
         >
           🎧 Spotifyで聴く
+          <ExternalLink class="h-3 w-3" />
+        </a>
+      </div>
+    </template>
+
+    <!-- 故事成語の詳細 -->
+    <template v-else-if="isIdiom && idiomData">
+      <div class="space-y-2 text-sm text-gray-600">
+        <p class="text-xs text-gray-500">
+          {{ idiomData.idiom.reading }}
+        </p>
+        <p>
+          <span class="font-medium">意味:</span>
+          {{ idiomData.idiom.meaning }}
+        </p>
+        <p>
+          <span class="font-medium">由来:</span>
+          {{ idiomData.idiom.origin }}
+        </p>
+        <p>
+          <span class="font-medium">年代:</span>
+          {{ idiomData.idiom.yearDisplay }}（{{ idiomData.idiom.era }}）
+        </p>
+
+        <!-- Wikipediaリンク -->
+        <a
+          v-if="idiomData.idiom.links.length > 0"
+          :href="idiomData.idiom.links[0]"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 inline-flex items-center gap-1 rounded bg-purple-500 px-3 py-1.5 text-sm font-medium text-white hover:bg-purple-600"
+        >
+          📖 詳しく見る
           <ExternalLink class="h-3 w-3" />
         </a>
       </div>
