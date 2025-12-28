@@ -2362,6 +2362,20 @@
       "links": ["https://ja.wikipedia.org/wiki/%E9%B6%8F%E9%B3%B4%E7%8B%97%E7%9B%97"]
     },
     {
+      "id": "idiom-hafuchinshuu",
+      "idiom": "破釜沈舟",
+      "reading": "はふちんしゅう",
+      "meaning": "決死の覚悟で事に臨むこと。退路を断って戦うこと",
+      "origin": "秦末、項羽が巨鹿の戦いで秦軍と戦う際、釜を壊し船を沈めて退路を断ち、兵士に死ぬ気で戦わせて大勝した故事から",
+      "year": -207,
+      "yearDisplay": "前207年",
+      "era": "秦",
+      "region": "china",
+      "relatedEventIds": ["550e8400-e29b-41d4-a716-446655440022"],
+      "relatedMediaIds": [],
+      "links": ["https://ja.wikipedia.org/wiki/%E7%A0%B4%E9%87%9C%E6%B2%88%E8%88%9F"]
+    },
+    {
       "id": "idiom-haisui-no-jin",
       "idiom": "背水の陣",
       "reading": "はいすいのじん",
