@@ -14,6 +14,7 @@ const defaultYearRangeMax = ref<number>(2000)
 const showEvents = ref(true)
 const showCotenRadio = ref(true)
 const showMedia = ref(true)
+const showIdioms = ref(true)
 
 // 地域ラベル（共通）
 export const REGION_LABELS: Record<string, string> = {
@@ -138,5 +139,6 @@ export function useFilters() {
     showEvents,
     showCotenRadio,
     showMedia,
+    showIdioms,
   }
 }

@@ -1,4 +1,4 @@
-import type { HistoryEvent, MediaItem } from './index'
+import type { HistoryEvent, MediaItem, Idiom } from './index'
 
 // =============================================================================
 // 拡張データモデル (Requirements 7.1-7.5)
@@ -148,5 +148,17 @@ export interface CotenRadioData {
  */
 export interface PodcastLaneData {
   series: CotenRadioSeries
+  laneIndex: number
+}
+
+// =============================================================================
+// 故事成語データ型
+// =============================================================================
+
+/**
+ * 故事成語レーンデータ
+ */
+export interface IdiomLaneData {
+  idiom: Idiom
   laneIndex: number
 }

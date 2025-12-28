@@ -24,9 +24,28 @@ export interface HistoryEvent {
   links: string[]
 }
 
+/**
+ * 故事成語・四字熟語
+ */
+export interface Idiom {
+  id: string
+  idiom: string
+  reading: string
+  meaning: string
+  origin: string
+  year: number
+  yearDisplay: string
+  era: string
+  region: Region
+  relatedEventIds: string[]
+  relatedMediaIds: string[]
+  links: string[]
+}
+
 export interface HistorieData {
   events: HistoryEvent[]
   media: MediaItem[]
+  idioms: Idiom[]
 }
 
 export interface GithubSettings {

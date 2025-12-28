@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { Octokit } from 'octokit'
-import type { HistorieData, HistoryEvent, MediaItem, GithubApiError, SaveResult } from '@/types'
+import type { HistorieData, HistoryEvent, MediaItem, Idiom, GithubApiError, SaveResult } from '@/types'
 import { useSettings } from './useSettings'
 
 const isSaving = ref(false)
@@ -77,7 +77,7 @@ export function useGithubApi() {
     }
   }
 
-  async function saveData(events: HistoryEvent[], media: MediaItem[]): Promise<SaveResult> {
+  async function saveData(events: HistoryEvent[], media: MediaItem[], idioms: Idiom[] = []): Promise<SaveResult> {
     if (!isConfigured.value) {
       return {
         success: false,
@@ -104,7 +104,7 @@ export function useGithubApi() {
         currentSha = getResponse.data.sha
       }
 
-      const jsonContent = JSON.stringify({ events, media }, null, 2)
+      const jsonContent = JSON.stringify({ events, media, idioms }, null, 2)
       const base64Content = btoa(unescape(encodeURIComponent(jsonContent)))
 
       const response = await octokit.rest.repos.createOrUpdateFileContents({

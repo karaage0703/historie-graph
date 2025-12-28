@@ -1,10 +1,11 @@
 import { ref, computed } from 'vue'
-import type { HistoryEvent, MediaItem } from '@/types'
+import type { HistoryEvent, MediaItem, Idiom } from '@/types'
 import { useGithubApi } from './useGithubApi'
 import { useError } from './useError'
 
 const events = ref<HistoryEvent[]>([])
 const media = ref<MediaItem[]>([])
+const idioms = ref<Idiom[]>([])
 const isLoading = ref(false)
 
 export function useEvents() {
@@ -19,6 +20,10 @@ export function useEvents() {
     return [...media.value].sort((a, b) => (a.coverageStartYear ?? 0) - (b.coverageStartYear ?? 0))
   })
 
+  const sortedIdioms = computed(() => {
+    return [...idioms.value].sort((a, b) => a.year - b.year)
+  })
+
   async function fetchEvents(): Promise<void> {
     isLoading.value = true
     clearError()
@@ -27,6 +32,7 @@ export function useEvents() {
       const data = await fetchData()
       events.value = data.events
       media.value = data.media ?? []
+      idioms.value = data.idioms ?? []
     } catch (error) {
       if (error instanceof TypeError && error.message.includes('fetch')) {
         setNetworkError()
@@ -50,7 +56,7 @@ export function useEvents() {
 
     events.value = [...events.value, newEvent]
 
-    const result = await saveData(events.value, media.value)
+    const result = await saveData(events.value, media.value, idioms.value)
     if (!result.success) {
       events.value = events.value.filter((e) => e.id !== newEvent.id)
       throw new Error(result.error?.message || '保存に失敗しました')
@@ -80,7 +86,7 @@ export function useEvents() {
 
     events.value = events.value.map((e) => (e.id === id ? updatedEvent : e))
 
-    const result = await saveData(events.value, media.value)
+    const result = await saveData(events.value, media.value, idioms.value)
     if (!result.success) {
       events.value = originalEvents
       throw new Error(result.error?.message || '更新に失敗しました')
@@ -96,7 +102,7 @@ export function useEvents() {
     const originalEvents = [...events.value]
     events.value = events.value.filter((e) => e.id !== id)
 
-    const result = await saveData(events.value, media.value)
+    const result = await saveData(events.value, media.value, idioms.value)
     if (!result.success) {
       events.value = originalEvents
       throw new Error(result.error?.message || '削除に失敗しました')
@@ -111,7 +117,7 @@ export function useEvents() {
 
     media.value = [...media.value, mediaItem]
 
-    const result = await saveData(events.value, media.value)
+    const result = await saveData(events.value, media.value, idioms.value)
     if (!result.success) {
       media.value = media.value.filter((m) => m.id !== mediaItem.id)
       throw new Error(result.error?.message || '保存に失敗しました')
@@ -122,7 +128,7 @@ export function useEvents() {
     const originalMedia = [...media.value]
     media.value = media.value.filter((m) => m.id !== mediaId)
 
-    const result = await saveData(events.value, media.value)
+    const result = await saveData(events.value, media.value, idioms.value)
     if (!result.success) {
       media.value = originalMedia
       throw new Error(result.error?.message || '削除に失敗しました')
@@ -132,10 +138,12 @@ export function useEvents() {
   return {
     events,
     media,
+    idioms,
     isLoading,
     isSaving,
     sortedEvents,
     sortedMedia,
+    sortedIdioms,
     fetchEvents,
     addEvent,
     updateEvent,
