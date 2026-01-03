@@ -2262,7 +2262,7 @@
     {
       "id": "sekigan-no-ryu-kansuke",
       "title": "隻眼の竜 山本勘助",
-      "type": "novel",
+      "type": "manga",
       "remark": "戦国時代の武田家軍師・山本勘助を描いた作品。隻眼・片足の身体障害を持ちながら、その知謀で武田信玄に仕えた",
       "coverageStartYear": 1493,
       "coverageEndYear": 1561,
@@ -2281,8 +2281,8 @@
     },
     {
       "id": "bigunshi-chouryo",
-      "title": "美軍師 張良",
-      "type": "novel",
+      "title": "美軍師張良",
+      "type": "manga",
       "remark": "楚漢戦争時代、劉邦の軍師として活躍した張良を描く。始皇帝暗殺未遂から漢建国までの波乱の生涯",
       "coverageStartYear": -250,
       "coverageEndYear": -186,
