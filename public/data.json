@@ -122,6 +122,19 @@
       ]
     },
     {
+      "id": "china-keika-assassination",
+      "year": -227,
+      "yearDisplay": "前227年",
+      "era": "戦国時代",
+      "region": "china",
+      "title": "荊軻の始皇帝暗殺未遂",
+      "description": "燕の太子丹が刺客・荊軻を秦王政（始皇帝）のもとへ送り込む。荊軻は燕の督亢の地図と秦の亡命将軍・樊於期の首を献上する名目で謁見し、地図に隠した匕首で襲撃するも失敗。荊軻は殺され、燕は秦の報復を受けて滅亡へ向かう。",
+      "relatedMedia": ["kingdom", "tatsujin-den"],
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E8%8D%8A%E8%BB%BB"
+      ]
+    },
+    {
       "id": "550e8400-e29b-41d4-a716-446655440002",
       "year": -221,
       "yearDisplay": "前221年",
@@ -143,6 +156,32 @@
       "description": "始皇帝が六国を滅ぼし、中国史上初の統一王朝を樹立。度量衡・文字の統一を行う。",
       "links": [
         "https://ja.wikipedia.org/wiki/%E5%A7%8B%E7%9A%87%E5%B8%9D"
+      ]
+    },
+    {
+      "id": "china-kouzenri-assassination",
+      "year": -221,
+      "yearDisplay": "前221年頃",
+      "era": "秦",
+      "region": "china",
+      "title": "高漸離の始皇帝暗殺未遂",
+      "description": "荊軻の親友で筑（琴に似た楽器）の名手・高漸離が、始皇帝の宮廷楽師となる。始皇帝に近づく機会を得た高漸離は、鉛を仕込んだ筑で始皇帝を襲撃するも失敗し、処刑された。",
+      "relatedMedia": ["kingdom", "tatsujin-den"],
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E9%AB%98%E6%BC%B8%E9%9B%A2"
+      ]
+    },
+    {
+      "id": "china-chouryo-assassination",
+      "year": -218,
+      "yearDisplay": "前218年",
+      "era": "秦",
+      "region": "china",
+      "title": "張良の始皇帝暗殺未遂（博浪沙の変）",
+      "description": "韓の貴族の子・張良が始皇帝への復讐を誓い、力士を雇って博浪沙（現在の河南省）で始皇帝の巡行車列を襲撃。120斤の鉄椎を投げつけたが、副車に命中し始皇帝は無事だった。張良は逃亡し、後に劉邦の軍師となる。",
+      "relatedMedia": ["kouu-to-ryuuhou", "bigunshi-chouryo"],
+      "links": [
+        "https://ja.wikipedia.org/wiki/%E5%BC%B5%E8%89%AF"
       ]
     },
     {
@@ -2218,6 +2257,54 @@
       "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%98%BF%E5%90%BD+%E3%81%8A%E3%81%8B%E3%81%96%E3%81%8D%E7%9C%9F%E9%87%8C+Kindle",
       "relatedEventIds": [
         "japan-heian-start"
+      ]
+    },
+    {
+      "id": "sekigan-no-ryu-kansuke",
+      "title": "隻眼の竜 山本勘助",
+      "type": "novel",
+      "remark": "戦国時代の武田家軍師・山本勘助を描いた作品。隻眼・片足の身体障害を持ちながら、その知謀で武田信玄に仕えた",
+      "coverageStartYear": 1493,
+      "coverageEndYear": 1561,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E9%9A%BB%E7%9C%BC%E3%81%AE%E7%AB%9C+%E5%B1%B1%E6%9C%AC%E5%8B%98%E5%8A%A9+Kindle",
+      "relatedEventIds": []
+    },
+    {
+      "id": "shinsetsu-toyotomi-kyoudai",
+      "title": "真説 豊臣兄弟とその一族",
+      "type": "novel",
+      "remark": "豊臣秀吉とその弟・秀長を中心に、豊臣一族の実像に迫る歴史書",
+      "coverageStartYear": 1537,
+      "coverageEndYear": 1615,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%9C%9F%E8%AA%AC+%E8%B1%8A%E8%87%A3%E5%85%84%E5%BC%9F%E3%81%A8%E3%81%9D%E3%81%AE%E4%B8%80%E6%97%8F+Kindle",
+      "relatedEventIds": []
+    },
+    {
+      "id": "bigunshi-chouryo",
+      "title": "美軍師 張良",
+      "type": "novel",
+      "remark": "楚漢戦争時代、劉邦の軍師として活躍した張良を描く。始皇帝暗殺未遂から漢建国までの波乱の生涯",
+      "coverageStartYear": -250,
+      "coverageEndYear": -186,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%BE%8E%E8%BB%8D%E5%B8%AB+%E5%BC%B5%E8%89%AF+Kindle",
+      "relatedEventIds": [
+        "china-chouryo-assassination",
+        "550e8400-e29b-41d4-a716-446655440001"
+      ]
+    },
+    {
+      "id": "zokuzoku-shikoutei",
+      "title": "ゾクゾクするほど面白い 始皇帝と春秋戦国時代",
+      "type": "novel",
+      "remark": "春秋戦国時代から始皇帝による中国統一までをわかりやすく解説した歴史読み物",
+      "coverageStartYear": -770,
+      "coverageEndYear": -206,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%BE%E3%82%AF%E3%82%BE%E3%82%AF%E3%81%99%E3%82%8B%E3%81%BB%E3%81%A9%E9%9D%A2%E7%99%BD%E3%81%84+%E5%A7%8B%E7%9A%87%E5%B8%9D+Kindle",
+      "relatedEventIds": [
+        "550e8400-e29b-41d4-a716-446655440010",
+        "550e8400-e29b-41d4-a716-446655440011",
+        "550e8400-e29b-41d4-a716-446655440021",
+        "china-keika-assassination"
       ]
     }
   ],
