@@ -2306,6 +2306,16 @@
         "550e8400-e29b-41d4-a716-446655440021",
         "china-keika-assassination"
       ]
+    },
+    {
+      "id": "ikusagami",
+      "title": "イクサガミ",
+      "type": "novel",
+      "remark": "今村翔吾。明治11年、292人の剣客が東海道を舞台にしたデスゲームに挑む。全4巻（天・地・人・神）。Netflixドラマ化（主演：岡田准一）",
+      "coverageStartYear": 1876,
+      "coverageEndYear": 1878,
+      "kindleUrl": "https://www.amazon.co.jp/dp/B0B5J1YN6Q",
+      "relatedEventIds": ["japan-meiji-start"]
     }
   ],
   "idioms": [
