@@ -178,21 +178,31 @@ const handleWheel = (e: WheelEvent) => {
   }
 }
 
-// ドラッグでパン
-const handleMouseDown = (e: MouseEvent) => {
+const handlePointerDown = (e: PointerEvent) => {
+  if (e.pointerType === 'mouse' && e.button !== 0) return
   isDragging.value = true
   dragStartX.value = e.clientX
   dragStartOffset.value = offsetX.value
+  if (containerRef.value && e.isPrimary) {
+    try {
+      containerRef.value.setPointerCapture(e.pointerId)
+    } catch {
+      // Pointer capture can fail for synthetic events or older WebViews.
+    }
+  }
 }
 
-const handleMouseMove = (e: MouseEvent) => {
+const handlePointerMove = (e: PointerEvent) => {
   if (!isDragging.value) return
   const deltaX = e.clientX - dragStartX.value
   panTo(dragStartOffset.value + deltaX)
 }
 
-const handleMouseUp = () => {
+const handlePointerUp = (e: PointerEvent) => {
   isDragging.value = false
+  if (containerRef.value?.hasPointerCapture(e.pointerId)) {
+    containerRef.value.releasePointerCapture(e.pointerId)
+  }
 }
 
 // クリックハンドラ
@@ -226,14 +236,10 @@ onMounted(() => {
   updateContainerWidth()
   loadCotenRadio()
   window.addEventListener('resize', updateContainerWidth)
-  window.addEventListener('mouseup', handleMouseUp)
-  window.addEventListener('mousemove', handleMouseMove)
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', updateContainerWidth)
-  window.removeEventListener('mouseup', handleMouseUp)
-  window.removeEventListener('mousemove', handleMouseMove)
 })
 
 // 年ラベルの生成
@@ -482,10 +488,13 @@ const formatYear = (year: number): string => {
     <!-- タイムラインキャンバス -->
     <div
       ref="containerRef"
-      class="overflow-hidden rounded-lg border border-gray-200 bg-white"
+      class="touch-pan-y overflow-hidden rounded-lg border border-gray-200 bg-white"
       :class="{ 'cursor-grabbing': isDragging, 'cursor-grab': !isDragging }"
       @wheel="handleWheel"
-      @mousedown="handleMouseDown"
+      @pointerdown="handlePointerDown"
+      @pointermove="handlePointerMove"
+      @pointerup="handlePointerUp"
+      @pointercancel="handlePointerUp"
     >
       <svg
         :width="containerWidth"
