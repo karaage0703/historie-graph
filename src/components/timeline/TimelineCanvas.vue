@@ -80,7 +80,10 @@ const { scale, offsetX, transform, visibleYearRange, zoomIn, zoomOut, panTo, res
 // ドラッグ状態
 const isDragging = ref(false)
 const dragStartX = ref(0)
+const dragStartY = ref(0)
 const dragStartOffset = ref(0)
+const activePointerId = ref<number | null>(null)
+const PAN_START_THRESHOLD = 4
 
 // ポップオーバー
 const popoverData = ref<{
@@ -179,27 +182,42 @@ const handleWheel = (e: WheelEvent) => {
 }
 
 const handlePointerDown = (e: PointerEvent) => {
-  if (e.pointerType === 'mouse' && e.button !== 0) return
-  isDragging.value = true
+  if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0)) return
+  activePointerId.value = e.pointerId
   dragStartX.value = e.clientX
+  dragStartY.value = e.clientY
   dragStartOffset.value = offsetX.value
-  if (containerRef.value && e.isPrimary) {
+
+  // A pointer capture retargets the following click to the capturing element.
+  // Wait until a horizontal drag is confirmed so taps still reach timeline items.
+  isDragging.value = false
+}
+
+const handlePointerMove = (e: PointerEvent) => {
+  if (activePointerId.value !== e.pointerId) return
+
+  const deltaX = e.clientX - dragStartX.value
+  const deltaY = e.clientY - dragStartY.value
+
+  if (!isDragging.value) {
+    if (Math.abs(deltaX) < PAN_START_THRESHOLD || Math.abs(deltaX) <= Math.abs(deltaY)) return
+
+    isDragging.value = true
     try {
-      containerRef.value.setPointerCapture(e.pointerId)
+      containerRef.value?.setPointerCapture(e.pointerId)
     } catch {
       // Pointer capture can fail for synthetic events or older WebViews.
     }
   }
-}
 
-const handlePointerMove = (e: PointerEvent) => {
-  if (!isDragging.value) return
-  const deltaX = e.clientX - dragStartX.value
   panTo(dragStartOffset.value + deltaX)
 }
 
 const handlePointerUp = (e: PointerEvent) => {
+  if (activePointerId.value !== e.pointerId) return
+
   isDragging.value = false
+  activePointerId.value = null
   if (containerRef.value?.hasPointerCapture(e.pointerId)) {
     containerRef.value.releasePointerCapture(e.pointerId)
   }
