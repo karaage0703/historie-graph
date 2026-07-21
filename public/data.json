@@ -2316,6 +2316,16 @@
       "coverageEndYear": 1878,
       "kindleUrl": "https://www.amazon.co.jp/dp/B0B5J1YN6Q",
       "relatedEventIds": ["japan-meiji-start"]
+    },
+    {
+      "id": "tenmaku-no-jadougal",
+      "title": "天幕のジャードゥーガル",
+      "type": "manga",
+      "remark": "トマトスープ作。13世紀のモンゴル帝国を舞台に、イラン出身のファーティマとオゴタイの妃ドレゲネを描く歴史漫画",
+      "coverageStartYear": 1220,
+      "coverageEndYear": 1237,
+      "kindleUrl": "https://www.amazon.co.jp/dp/B0B6FJ8589",
+      "relatedEventIds": ["china-jin-end"]
     }
   ],
   "idioms": [
