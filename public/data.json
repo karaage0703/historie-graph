@@ -2326,6 +2326,26 @@
       "coverageEndYear": 1237,
       "kindleUrl": "https://www.amazon.co.jp/dp/B0B6FJ8589",
       "relatedEventIds": ["china-jin-end"]
+    },
+    {
+      "id": "gifuu-shippuu-no-gunshi-kuroda-kanbei",
+      "title": "義風堂々!! 疾風の軍師 -黒田官兵衛-",
+      "type": "manga",
+      "remark": "原哲夫・堀江信彦原作、八津弘幸脚本、山田俊明作画。若き黒田官兵衛と織田信長の出会いから小牧・長久手の戦いまでを描く",
+      "coverageStartYear": 1561,
+      "coverageEndYear": 1584,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%BE%A9%E9%A2%A8%E5%A0%82%E3%80%85+%E7%96%BE%E9%A2%A8%E3%81%AE%E8%BB%8D%E5%B8%AB+%E9%BB%92%E7%94%B0%E5%AE%98%E5%85%B5%E8%A1%9B+Kindle",
+      "relatedEventIds": ["550e8400-e29b-41d4-a716-446655440004"]
+    },
+    {
+      "id": "gifuu-naoe-kanetsugu-maeda-keiji",
+      "title": "義風堂々!! 直江兼続 〜前田慶次〜",
+      "type": "manga",
+      "remark": "原哲夫・堀江信彦原作。月語り・酒語り・花語りを通じ、直江兼続と前田慶次が義を貫いて戦国末期を生きる姿を描く",
+      "coverageStartYear": 1560,
+      "coverageEndYear": 1600,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%BE%A9%E9%A2%A8%E5%A0%82%E3%80%85+%E7%9B%B4%E6%B1%9F%E5%85%BC%E7%B6%9A+%E5%89%8D%E7%94%B0%E6%85%B6%E6%AC%A1+Kindle",
+      "relatedEventIds": ["550e8400-e29b-41d4-a716-446655440004"]
     }
   ],
   "idioms": [
