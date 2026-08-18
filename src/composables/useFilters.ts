@@ -69,6 +69,8 @@ export function useFilters() {
    * 以前はデータから計算していたが、固定値を使用するように変更
    */
   function initializeDefaultYearRange(_events: HistoryEvent[], _media: MediaItem[]): void {
+    void _events
+    void _media
     // 固定のデフォルト範囲を使用（refの初期値と同じ）
     defaultYearRangeMin.value = -2000
     defaultYearRangeMax.value = 2000

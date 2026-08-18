@@ -167,7 +167,7 @@ const _timelineWidth = computed(() => {
   const range = timeRange.value.maxYear - timeRange.value.minYear
   return range * 2 // 1年あたり2ピクセル
 })
-void _timelineWidth // suppress unused warning
+void _timelineWidth.value // suppress unused warning
 
 // ホイールでズーム
 const handleWheel = (e: WheelEvent) => {
@@ -694,16 +694,18 @@ const formatYear = (year: number): string => {
           </g>
 
           <!-- 範囲外作品インジケーター -->
-          <g v-if="showMedia" v-for="overflow in overflowMedia" :key="`overflow-media-${overflow.title}`">
-            <rect x="70" :y="overflow.y" width="200" height="20" fill="rgba(255,255,255,0.9)" rx="2" />
-            <text
-              x="74"
-              :y="overflow.y + 14"
-              class="fill-purple-600 text-xs"
-            >
-              ← {{ overflow.title }} ({{ formatYear(overflow.startYear) }}〜)
-            </text>
-          </g>
+          <template v-if="showMedia">
+            <g v-for="overflow in overflowMedia" :key="`overflow-media-${overflow.title}`">
+              <rect x="70" :y="overflow.y" width="200" height="20" fill="rgba(255,255,255,0.9)" rx="2" />
+              <text
+                x="74"
+                :y="overflow.y + 14"
+                class="fill-purple-600 text-xs"
+              >
+                ← {{ overflow.title }} ({{ formatYear(overflow.startYear) }}〜)
+              </text>
+            </g>
+          </template>
         </g>
       </svg>
     </div>

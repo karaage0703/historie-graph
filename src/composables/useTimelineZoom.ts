@@ -111,6 +111,7 @@ export function useTimelineZoom(
   }
 
   const zoomTo = (newScale: number, _centerX: number): void => {
+    void _centerX
     zoomAtCenter(newScale)
   }
 

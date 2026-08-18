@@ -4,7 +4,7 @@ import { Filter, X, ChevronDown, ChevronUp } from 'lucide-vue-next'
 import { useFilters } from '@/composables/useFilters'
 import type { HistoryEvent } from '@/types'
 
-const props = defineProps<{
+defineProps<{
   events: HistoryEvent[]
 }>()
 
