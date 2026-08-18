@@ -2346,6 +2346,16 @@
       "coverageEndYear": 1600,
       "kindleUrl": "https://www.amazon.co.jp/s?k=%E7%BE%A9%E9%A2%A8%E5%A0%82%E3%80%85+%E7%9B%B4%E6%B1%9F%E5%85%BC%E7%B6%9A+%E5%89%8D%E7%94%B0%E6%85%B6%E6%AC%A1+Kindle",
       "relatedEventIds": ["550e8400-e29b-41d4-a716-446655440004"]
+    },
+    {
+      "id": "bija-no-joou",
+      "title": "ビジャの女王",
+      "type": "manga",
+      "remark": "森秀樹作。1258年、モンゴル帝国軍に包囲されたペルシャ高原の小都市ビジャを舞台に、王女オッドとインド墨家の攻防を描く",
+      "coverageStartYear": 1258,
+      "coverageEndYear": 1258,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%93%E3%82%B8%E3%83%A3%E3%81%AE%E5%A5%B3%E7%8E%8B+%E6%A3%AE%E7%A7%80%E6%A8%B9+Kindle",
+      "relatedEventIds": ["middle-east-abbasid-end"]
     }
   ],
   "idioms": [
