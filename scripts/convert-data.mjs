@@ -102,7 +102,8 @@ for (const event of originalData.events) {
 
 // 新しいイベント配列（mediaフィールドを削除）
 const newEvents = originalData.events.map(event => {
-  const { media, ...eventWithoutMedia } = event;
+  const eventWithoutMedia = { ...event };
+  delete eventWithoutMedia.media;
   return eventWithoutMedia;
 });
 
