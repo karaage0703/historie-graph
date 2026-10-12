@@ -2356,6 +2356,26 @@
       "coverageEndYear": 1258,
       "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%83%93%E3%82%B8%E3%83%A3%E3%81%AE%E5%A5%B3%E7%8E%8B+%E6%A3%AE%E7%A7%80%E6%A8%B9+Kindle",
       "relatedEventIds": ["middle-east-abbasid-end"]
+    },
+    {
+      "id": "iliad",
+      "title": "イリアス",
+      "type": "classic",
+      "remark": "ホメロス作と伝わる古代ギリシャの叙事詩。トロイア戦争終盤の短期間を舞台に、アキレウスの怒りとヘクトルとの戦いを描く。成立は紀元前8〜7世紀頃。表示年代の紀元前1180年は既存のオデュッセイアに合わせた伝承上の目安で、史実の確定年ではない",
+      "coverageStartYear": -1180,
+      "coverageEndYear": -1180,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%20Kindle",
+      "relatedEventIds": []
+    },
+    {
+      "id": "nihon-shoki",
+      "title": "日本書紀",
+      "type": "classic",
+      "remark": "舎人親王らが編纂し720年に完成した日本最初の官撰史書。全30巻で、神代から持統天皇11年（697年）までを記す。神代は実年代を特定できず、開始年の紀元前14000年は既存の古事記に合わせた表示上の仮置き",
+      "coverageStartYear": -14000,
+      "coverageEndYear": 697,
+      "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%97%A5%E6%9C%AC%E6%9B%B8%E7%B4%80%20Kindle",
+      "relatedEventIds": ["japan-kofun-start", "japan-asuka-start", "japan-asuka-taika"]
     }
   ],
   "idioms": [
