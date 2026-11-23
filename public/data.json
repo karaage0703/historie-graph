@@ -2376,6 +2376,16 @@
       "coverageEndYear": 697,
       "kindleUrl": "https://www.amazon.co.jp/s?k=%E6%97%A5%E6%9C%AC%E6%9B%B8%E7%B4%80%20Kindle",
       "relatedEventIds": ["japan-kofun-start", "japan-asuka-start", "japan-asuka-taika"]
+    },
+    {
+      "id": "raika",
+      "title": "雷火",
+      "type": "manga",
+      "remark": "寺島優原作、藤原カムイ作画。卑弥呼・壱与のころの邪馬台国を舞台に、魏の使者・張政の陰謀に立ち向かう少年ライカを描く歴史アクションファンタジー。表示年代は3世紀半ばの目安。",
+      "coverageStartYear": 240,
+      "coverageEndYear": 250,
+      "kindleUrl": "https://www.amazon.co.jp/dp/B074CGD6N5",
+      "relatedEventIds": ["china-three-kingdoms-start", "japan-yayoi-end"]
     }
   ],
   "idioms": [
